@@ -1,0 +1,25 @@
+{
+  "name": "@local/content",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "TIMING=1 eslint \"**/*.ts*\""
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "react": "^18.2.0",
+    "tsconfig": "*",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@markdoc/markdoc": "^0.2.1",
+    "globby": "^13.1.2",
+    "js-yaml": "^4.1.0"
+  }
+}

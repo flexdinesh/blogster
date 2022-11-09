@@ -1,0 +1,23 @@
+{
+  "name": "@theme/minimal",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^0.11.5",
+    "@astrojs/prism": "^1.0.2",
+    "@astrojs/rss": "^1.0.3",
+    "@astrojs/sitemap": "^1.0.0",
+    "@local/content": "*",
+    "@local/markdoc-renderer": "*",
+    "astro": "^1.6.0",
+    "shiki": "^0.11.1"
+  }
+}

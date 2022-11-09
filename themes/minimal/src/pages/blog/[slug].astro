@@ -1,0 +1,38 @@
+---
+import path from "path";
+import { getAllBlogPosts, getBlogPost } from "@local/content";
+import { MarkdocRenderer } from "@local/markdoc-renderer";
+import BlogLayout from "../../layouts/BlogPost.astro";
+
+export async function getStaticPaths() {
+  const absolutePathToRepoRoot = path.join(process.cwd(), "..", "..");
+  const { type, items } = await getAllBlogPosts({
+    absolutePathToRepoRoot,
+  });
+
+  return items.map((post) => {
+    return { params: { slug: post.slug } };
+  });
+}
+
+const { slug } = Astro.params;
+// TODO type guard slug
+
+const absolutePathToRepoRoot = path.join(process.cwd(), "..", "..");
+const post = await getBlogPost({
+  absolutePathToRepoRoot,
+  filename: slug as string,
+});
+
+---
+
+<BlogLayout
+  content={{
+    // TODO:
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    date: post.frontmatter.date,
+  }}
+>
+  <MarkdocRenderer content={post.content} />
+</BlogLayout>

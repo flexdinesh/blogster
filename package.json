@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
+    "config/*",
+    "packages/*",
     "apps/*",
-    "packages/*"
+    "themes/*",
+    "content"
   ],
   "scripts": {
     "build": "turbo run build",
