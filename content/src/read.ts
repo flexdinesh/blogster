@@ -14,7 +14,11 @@ export async function getMarkdown({
   type: ContentType;
 }) {
   // .../content/blog
-  const absolutePathToDir = path.join(absolutePathToRepoRoot, "content", type);
+  const absolutePathToDir = path.join(
+    absolutePathToRepoRoot,
+    "content/markdown",
+    type
+  );
 
   // .../content/blog/abc-def.md
   const absolutePathToFile = path.join(absolutePathToDir, `${filename}.md`);
@@ -38,20 +42,25 @@ export async function getAllMarkdown({
   absolutePathToRepoRoot: string;
   type: ContentType;
 }) {
-  const absolutePathToDir = path.join(absolutePathToRepoRoot, "content", type);
+  const absolutePathToDir = path.join(
+    absolutePathToRepoRoot,
+    "content/markdown",
+    type
+  );
 
+  // this gives filenames as array
   const allMarkdownPaths = await globby("**/*.md", {
     cwd: absolutePathToDir,
   });
 
   const items = await Promise.all(
-    allMarkdownPaths.map(async (mdPath) => {
-      const fileNameWithoutExtension = mdPath.replace(/\.[^.]*$/, "");
+    allMarkdownPaths.map(async (filename) => {
+      const fileNameWithoutExtension = filename.replace(/\.[^.]*$/, "");
       const markdownFileAbsolutePath = path.join(
         absolutePathToRepoRoot,
-        "content",
+        "content/markdown",
         type,
-        mdPath
+        filename
       );
 
       const { content, frontmatter } = await parseAndTransform({

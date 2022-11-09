@@ -1,9 +1,9 @@
 {
-  "name": "blog-template",
+  "name": "codename-bloggy",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "config/*",
+    "packages/@repoconfig/*",
     "packages/*",
     "apps/*",
     "themes/*",

@@ -115,7 +115,7 @@ export async function parseAndTransform({
     throw new Error("Markdoc validation error");
   }
   const transformedContent = Markdoc.transform(ast, config);
-  const html = Markdoc.renderers.html(transformedContent)
+  const html = Markdoc.renderers.html(transformedContent);
   const frontmatter = extractFrontmatter(rawMd);
   return {
     frontmatter: frontmatter,
