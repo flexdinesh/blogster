@@ -1,5 +1,5 @@
 import { load } from "js-yaml";
-import { isMatch, format } from "date-fns";
+import { isMatch, format, parse } from "date-fns";
 import type { ContentType } from "./types";
 
 const dateFormat = "yyyy-MM-dd";
@@ -7,7 +7,7 @@ const dateFormat = "yyyy-MM-dd";
 type Frontmatter<T extends ContentType> = {
   type: T;
   title: string;
-  date: string;
+  date: Date;
 };
 
 type MarkdownPostFrontmatter = Frontmatter<"blog"> & {
@@ -56,7 +56,9 @@ function validateDefaultFrontmatter(frontmatter: Record<string, unknown>) {
     );
   } else {
     if (typeof frontmatter.date === "string") {
-      if (!isMatch(frontmatter.date, dateFormat)) {
+      frontmatter.date = parse(frontmatter.date, dateFormat, new Date());
+      const formattedDate = format(frontmatter.date as Date, dateFormat);
+      if (!isMatch(formattedDate, dateFormat)) {
         throw new Error(
           "Frontmatter.date is not a valid date string. Date expected in format yyyy-MM-dd."
         );

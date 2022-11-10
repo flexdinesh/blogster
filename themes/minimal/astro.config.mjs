@@ -1,10 +1,11 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
+import { defineConfig } from "astro/config";
 
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 
-// https://astro.build/config
+// TODO:
+let BASE_URL = "http://localhost:3000";
+
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
+  site: BASE_URL,
+  integrations: [sitemap()],
 });
