@@ -1,26 +1,28 @@
 import path from "path";
 import { globby } from "globby";
 import { parseAndTransform } from "./markdoc";
+import { validateBlogFrontmatter } from "./frontmatter";
+import { ContentType } from "./types";
 
-type ContentType = "blog" | "notes" | "project" | "speaking";
-
-export async function getMarkdown({
+async function getMarkdown({
   absolutePathToRepoRoot,
-  filename,
   type,
+  filename,
 }: {
-  absolutePathToRepoRoot: string;
-  filename: string; // abc-def.md
+  absolutePathToRepoRoot: string; // /some-absolute-path.../
   type: ContentType;
+  filename: string; // abc-def.md
 }) {
-  // .../content/blog
+  const pathToFile = type === "page" ? "" : type;
+  // .../content/pages/blog
   const absolutePathToDir = path.join(
     absolutePathToRepoRoot,
-    "content/markdown",
-    type
+    "content/pages",
+    pathToFile
   );
 
   // .../content/blog/abc-def.md
+  // .../content/about.md
   const absolutePathToFile = path.join(absolutePathToDir, `${filename}.md`);
 
   const { content, frontmatter } = await parseAndTransform({
@@ -35,17 +37,18 @@ export async function getMarkdown({
   };
 }
 
-export async function getAllMarkdown({
+async function getAllMarkdown({
   absolutePathToRepoRoot,
   type,
 }: {
   absolutePathToRepoRoot: string;
   type: ContentType;
 }) {
+  const pathToFile = type === "page" ? "" : type;
   const absolutePathToDir = path.join(
     absolutePathToRepoRoot,
-    "content/markdown",
-    type
+    "content/pages",
+    pathToFile
   );
 
   // this gives filenames as array
@@ -56,22 +59,11 @@ export async function getAllMarkdown({
   const items = await Promise.all(
     allMarkdownPaths.map(async (filename) => {
       const fileNameWithoutExtension = filename.replace(/\.[^.]*$/, "");
-      const markdownFileAbsolutePath = path.join(
+      return getMarkdown({
         absolutePathToRepoRoot,
-        "content/markdown",
-        type,
-        filename
-      );
-
-      const { content, frontmatter } = await parseAndTransform({
-        markdownFileAbsolutePath,
+        type: "blog",
+        filename: fileNameWithoutExtension,
       });
-      return {
-        content,
-        frontmatter,
-        slug: fileNameWithoutExtension,
-        type: type,
-      };
     })
   );
 
@@ -85,7 +77,18 @@ export async function getBlogPost({
   absolutePathToRepoRoot: string;
   filename: string;
 }) {
-  return getMarkdown({ absolutePathToRepoRoot, type: "blog", filename });
+  const { content, frontmatter, slug, type } = await getMarkdown({
+    absolutePathToRepoRoot,
+    type: "blog",
+    filename,
+  });
+  const typedFrontmatter = validateBlogFrontmatter(frontmatter);
+  return {
+    content,
+    frontmatter: typedFrontmatter,
+    slug,
+    type,
+  };
 }
 
 export async function getAllBlogPosts({
@@ -93,5 +96,24 @@ export async function getAllBlogPosts({
 }: {
   absolutePathToRepoRoot: string;
 }) {
-  return getAllMarkdown({ absolutePathToRepoRoot, type: "blog" });
+  const { type, items } = await getAllMarkdown({
+    absolutePathToRepoRoot,
+    type: "blog",
+  });
+
+  const validatedItems = items.map((item) => {
+    const { content, frontmatter, slug, type } = item;
+    const typedFrontmatter = validateBlogFrontmatter(frontmatter);
+    return {
+      content,
+      frontmatter: typedFrontmatter,
+      slug,
+      type,
+    };
+  });
+
+  return {
+    type,
+    items: validatedItems,
+  };
 }

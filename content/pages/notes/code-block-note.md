@@ -1,10 +1,10 @@
 ---
-title: "Code Block Example"
-description: "Example to see how code blocks look"
-date: 2022-07-22
+title: "Code Block Note"
+description: "Example to see how code blocks looks in notes"
+date: "2022-07-22"
 ---
 
-A sample HTML code block.
+Code blocks look the same in notes and blog.
 
 ## Code Blocks
 

@@ -1,7 +1,7 @@
-import { load } from "js-yaml";
 import fs from "fs/promises";
-import Markdoc, { nodes, Tag, functions } from "@markdoc/markdoc";
-import type { Config, ConfigFunction } from "@markdoc/markdoc";
+import Markdoc, { nodes, Tag } from "@markdoc/markdoc";
+import type { Config } from "@markdoc/markdoc";
+import { extractFrontmatter} from "./frontmatter";
 
 const config: Config = {
   tags: {
@@ -74,33 +74,6 @@ const config: Config = {
   },
 };
 
-function extractFrontmatter(content: string) {
-  const frontMatterPattern = /^---[\s]+([\s\S]*?)[\s]+---/;
-  const match = frontMatterPattern.exec(content);
-  if (!match) {
-    throw new Error(
-      "Expected post to contain frontmatter with a title, description and publishDate"
-    );
-  }
-  const frontmatter = match[1];
-  let parsed;
-  try {
-    parsed = load(frontmatter);
-  } catch (err) {
-    throw new Error(`Failed to parse frontmatter as yaml: ${err}`);
-  }
-  if (typeof parsed !== "object" || parsed === null) {
-    throw new Error(
-      `Expected frontmatter yaml to be an object but found:\n${JSON.stringify(
-        parsed
-      )}`
-    );
-  }
-  let obj = parsed as Record<string, unknown>;
-
-  return obj;
-}
-
 export async function parseAndTransform({
   markdownFileAbsolutePath,
 }: {
@@ -115,8 +88,8 @@ export async function parseAndTransform({
     throw new Error("Markdoc validation error");
   }
   const transformedContent = Markdoc.transform(ast, config);
-  const html = Markdoc.renderers.html(transformedContent);
   const frontmatter = extractFrontmatter(rawMd);
+  
   return {
     frontmatter: frontmatter,
     content: transformedContent,
