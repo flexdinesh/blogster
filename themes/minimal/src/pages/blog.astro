@@ -3,12 +3,13 @@ import path from "path";
 import { getAllBlogPosts } from "@local/content";
 
 import BaseHead from "../components/BaseHead.astro";
+import PageMeta from "../components/PageMeta.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { SITE_TITLE } from "../config";
 
 const absolutePathToRepoRoot = path.join(process.cwd(), "..", "..");
-const { type, items } = await getAllBlogPosts({
+const { items } = await getAllBlogPosts({
   absolutePathToRepoRoot,
 });
 
@@ -22,7 +23,8 @@ const posts = items.sort(
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead />
+    <PageMeta title={`Blog | ${SITE_TITLE}`} />
     <style>
       ul {
         list-style-type: none;
@@ -47,18 +49,23 @@ const posts = items.sort(
       <section>
         <ul>
           {
-            posts.map((post) => (
-              <li>
-                <time datetime={post.frontmatter.date}>
-                  {new Date(post.frontmatter.date).toLocaleDateString("en-us", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </time>
-                <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>
-              </li>
-            ))
+            posts.map((post) => {
+              return (
+                <li>
+                  <time datetime={post.frontmatter.date.toISOString()}>
+                    {new Date(post.frontmatter.date).toLocaleDateString(
+                      "en-us",
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
+                  </time>
+                  <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>
+                </li>
+              );
+            })
           }
         </ul>
       </section>

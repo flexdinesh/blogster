@@ -6,20 +6,20 @@ import Footer from "../components/Footer.astro";
 export interface Props {
   content: {
     title: string;
-    description: string;
     date?: string;
     heroImage?: string;
   };
 }
 
 const {
-  content: { title, description, date, heroImage },
+  content: { title, date, heroImage },
 } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead />
+    <slot name="head"/>
     <style>
       .title {
         font-size: 2em;

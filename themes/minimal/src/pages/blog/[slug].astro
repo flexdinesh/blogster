@@ -2,6 +2,9 @@
 import path from "path";
 import { getAllBlogPosts, getBlogPost } from "@local/content";
 import { MarkdocRenderer } from "@local/markdoc-renderer";
+import { SITE_TITLE } from "../../config";
+
+import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import BlogLayout from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
@@ -23,16 +26,22 @@ const post = await getBlogPost({
   absolutePathToRepoRoot,
   filename: slug as string,
 });
-
 ---
 
 <BlogLayout
   content={{
     // TODO:
     title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    date: post.frontmatter.date,
+    date: post.frontmatter.date.toISOString(),
   }}
 >
+  <BlogPostMeta
+    title={post.frontmatter.title}
+    description={post.frontmatter.isExternal
+      ? undefined
+      : post.frontmatter.description}
+    publishDate={post.frontmatter.date.toISOString()}
+    slot="head"
+  />
   <MarkdocRenderer content={post.content} />
 </BlogLayout>

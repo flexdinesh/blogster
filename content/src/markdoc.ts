@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import Markdoc, { nodes, Tag } from "@markdoc/markdoc";
 import type { Config } from "@markdoc/markdoc";
-import { extractFrontmatter} from "./frontmatter";
+import { extractFrontmatter } from "./frontmatter";
 
 const config: Config = {
   tags: {
@@ -89,7 +89,7 @@ export async function parseAndTransform({
   }
   const transformedContent = Markdoc.transform(ast, config);
   const frontmatter = extractFrontmatter(rawMd);
-  
+
   return {
     frontmatter: frontmatter,
     content: transformedContent,
