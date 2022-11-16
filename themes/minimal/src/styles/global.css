@@ -1,67 +1,138 @@
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+  Inspired from two sources + my own customisations over it.
+  1. Bear Blog's default CSS. https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  2. https://www.swyx.io/css-100-bytes
  */
+
+/* theming for light/dark modes */
+:root {
+	--palette-primary: #5433ff;
+	--palette-secondary: #20bdff;
+
+	--text: #191919;
+	--text-muted: #585b63;
+	--text-heading: #303136;
+	--text-link: #667eea;
+	/* --text-link: #5433ff; */
+
+	--code-background: #f6f7f9;
+	--code-text: #47546b;
+	--code-border: #e2e8f0;
+
+
+	--selection-text: #ffffff;
+	--selection-background: #191919;
+
+	--border: #e2e8f0;
+	--background: #FFF
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--palette-primary: #20bdff;
+		--palette-secondary: #5433ff;
+
+		--text: #d2d3d7;
+		--text-muted: #d2d3d7;
+		--text-heading: #f8f9fa;
+		/* --text-link: #667eea; */
+		--text-link: #20bdff;
+
+		--code-text: #cbd5e0;
+		--code-background: #1f2631;
+		--code-border: #2d3748;
+
+		--selection-text: #191919;
+		--selection-background: #ffffff;
+
+		--border: #2d3748;
+		--background: #202124;
+	}
+
+	html {
+		color-scheme: dark;
+	}
+}
+
 body {
+	color: var(--text);
+	background: var(--background);
+	/* font-family: system-ui, sans-serif; */
 	font-family: Verdana, sans-serif;
+	padding: 0 2rem;
 	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
+	max-width: 70ch;
 	text-align: left;
-	background-color: #fff;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+	line-height: 1.75;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+
 strong,
 b {
-	color: #222;
+	color: var(--text-heading);
 }
+
 a {
-	color: #3273dc;
+	/* color: var(--palette-primary); */
+	color: var(--text-link);
+	text-decoration: none;
 }
+
+
 nav a {
 	margin-right: 10px;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
 }
+
 input {
 	font-size: 16px;
 }
+
 content {
 	line-height: 1.6;
 }
+
 table {
 	width: 100%;
 }
+
 img {
 	max-width: 100%;
 	height: auto;
 }
+
 code {
 	padding: 2px 5px;
-	background-color: #f2f2f2;
+	color: var(--code-text);
+	background-color: var(--code-background);
+	border: 1px solid var(--code-border);
+	border-radius: 4px;
 }
+
 pre {
 	padding: 1rem;
 }
-pre > code {
+
+pre>code {
 	all: unset;
 }
+
 blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
 	font-style: italic;
+	color: var(--text-muted);
+	border-left: 0.25rem solid var(--border);
+	quotes: "\201C" "\201D" "\2018" "\2019";
+	margin: 1.6em 0px;
+	padding-left: 1em;
+}
+
+
+::selection {
+	color: var(--selection-text);
+	background-color: var(--selection-background);
 }

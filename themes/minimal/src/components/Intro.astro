@@ -1,0 +1,77 @@
+---
+import Heading from "./ui/Heading.astro";
+---
+
+<section class="wrapper">
+  <Heading
+    as="h1"
+    class="name gradient-text gradient-color outline outline-color"
+  >
+    Captain Snoopy
+  </Heading>
+  <p class="subtext">Web Developer. OSS Wizard. Blogger.</p>
+  <p>
+    Hello! Welcome to my blog. This is a starter template to quickly build your
+    own blog.
+  </p>
+</section>
+
+<style>
+  .wrapper {
+    padding-top: 1rem;
+  }
+
+  .outline {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.075rem var(--outline-color);
+  }
+
+  .gradient-color {
+    --gradient-text-from: #5433ff;
+    --gradient-text-via: #20bdff;
+    --gradient-text-to: #a5fecb;
+  }
+
+  .outline-color {
+    --outline-color: var(--text-heading);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .gradient-color {
+      --gradient-text-from: #a5fecb;
+      --gradient-text-via: #20bdff;
+      --gradient-text-to: #a5fecb;
+    }
+    .outline-color {
+      --outline-color: transparent;
+    }
+  }
+
+  .name {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: -2px;
+    line-height: 3.5rem;
+  }
+
+  .subtext {
+    color: var(--text-heading);
+    font-size: 1.25rem;
+    letter-spacing: -0.51px;
+    line-height: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    h1.name {
+      font-size: 4rem;
+      line-height: 4.75rem;
+    }
+    .subtext {
+      font-size: 1.5rem;
+      letter-spacing: -0.51px;
+      line-height: 2rem;
+      margin-top: 0.5rem;
+    }
+  }
+</style>

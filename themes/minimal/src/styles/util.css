@@ -1,0 +1,56 @@
+/* 
+	class: gradient-text
+	The text will be gradient.
+	To use this, just set the css vars using a custom class in your component
+*/
+.gradient-text {
+	--gradient-text-from: hotpink;
+	--gradient-text-to: hotpink;
+	--gradient-text-via: var(--gradient-text-from), var(--gradient-text-to);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+	background-image: linear-gradient(135deg, var(--gradient-text-from), var(--gradient-text-via), var(--gradient-text-to));
+}
+
+.gradient-text::selection {
+	-webkit-text-fill-color: var(--selection-text);
+}
+
+/* 
+	class: gradient-text-underline 
+	The text will be gradient. The text will have an underline that will show up on hover.
+	To use this, just set the css vars using a custom class in your component
+*/
+.gradient-text-underline {
+	--gradient-text-underline-from: hotpink;
+	--gradient-text-underline-to: hotpink;
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+	background-image: linear-gradient(135deg, var(--gradient-text-underline-from), var(--gradient-text-underline-to));
+	position: relative;
+	box-decoration-break: clone;
+	text-decoration: none;
+}
+
+.gradient-text-underline:hover:after {
+	transform: translateZ(0) scale(1);
+}
+
+.gradient-text-underline:after {
+	left: 0;
+	right: 0;
+	bottom: -2px;
+	content: "";
+	height: 2px;
+	position: absolute;
+	transform: translateZ(0) scaleX(0);
+	transform-origin: left center;
+	transition: all 0.15s ease-in-out;
+	background-image: linear-gradient(to right, var(--gradient-text-underline-from), var(--gradient-text-underline-to));
+}

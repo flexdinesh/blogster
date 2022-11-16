@@ -1,24 +1,21 @@
 import path from "path";
-import { globby } from "globby";
+import {globby} from "globby";
 import { parseAndTransform } from "./markdoc";
 import { validateBlogFrontmatter } from "./frontmatter";
 import { ContentType } from "./types";
+import { pathToContentPages } from "./util";
 
 async function getMarkdown({
-  absolutePathToRepoRoot,
   type,
   filename,
 }: {
-  absolutePathToRepoRoot: string; // /some-absolute-path.../
-  type: ContentType;
+  type?: ContentType;
   filename: string; // abc-def.md
 }) {
-  const pathToFile = type === "page" ? "" : type;
   // .../content/pages/blog
   const absolutePathToDir = path.join(
-    absolutePathToRepoRoot,
-    "content/pages",
-    pathToFile
+    pathToContentPages,
+    type ?? ""
   );
 
   // .../content/blog/abc-def.md
@@ -38,29 +35,21 @@ async function getMarkdown({
 }
 
 async function getAllMarkdown({
-  absolutePathToRepoRoot,
   type,
 }: {
-  absolutePathToRepoRoot: string;
-  type: ContentType;
+  type?: ContentType;
 }) {
-  const pathToFile = type === "page" ? "" : type;
-  const absolutePathToDir = path.join(
-    absolutePathToRepoRoot,
-    "content/pages",
-    pathToFile
-  );
+  const pathToContentType = path.join(pathToContentPages, type ?? "");
 
-  // this gives filenames as array
-  const allMarkdownPaths = await globby("**/*.md", {
-    cwd: absolutePathToDir,
+  // this gives filenames as as array
+  const markdownPaths = await globby("**/*.md", {
+    cwd: pathToContentType,
   });
 
   const items = await Promise.all(
-    allMarkdownPaths.map(async (filename) => {
+    markdownPaths.map(async (filename) => {
       const fileNameWithoutExtension = filename.replace(/\.[^.]*$/, "");
       return getMarkdown({
-        absolutePathToRepoRoot,
         type: "blog",
         filename: fileNameWithoutExtension,
       });
@@ -71,14 +60,11 @@ async function getAllMarkdown({
 }
 
 export async function getBlogPost({
-  absolutePathToRepoRoot,
   filename,
 }: {
-  absolutePathToRepoRoot: string;
   filename: string;
 }) {
   const { content, frontmatter, slug, type } = await getMarkdown({
-    absolutePathToRepoRoot,
     type: "blog",
     filename,
   });
@@ -91,13 +77,8 @@ export async function getBlogPost({
   };
 }
 
-export async function getAllBlogPosts({
-  absolutePathToRepoRoot,
-}: {
-  absolutePathToRepoRoot: string;
-}) {
+export async function getAllBlogPosts() {
   const { type, items } = await getAllMarkdown({
-    absolutePathToRepoRoot,
     type: "blog",
   });
 

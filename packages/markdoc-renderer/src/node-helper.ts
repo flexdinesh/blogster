@@ -1,8 +1,9 @@
 // @ts-nocheck
 import type { RenderableTreeNodes } from "@markdoc/markdoc";
-import { Tag as MarkdocTag } from "@markdoc/markdoc";
+import Markdoc from "@markdoc/markdoc";
 import MarkdownIt from "markdown-it";
 
+const { Tag: MarkdocTag } = Markdoc;
 type ComponentsType = Record<
   string,
   {

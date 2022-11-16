@@ -1,7 +1,9 @@
 import fs from "fs/promises";
-import Markdoc, { nodes, Tag } from "@markdoc/markdoc";
+import Markdoc from "@markdoc/markdoc";
 import type { Config } from "@markdoc/markdoc";
 import { extractFrontmatter } from "./frontmatter";
+
+const { nodes, Tag } = Markdoc;
 
 const config: Config = {
   tags: {

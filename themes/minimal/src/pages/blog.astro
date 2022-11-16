@@ -1,75 +1,72 @@
 ---
-import path from "path";
-import { getAllBlogPosts } from "@local/content";
+import { content } from "@local/content";
 
-import BaseHead from "../components/BaseHead.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { SITE_TITLE } from "../config";
 
-const absolutePathToRepoRoot = path.join(process.cwd(), "..", "..");
-const { items } = await getAllBlogPosts({
-  absolutePathToRepoRoot,
-});
+const { blog } = await content.glob();
 
-const posts = items.sort(
+const posts = blog.sort(
   (a, b) =>
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()
 );
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead />
-    <PageMeta title={`Blog | ${SITE_TITLE}`} />
-    <style>
-      ul {
-        list-style-type: none;
-        padding: unset;
+<PageLayout>
+  <PageMeta title={`Blog | ${SITE_TITLE}`} slot="head" />
+  <section>
+    <ul>
+      {
+        posts.map((post) => {
+          const formattedDate = new Date(post.frontmatter.date).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric" })
+          return (
+            <li class="post">
+              <div class="title">
+                <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>
+              </div>
+              <div class="publish-date">
+                <time datetime={post.frontmatter.date.toISOString()}>
+                  {formattedDate}
+                </time>
+              </div>
+            </li>
+          );
+        })
       }
-      ul li {
-        display: flex;
-      }
-      ul li time {
-        flex: 0 0 130px;
-        font-style: italic;
-        color: #595959;
-      }
-      ul li a:visited {
-        color: #8e32dc;
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section>
-        <ul>
-          {
-            posts.map((post) => {
-              return (
-                <li>
-                  <time datetime={post.frontmatter.date.toISOString()}>
-                    {new Date(post.frontmatter.date).toLocaleDateString(
-                      "en-us",
-                      {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
-                      }
-                    )}
-                  </time>
-                  <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+  }
+
+  .post+.post {
+    padding-top: 0.375rem;
+  }
+  .title a {
+    color: var(--text);
+    border-bottom: 1px solid #ccc;
+  }
+
+  .title a:hover {
+    color: var(--text-link);
+  }
+
+  .publish-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+x
+</style>

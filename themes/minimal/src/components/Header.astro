@@ -1,25 +1,56 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import HeaderLink from "./HeaderLink.astro";
+import GitHubIcon from "../components/ui/icons/github.astro";
+import TwitterIcon from "../components/ui/icons/twitter.astro";
+import Link from "../components/ui/Link.astro";
+import { SITE_TITLE } from "../config";
 ---
 
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+  <nav>
+    <HeaderLink href="/">Home</HeaderLink>
+    <HeaderLink href="/blog">Blog</HeaderLink>
+  </nav>
+  <div class="social-handles">
+    <Link variant="no-underline" class="centered" href="/abc">
+      <GitHubIcon title="GitHub" />
+    </Link>
+    <Link variant="no-underline" class="centered" href="/cde">
+      <TwitterIcon title="Twitter" />
+    </Link>
+  </div>
 </header>
 <style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+  header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .social-handles {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .social-handles a {
+    color: var(--text-heading);
+  }
+  .social-handles a:hover {
+    color: var(--palette-primary);
+  }
+
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

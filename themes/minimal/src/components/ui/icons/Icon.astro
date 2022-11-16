@@ -1,0 +1,17 @@
+---
+const { class: className } = Astro.props;
+---
+
+<span class:list={[className, "icon-wrapper"]}>
+  <slot />
+</span>
+<style is:global>
+  .icon-wrapper {
+    display: inline-block;
+  }
+
+  .icon {
+    display: block;
+    fill: currentColor;
+  }
+</style>

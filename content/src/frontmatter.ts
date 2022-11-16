@@ -1,7 +1,9 @@
-import { load } from "js-yaml";
-import { isMatch, format, parse } from "date-fns";
+import jsyaml from "js-yaml";
+import datefns from "date-fns";
 import type { ContentType } from "./types";
 
+const { load } = jsyaml;
+const { isMatch, format, parse } = datefns;
 const dateFormat = "yyyy-MM-dd";
 
 type Frontmatter<T extends ContentType> = {
@@ -10,30 +12,30 @@ type Frontmatter<T extends ContentType> = {
   date: Date;
 };
 
-type MarkdownPostFrontmatter = Frontmatter<"blog"> & {
+export type MarkdownPostFrontmatter = Frontmatter<"blog"> & {
   isExternal: false;
   description?: string;
   ogImagePath?: string;
   canonicalUrl?: string;
 };
 
-type ExternalPostFrontmatter = Frontmatter<"blog"> & {
+export type ExternalPostFrontmatter = Frontmatter<"blog"> & {
   isExternal: true;
   url: string;
 };
 
-type ProjectFrontmatter = Frontmatter<"project"> & {
+export type ProjectFrontmatter = Frontmatter<"project"> & {
   url: string;
 };
 
-type MarkdownNotesFrontmatter = Frontmatter<"notes"> & {
+export type MarkdownNotesFrontmatter = Frontmatter<"notes"> & {
   isExternal: false;
   description?: string;
   ogImagePath?: string;
   canonicalUrl?: string;
 };
 
-type ExternalNotesFrontmatter = Frontmatter<"notes"> & {
+export type ExternalNotesFrontmatter = Frontmatter<"notes"> & {
   isExternal: true;
   url: string;
 };

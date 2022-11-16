@@ -1,26 +1,22 @@
 import rss from "@astrojs/rss";
-import { getAllBlogPosts } from "@local/content";
+import { content } from "@local/content";
 
 export async function generateBlogRSSFeed({
   siteTitle,
   siteDescription,
   baseUrl,
-  absolutePathToRepoRoot,
 }: {
   siteTitle: string;
   siteDescription: string;
   baseUrl: string;
-  absolutePathToRepoRoot: string;
 }) {
-  const { items } = await getAllBlogPosts({
-    absolutePathToRepoRoot,
-  });
+  const { blog } = await content.glob();
 
   // removing trailing slash if found
   // https://example.com/ => https://example.com
   baseUrl = baseUrl.replace(/\/+$/g, "");
 
-  const rssItems = items.map(({ frontmatter, slug }) => {
+  const rssItems = blog.map(({ frontmatter, slug }) => {
     if (frontmatter.isExternal) {
       const title = frontmatter.title;
       const pubDate = frontmatter.date;

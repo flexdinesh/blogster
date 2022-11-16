@@ -1,39 +1,34 @@
 ---
-import path from "path";
-import { getAllBlogPosts, getBlogPost } from "@local/content";
+import { content } from "@local/content";
 import { MarkdocRenderer } from "@local/markdoc-renderer";
 import { SITE_TITLE } from "../../config";
 
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
-import BlogLayout from "../../layouts/BlogPost.astro";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 
 export async function getStaticPaths() {
-  const absolutePathToRepoRoot = path.join(process.cwd(), "..", "..");
-  const { type, items } = await getAllBlogPosts({
-    absolutePathToRepoRoot,
-  });
+  const { blog } = await content.glob();
 
-  return items.map((post) => {
+  return blog.map((post) => {
     return { params: { slug: post.slug } };
   });
 }
 
 const { slug } = Astro.params;
-// TODO type guard slug
+if (typeof slug !== "string") {
+  throw Error(`slug should be string. Received: ${slug}`);
+}
 
-const absolutePathToRepoRoot = path.join(process.cwd(), "..", "..");
-const post = await getBlogPost({
-  absolutePathToRepoRoot,
-  filename: slug as string,
-});
+const post = await content.globPostBySlug({ slug });
+
+if (!post) {
+  throw Error("Post not found");
+}
 ---
 
-<BlogLayout
-  content={{
-    // TODO:
-    title: post.frontmatter.title,
-    date: post.frontmatter.date.toISOString(),
-  }}
+<BlogPostLayout
+  title={post.frontmatter.title}
+  publishDate={post.frontmatter.date}
 >
   <BlogPostMeta
     title={post.frontmatter.title}
@@ -44,4 +39,4 @@ const post = await getBlogPost({
     slot="head"
   />
   <MarkdocRenderer content={post.content} />
-</BlogLayout>
+</BlogPostLayout>

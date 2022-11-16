@@ -1,0 +1,46 @@
+---
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  variant?: "underline" | "no-underline" | "animated-underline";
+}
+
+const { href, variant = "animated-underline", class: className, ...props } = Astro.props;
+---
+<!-- TODO: formatting this HTML adds a space in the generated text. WHY? -->
+<a
+  href={href}
+  class:list={[className, "link", `variant-${variant}`]}
+  {...props}><slot /></a>
+
+<style>
+  .variant-underline {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .variant-no-underline {
+    /* no styles */
+  }
+
+  .variant-animated-underline {
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    box-decoration-break: clone;
+    text-decoration: none;
+  }
+
+  .variant-animated-underline:hover:after {
+    transform: translateZ(0) scale(1);
+  }
+
+  .variant-animated-underline:after {
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    content: "";
+    height: 2px;
+    position: absolute;
+    transform: translateZ(0) scaleX(0);
+    transform-origin: left center;
+    transition: all 0.15s ease-in-out;
+    background-color: var(--text-link);
+  }
+</style>
