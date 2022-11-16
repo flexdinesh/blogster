@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { content } from "@local/content";
+import { content } from "../util/content";
 
 export async function generateBlogRSSFeed({
   siteTitle,

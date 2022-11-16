@@ -2,8 +2,8 @@ import path from "path";
 import {globby} from "globby";
 import { parseAndTransform } from "./markdoc";
 import { validateBlogFrontmatter } from "./frontmatter";
-import { ContentType } from "./types";
-import { pathToContentPages } from "./util";
+import type { ContentType } from "./types";
+import { pathToContentDir } from "./util";
 
 async function getMarkdown({
   type,
@@ -12,9 +12,9 @@ async function getMarkdown({
   type?: ContentType;
   filename: string; // abc-def.md
 }) {
-  // .../content/pages/blog
+  // .../content/blog
   const absolutePathToDir = path.join(
-    pathToContentPages,
+    pathToContentDir,
     type ?? ""
   );
 
@@ -39,7 +39,7 @@ async function getAllMarkdown({
 }: {
   type?: ContentType;
 }) {
-  const pathToContentType = path.join(pathToContentPages, type ?? "");
+  const pathToContentType = path.join(pathToContentDir, type ?? "");
 
   // this gives filenames as as array
   const markdownPaths = await globby("**/*.md", {

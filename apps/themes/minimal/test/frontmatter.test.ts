@@ -3,9 +3,7 @@ import {
   validateBlogFrontmatter,
   validateProjectFrontmatter,
   validateNotesFrontmatter,
-} from "../src/frontmatter";
-
-// Edit an assertion and save to see HMR in action
+} from "../src/util/content/frontmatter";
 
 describe("validateBlogFrontmatter", () => {
   test("Does not throw for expected frontmatter", () => {

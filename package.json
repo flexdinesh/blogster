@@ -6,8 +6,7 @@
     "packages/@repoconfig/*",
     "packages/*",
     "apps/*",
-    "themes/*",
-    "content"
+    "apps/themes/*"
   ],
   "scripts": {
     "build": "turbo run build",
