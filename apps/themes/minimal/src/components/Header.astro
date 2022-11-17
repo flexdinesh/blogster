@@ -2,8 +2,6 @@
 import HeaderLink from "./HeaderLink.astro";
 import GitHubIcon from "../components/ui/icons/github.astro";
 import TwitterIcon from "../components/ui/icons/twitter.astro";
-import Link from "../components/ui/Link.astro";
-import { SITE_TITLE } from "../config";
 ---
 
 <header>
@@ -12,12 +10,12 @@ import { SITE_TITLE } from "../config";
     <HeaderLink href="/blog">Blog</HeaderLink>
   </nav>
   <div class="social-handles">
-    <Link variant="no-underline" class="centered" href="/abc">
+    <a class="centered" href="/abc">
       <GitHubIcon title="GitHub" />
-    </Link>
-    <Link variant="no-underline" class="centered" href="/cde">
+    </a>
+    <a class="centered" href="/cde">
       <TwitterIcon title="Twitter" />
-    </Link>
+    </a>
   </div>
 </header>
 <style>
@@ -43,6 +41,7 @@ import { SITE_TITLE } from "../config";
 
   .social-handles a {
     color: var(--text-heading);
+    border-bottom: none;
   }
   .social-handles a:hover {
     color: var(--palette-primary);

@@ -12,22 +12,29 @@ const isActive =
 
 <a
   href={href}
-  class:list={[className, { active: isActive }, "header-link"]}
+  class:list={[
+    className,
+    { active: isActive },
+    "header-link",
+    "animated",
+    "gradient-colors",
+  ]}
   {...props}
 >
-  <span class="gradient-text-underline nav-link gradient-colors"><slot /></span>
+  <slot />
 </a>
 <style>
-  .gradient-colors {
-    --gradient-text-underline-from: var(--text-heading);
-    --gradient-text-underline-to: var(--text-heading);
+  a.gradient-colors {
+    --animated-underline-from: var(--text-heading);
+    --animated-underline-to: var(--text-heading);
   }
 
   .header-link {
-    display: inline-block;
     text-decoration: none;
+    color: var(--text);
+    border-bottom: none;
   }
- 
+
   .header-link.active {
     font-weight: bolder;
   }

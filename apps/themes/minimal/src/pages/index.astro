@@ -2,7 +2,6 @@
 import PageMeta from "../components/PageMeta.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import Intro from "../components/Intro.astro";
-import Link from "../components/ui/Link.astro";
 import { SITE_TITLE } from "../config";
 ---
 
@@ -37,8 +36,8 @@ import { SITE_TITLE } from "../config";
     </li>
     <li>
       <span
-        ><strong>Extended markdown</strong> with <Link
-          href="https://markdoc.dev">Markdoc</Link
+        ><strong>Extended markdown</strong> with <a class="animated" href="https://markdoc.dev"
+          >Markdoc</a
         >.
       </span>
       <span>

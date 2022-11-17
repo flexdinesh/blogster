@@ -20,29 +20,18 @@
 }
 
 /* 
-	class: gradient-text-underline 
-	The text will be gradient. The text will have an underline that will show up on hover.
-	To use this, just set the css vars using a custom class in your component
+	class: a.animated
+	Animated links. An animated underline on hover.
 */
-.gradient-text-underline {
-	--gradient-text-underline-from: hotpink;
-	--gradient-text-underline-to: hotpink;
-	color: transparent;
-	background-clip: text;
-	-webkit-background-clip: text;
-	text-fill-color: transparent;
-	-webkit-text-fill-color: transparent;
-	background-image: linear-gradient(135deg, var(--gradient-text-underline-from), var(--gradient-text-underline-to));
+a.animated {
+	--animated-underline-from: var(--text-link);
+	--animated-underline-to: var(--text-link);
 	position: relative;
 	box-decoration-break: clone;
 	text-decoration: none;
 }
 
-.gradient-text-underline:hover:after {
-	transform: translateZ(0) scale(1);
-}
-
-.gradient-text-underline:after {
+a.animated:after {
 	left: 0;
 	right: 0;
 	bottom: -2px;
@@ -52,5 +41,9 @@
 	transform: translateZ(0) scaleX(0);
 	transform-origin: left center;
 	transition: all 0.15s ease-in-out;
-	background-image: linear-gradient(to right, var(--gradient-text-underline-from), var(--gradient-text-underline-to));
+	background-image: linear-gradient(to right, var(--animated-underline-from), var(--animated-underline-to));
+}
+
+a.animated:hover:after {
+	transform: translateZ(0) scale(1);
 }

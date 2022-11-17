@@ -4,16 +4,9 @@
 <footer>
   <div>
     Built with
-    <a href={"https://astro.build"}
-      ><span class="gradient-text-underline astro">Astro</span>
-    </a>
-    and <a href={"https://markdoc.dev"}
-      ><span class="gradient-text-underline markdoc">Markdoc.</span>
-    </a>
-    Served at blazing speeds by
-    <a href={"https://www.netlify.com"}>
-      <span class="gradient-text-underline netlify">Netlify.</span>
-    </a>
+    <a class="animated" href={"https://astro.build"}> Astro</a>
+    and <a class="animated" href={"https://markdoc.dev"}>Markdoc</a>. Served at blazing speeds by
+    <a class="animated" href={"https://www.netlify.com"}> Netlify</a>.
   </div>
 </footer>
 
@@ -24,37 +17,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .astro {
-    --gradient-text-underline-from: #8e2de2;
-    --gradient-text-underline-to: #4a00e0;
-  }
-
-  .markdoc {
-    --gradient-text-underline-from: #ff512f;
-    --gradient-text-underline-to: #dd2476;
-  }
-
-  .netlify {
-    --gradient-text-underline-from: #00b4db;
-    --gradient-text-underline-to: #0083b0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .astro {
-      --gradient-text-underline-from: #8e2de2;
-      --gradient-text-underline-to: #8e2de2;
-    }
-
-    .markdoc {
-      --gradient-text-underline-from: #ff512f;
-      --gradient-text-underline-to: #ff512f;
-    }
-
-    .netlify {
-      --gradient-text-underline-from: #00b4db;
-      --gradient-text-underline-to: #00b4db;
-    }
   }
 </style>
