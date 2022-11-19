@@ -1,7 +1,5 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
   title: string;
@@ -17,78 +15,39 @@ const formattedDate = new Date(publishDate).toLocaleDateString("en-us", {
 });
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead />
-    <slot name="head" />
-  </head>
+<BaseLayout>
+  <slot name="head" />
+  <article class="blog-post">
+    {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+    <h1 class="title">{title}</h1>
+    <time class="publish-date">{formattedDate}</time>
+    <slot />
+  </article>
+</BaseLayout>
 
-  <body>
-    <Header />
-    <main class="blog-post">
-      <!-- <a class="back" href="/blog">back</a> -->
-      <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-        <h1 class="title">{title}</h1>
-        <time class="publish-date">{formattedDate}</time>
-        <slot />
-      </article>
-    </main>
-    <Footer />
-    <style is:global>
-      body {
-        display: grid;
-        min-height: 100vh;
-        grid-template-areas:
-          "header"
-          "main"
-          "footer";
-        grid-template-rows: 5rem minmax(0, 1fr) 5rem;
-      }
-      main {
-        grid-area: main;
-      }
-
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        /* padding: 0 0 0 0.75rem; */
-        /* border-left: 5px solid var(--text-heading); */
-      }
-    </style>
-    <style>
-      .title {
-        font-size: 2em;
-        margin: 0.25em 0 0;
-      }
-      .publish-date {
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-        display: block;
-      }
-
-      /* .back {
-        color: var(--text);
-      }
-
-      .back:hover {
-        color: var(--text-link);
-      }
-      .back::before {
-        display: inline-block;
-        content: "←";
-        padding-right: 0.25rem;
-        transition: all 150ms ease-in-out;
-      }
-      .back:hover::before {
-        transform: translateX(-0.25rem);
-      } */
-      hr {
-        border-top: 1px solid #ddd;
-        margin: 1rem 0;
-      }
-    </style>
-  </body>
-</html>
+<style is:global>
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* padding: 0 0 0 0.75rem; */
+    /* border-left: 5px solid var(--text-heading); */
+  }
+</style>
+<style>
+  .title {
+    font-size: 2em;
+    margin: 0.25em 0 0;
+  }
+  .publish-date {
+    font-size: 0.875em;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: block;
+  }
+  hr {
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
+  }
+</style>

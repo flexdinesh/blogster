@@ -4,6 +4,7 @@ import type {
   MarkdownPostFrontmatter,
 } from "./frontmatter";
 import { getBlogPost, getAllBlogPosts } from "./read";
+import { ContentType } from "./types";
 
 type Post = {
   content: RenderableTreeNode;
@@ -15,6 +16,8 @@ type Content = {
   glob: () => Promise<{
     blog: Array<Post>;
   }>;
+  // slug === filename
+  // globBy: (arg: { type: ContentType; slug: string }) => Promise<Post>;
   globPostBySlug: (arg: { slug: string }) => Promise<Post>;
 };
 
@@ -26,11 +29,7 @@ const content: Content = {
       blog: posts.items,
     };
   },
-  globPostBySlug: async ({
-    slug,
-  }: {
-    slug: string;
-  }) => {
+  globPostBySlug: async ({ slug }: { slug: string }) => {
     const post = await getBlogPost({
       filename: slug,
     });

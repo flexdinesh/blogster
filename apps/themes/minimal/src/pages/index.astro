@@ -7,46 +7,50 @@ import { SITE_TITLE } from "../config";
 
 <PageLayout>
   <PageMeta title={`${SITE_TITLE} | Web Ninja`} slot="head" />
-  <Intro />
-  <p>Why would I use this template you may ask?</p>
-  <ul>
-    <li>
-      <strong>Minimal.</strong>
-      Less is more. Looks great without all the baggage.
-    </li>
-    <li>
-      <strong>Lean.</strong>
-      No external stylesheets, fonts or icons. Zero JavaScript. Zero Runtime.
-    </li>
-    <li>
-      <strong>Fast.</strong>
-      Fast by default. Netlify hosted blogs are served from the edge network and
-      load before you could blink.
-    </li>
-    <li>
-      <strong>Mobile first.</strong> Looks great and loads fast in all devices.
-    </li>
-    <li>
-      <strong>Perfect lighthouse score</strong> of 100 across the board.
-    </li>
-    <li>
-      <strong>For everyone.</strong> Author content using markdown (<code
-        >.md</code
-      >) from your local code editor or directly in GitHub.
-    </li>
-    <li>
-      <span
-        ><strong>Extended markdown</strong> with <a class="animated" href="https://markdoc.dev"
-          >Markdoc</a
-        >.
-      </span>
-      <span>
-        &nbsp;You get type-safe custom components like YouTube embed, Twitter
-        embed (or anything you want) in your markdown (<code>.md</code>) files.</span
-      >
-    </li>
-    <li>
-      Built in <strong>RSS feed</strong>, <strong>dark mode</strong> and more.
-    </li>
-  </ul>
+  <Fragment slot="main">
+    <Intro />
+    <p>Why would I use this template you may ask?</p>
+    <ul>
+      <li>
+        <strong>Minimal.</strong>
+        Less is more. Looks great without all the baggage.
+      </li>
+      <li>
+        <strong>Lean.</strong>
+        No external stylesheets, fonts or icons. Zero JavaScript. Zero Runtime.
+      </li>
+      <li>
+        <strong>Fast.</strong>
+        Fast by default. Netlify hosted blogs are served from the edge network and
+        load before you could blink.
+      </li>
+      <li>
+        <strong>Mobile first.</strong> Looks great and loads fast in all devices.
+      </li>
+      <li>
+        <strong>Perfect lighthouse score</strong> of 100 across the board.
+      </li>
+      <li>
+        <strong>For everyone.</strong> Author content using markdown (<code
+          >.md</code
+        >) from your local code editor or directly in GitHub.
+      </li>
+      <li>
+        <span
+          ><strong>Extended markdown</strong> with <a
+            class="animated"
+            href="https://markdoc.dev">Markdoc</a
+          >.
+        </span>
+        <span>
+          &nbsp;You get type-safe custom components like YouTube embed, Twitter
+          embed (or anything you want) in your markdown (<code>.md</code>)
+          files.</span
+        >
+      </li>
+      <li>
+        Built in <strong>RSS feed</strong>, <strong>dark mode</strong> and more.
+      </li>
+    </ul>
+  </Fragment>
 </PageLayout>

@@ -3,6 +3,7 @@ import { content } from "../util/content";
 
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
+import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
 const { blog } = await content.glob();
@@ -16,7 +17,7 @@ const posts = blog.sort(
 
 <PageLayout>
   <PageMeta title={`Blog | ${SITE_TITLE}`} slot="head" />
-  <section>
+  <section slot="main">
     <ul>
       {
         posts.map((post) => {
@@ -24,7 +25,13 @@ const posts = blog.sort(
           return (
             <li class="post">
               <div class="title">
-                <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>
+                {post.frontmatter.isExternal ? 
+                    <a href={post.frontmatter.url} target="_blank">
+                      <span>{post.frontmatter.title}</span>
+                      <ExternalLinkIcon title="Link to external post" height={16} width={16}/>
+                    </a>
+                  : 
+                  <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>}
               </div>
               <div class="publish-date">
                 <time datetime={post.frontmatter.date.toISOString()}>
@@ -54,9 +61,15 @@ const posts = blog.sort(
   .post+.post {
     padding-top: 0.375rem;
   }
+
   .title a {
     color: var(--text);
-    border-bottom: 1px solid #ccc;
+    border-bottom: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.375rem;
   }
 
   .title a:hover {

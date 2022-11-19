@@ -1,6 +1,4 @@
 ---
-import Icon from "./Icon.astro";
-
 type Props = {
   title: string;
   width?: number | string;
@@ -10,7 +8,7 @@ type Props = {
 const { title, width, height, class: className } = Astro.props;
 ---
 
-<Icon class:list={[className]}>
+<span class:list={[className, "icon-wrapper"]}>
   <svg
     class="icon"
     id="twitter-icon"
@@ -44,4 +42,15 @@ const { title, width, height, class: className } = Astro.props;
     >
     </rect>
   </svg>
-</Icon>
+</span>
+
+<style>
+  .icon-wrapper {
+    display: inline-block;
+  }
+
+  .icon {
+    display: block;
+    fill: currentColor;
+  }
+</style>

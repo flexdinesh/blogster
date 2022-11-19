@@ -1,35 +1,8 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "./BaseLayout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead />
-    <slot name="head" />
-  </head>
-
-  <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <style is:global>
-      body {
-        display: grid;
-        min-height: 100vh;
-        grid-template-areas:
-          "header"
-          "main"
-          "footer";
-        grid-template-rows: 5rem minmax(0, 1fr) 5rem;
-      }
-      main {
-        grid-area: main;
-      }
-    </style>
-  </body>
-</html>
+<BaseLayout>
+  <slot name="head" />
+  <slot name="main" />
+</BaseLayout>

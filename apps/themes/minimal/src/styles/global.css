@@ -31,8 +31,9 @@
 		--palette-secondary: #4f46e5;
 
 		--text: #d2d3d7;
+		--text: #d4d4d8;
 		--text-muted: #d2d3d7;
-		--text-heading: #f8f9fa;
+		--text-heading: #fafafa;
 		--text-link: #20bdff;
 
 		--code-text: #cbd5e0;
@@ -68,7 +69,7 @@ body {
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.85;
+	line-height: 1.8;
 	font-size: 1rem;
 }
 
