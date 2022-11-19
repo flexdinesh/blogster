@@ -1,17 +1,19 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-date: 2022-07-01
+title: "Basic markdown style guide"
+description: "You can author content using the familiar markdown syntax you already know. All basic markdown syntax is supported."
+date: 2022-11-02
 heroImage: "/placeholder-hero.jpg"
 ---
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+Markdown is powered by [Markdoc](https://markdoc.dev/). This post is an example to showcase the support of all basic markdown syntax. You can author content using the familiar markdown syntax you already know.
+
+## Inline formatting
+
+You can use all sorts of inline formatting in markdown. You can write something in **bold**. And _italics_ too. How about ~~strikethrough~~? You got it. Don't forget about inline code, you got that too. `Hello world!`.
 
 ## Headings
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
-
-# H1
+The following HTML `<h2>`—`<h6>` elements represent five levels of section headings. `<h1>` is also available but not recommended since the post title is already a `<h1>` element.
 
 ## H2
 
@@ -39,9 +41,10 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Blockquote
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+> This is a blockquote. And it's pretty long too. Long enough to wrap to next line.
 
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+> You can use Markdown syntax like **bold** within a blockquote.
+
 ## Tables
 
 | Italics   | Bold     | Code   |
@@ -49,6 +52,10 @@ The blockquote element represents content that is quoted from another source, op
 | _italics_ | **bold** | `code` |
 
 ## Code Blocks
+
+Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism) with the default [nord theme](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-nord.css). You can customise to whichever theme you want from the [plenty available prism themes](https://github.com/PrismJS/prism-themes).
+
+### HTML
 
 ```html
 <!DOCTYPE html>
@@ -61,6 +68,24 @@ The blockquote element represents content that is quoted from another source, op
     <p>Test</p>
   </body>
 </html>
+```
+
+### JSX
+
+```jsx
+const Greet = () => {
+  const message = `Hello World!`;
+  return <div>{message}</div>;
+};
+```
+
+### CSS
+
+```css
+.layout {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr) 4rem;
+}
 ```
 
 ## List Types

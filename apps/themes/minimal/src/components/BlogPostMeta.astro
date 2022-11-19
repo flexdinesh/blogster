@@ -53,6 +53,7 @@ const { meta, og, twitter } = getBlogPostMeta({
 <title>{meta.title}</title>
 <meta name="title" content={meta.title} />
 {meta.description && <meta name="description" content={meta.description} />}
+{meta.canonicalUrl && <link rel="canonical" href={meta.canonicalUrl} />}
 
 <!-- Open Graph / Facebook -->
 {og.title && <meta property="og:title" content={og.title} />}

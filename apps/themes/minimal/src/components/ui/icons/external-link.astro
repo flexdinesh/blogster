@@ -1,9 +1,9 @@
 ---
-type Props = {
+export interface Props extends astroHTML.JSX.BaseHTMLAttributes {
   title: string;
   width?: number | string;
   height?: number | string;
-};
+}
 
 const { title, width, height, class: className } = Astro.props;
 ---

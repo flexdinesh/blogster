@@ -4,7 +4,7 @@ import type {
   MarkdownPostFrontmatter,
 } from "./frontmatter";
 import { getBlogPost, getAllBlogPosts } from "./read";
-import { ContentType } from "./types";
+// import { ContentType } from "./types";
 
 type Post = {
   content: RenderableTreeNode;

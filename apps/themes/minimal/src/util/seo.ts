@@ -1,6 +1,7 @@
 type PageMeta = {
   title: string;
   description?: string;
+  canonicalUrl?: string;
 };
 
 type PageOgMeta = {
@@ -113,6 +114,7 @@ export function getPageMeta({
 export function getBlogPostMeta({
   title: pageTitle,
   description,
+  canonicalUrl,
   baseUrl,
   authorName,
   publishDate,
@@ -125,6 +127,7 @@ export function getBlogPostMeta({
 }: {
   title: string;
   description: string;
+  canonicalUrl?: string;
   baseUrl?: string;
   authorName?: string;
   publishDate: string;
@@ -142,7 +145,7 @@ export function getBlogPostMeta({
     ogImageAltText = `Preview image for ${pageTitle}`;
   }
 
-  const meta: PageMeta = { title: pageTitle, description: description };
+  const meta: PageMeta = { title: pageTitle, description: description, canonicalUrl };
 
   const og: BlogPostOgMeta = {
     title: pageTitle,

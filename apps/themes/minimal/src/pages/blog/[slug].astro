@@ -1,7 +1,6 @@
 ---
 import { content } from "../../util/content";
-import { MarkdocRenderer } from "@local/markdoc-renderer";
-import { SITE_TITLE } from "../../config";
+import MarkdownRenderer from "../../components/MarkdownRenderer.astro";
 
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
@@ -38,5 +37,5 @@ if (!post) {
     publishDate={post.frontmatter.date.toISOString()}
     slot="head"
   />
-  <MarkdocRenderer content={post.content} />
+  <MarkdownRenderer content={post.content} />
 </BlogPostLayout>

@@ -1,18 +1,12 @@
 ---
-import type { RenderableTreeNodes } from "@markdoc/markdoc";
 import CodeBlock from "./CodeBlock.astro";
 import Code from "./Code.astro";
 import { Node } from "./node-helper";
+import type { Content, Components } from "./types";
 
 type Props = {
-  content: RenderableTreeNodes;
-  components?: Record<
-    string,
-    {
-      Component: any; // ASTRO component
-      props: Record<string, string | number>;
-    }
-  >;
+  content: Content;
+  components?: Components;
 };
 
 const { content, components: customComponents } = Astro.props;

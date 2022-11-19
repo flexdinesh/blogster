@@ -69,7 +69,7 @@ body {
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.8;
+	line-height: 1.75;
 	font-size: 1rem;
 }
 
@@ -127,12 +127,39 @@ pre>code {
 }
 
 blockquote {
+	font-size: 1.125rem;
+	width: 85%;
+	margin: 0 auto;
 	font-style: italic;
-	color: var(--text-muted);
-	border-left: 0.25rem solid var(--border);
-	quotes: "\201C" "\201D" "\2018" "\2019";
-	margin: 1.6em 0px;
-	padding-left: 1em;
+	color: var(--text);
+	padding: 1.5rem 3rem;
+	line-height: 1.9;
+	position: relative;
+}
+
+blockquote::before {
+	font-family: Arial;
+	content: "\201C";
+	color: var(--text);
+	font-size: 4rem;
+	position: absolute;
+	left: 10px;
+	top: -10px;
+}
+
+blockquote::after {
+	content: '';
+}
+
+ul {
+	/* all: unset; */
+	padding-left: 1.5em;
+}
+
+ul li {
+	padding-left: 0.4em;
+	margin-top: 0.4em;
+	margin-bottom: 0.4em;
 }
 
 

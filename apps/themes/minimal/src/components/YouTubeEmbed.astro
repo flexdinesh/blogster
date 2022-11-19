@@ -1,0 +1,39 @@
+---
+type Props = {
+  url: string;
+  label: string;
+};
+
+const { url, label } = Astro.props;
+---
+
+<div class="youtube-embed">
+  <iframe
+    width="560"
+    height="315"
+    src={url}
+    title={label}
+    frame-border="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  >
+  </iframe>
+</div>
+
+<style>
+  .youtube-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0px;
+    margin: 0 auto;
+  }
+
+  .youtube-embed iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -11,9 +11,16 @@ import Heading from "./ui/Heading.astro";
   </Heading>
   <p class="subtext">Web Developer. OSS Wizard. Blogger.</p>
   <p class="hello">
-    Hello! Welcome to my blog. This is a starter template to quickly build your
-    own blog.
+    Hello! This is a starter template to build your own blog with <a
+      class="animated"
+      href={"https://astro.build"}
+    >
+      Astro</a
+    >
+    and <a class="animated" href={"https://markdoc.dev"}>Markdoc</a>. Get
+    started with one simple command.
   </p>
+  <p><code>npx create-astro-blog@latest --theme minimal</code></p>
 </section>
 
 <style>
@@ -64,7 +71,6 @@ import Heading from "./ui/Heading.astro";
   }
 
   .hello {
-
   }
 
   @media (min-width: 640px) {
