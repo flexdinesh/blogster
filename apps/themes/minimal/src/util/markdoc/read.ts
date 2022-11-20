@@ -5,6 +5,11 @@ import { validateFrontmatter } from "./frontmatter";
 import type { ContentType } from "./types";
 import { pathToContentDir } from "./util";
 
+const typeToDirNameMap: Record<ContentType, string> = {
+  blog: "blog",
+  project: "projects",
+};
+
 async function getMarkdown({
   type,
   filename,
@@ -13,10 +18,9 @@ async function getMarkdown({
   filename: string; // abc-def.md
 }) {
   // .../content/blog
-  const absolutePathToDir = path.join(pathToContentDir, type);
+  const absolutePathToDir = path.join(pathToContentDir, typeToDirNameMap[type]);
 
   // .../content/blog/abc-def.md
-  // .../content/about.md
   const absolutePathToFile = path.join(absolutePathToDir, `${filename}.md`);
 
   const { content, frontmatter } = await parseAndTransform({
@@ -32,7 +36,7 @@ async function getMarkdown({
 }
 
 async function getAllMarkdown({ type }: { type: ContentType }) {
-  const pathToContentType = path.join(pathToContentDir, type);
+  const pathToContentType = path.join(pathToContentDir, typeToDirNameMap[type]);
 
   // this gives filenames as as array
   const markdownPaths = await globby("**/*.md", {

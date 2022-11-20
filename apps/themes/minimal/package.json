@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "clean": "rm -rf dist",
     "test:watch": "vitest",
     "test": "vitest run"
   },

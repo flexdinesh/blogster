@@ -145,7 +145,11 @@ export function getBlogPostMeta({
     ogImageAltText = `Preview image for ${pageTitle}`;
   }
 
-  const meta: PageMeta = { title: pageTitle, description: description, canonicalUrl };
+  const meta: PageMeta = {
+    title: pageTitle,
+    description: description,
+    canonicalUrl,
+  };
 
   const og: BlogPostOgMeta = {
     title: pageTitle,

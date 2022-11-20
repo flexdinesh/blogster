@@ -1,4 +1,3 @@
-
 import type { RenderableTreeNodes } from "@markdoc/markdoc";
 
 export type Content = RenderableTreeNodes;
