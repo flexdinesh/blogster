@@ -1,17 +1,11 @@
 import rss from "@astrojs/rss";
-import { content } from "../util/content";
+import { content } from "../util/markdoc";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
 
-export async function generateBlogRSSFeed({
-  siteTitle,
-  siteDescription,
-  baseUrl,
-}: {
-  siteTitle: string;
-  siteDescription: string;
-  baseUrl: string;
-}) {
+export const get = async () => {
   const { blog } = await content.glob();
 
+  let baseUrl = SITE_URL;
   // removing trailing slash if found
   // https://example.com/ => https://example.com
   baseUrl = baseUrl.replace(/\/+$/g, "");
@@ -43,10 +37,9 @@ export async function generateBlogRSSFeed({
   });
 
   return rss({
-    title: siteTitle,
-    description: siteDescription,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     site: baseUrl,
     items: rssItems,
   });
-}
-export const get = async () => {};
+};

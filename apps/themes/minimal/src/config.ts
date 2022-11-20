@@ -8,4 +8,4 @@ export const TWITTER_HANDLE = "@yourtwitterhandle";
 export const MY_NAME = "Captain Snoopy";
 
 // setup in astro.config.mjs
-export const SITE_URL = import.meta.env.SITE;
+export const SITE_URL = import.meta.env.SITE as string;

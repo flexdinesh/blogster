@@ -3,7 +3,7 @@ import {
   validateBlogFrontmatter,
   validateProjectFrontmatter,
   validateNotesFrontmatter,
-} from "../src/util/content/frontmatter";
+} from "../src/util/markdoc/frontmatter";
 
 describe("validateBlogFrontmatter", () => {
   test("Does not throw for expected frontmatter", () => {

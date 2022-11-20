@@ -1,7 +1,7 @@
 import path from "path";
-import {globby} from "globby";
+import { globby } from "globby";
 import { parseAndTransform } from "./markdoc";
-import { validateBlogFrontmatter } from "./frontmatter";
+import { validateFrontmatter } from "./frontmatter";
 import type { ContentType } from "./types";
 import { pathToContentDir } from "./util";
 
@@ -9,14 +9,11 @@ async function getMarkdown({
   type,
   filename,
 }: {
-  type?: ContentType;
+  type: ContentType;
   filename: string; // abc-def.md
 }) {
   // .../content/blog
-  const absolutePathToDir = path.join(
-    pathToContentDir,
-    type ?? ""
-  );
+  const absolutePathToDir = path.join(pathToContentDir, type);
 
   // .../content/blog/abc-def.md
   // .../content/about.md
@@ -34,12 +31,8 @@ async function getMarkdown({
   };
 }
 
-async function getAllMarkdown({
-  type,
-}: {
-  type?: ContentType;
-}) {
-  const pathToContentType = path.join(pathToContentDir, type ?? "");
+async function getAllMarkdown({ type }: { type: ContentType }) {
+  const pathToContentType = path.join(pathToContentDir, type);
 
   // this gives filenames as as array
   const markdownPaths = await globby("**/*.md", {
@@ -50,7 +43,7 @@ async function getAllMarkdown({
     markdownPaths.map(async (filename) => {
       const fileNameWithoutExtension = filename.replace(/\.[^.]*$/, "");
       return getMarkdown({
-        type: "blog",
+        type,
         filename: fileNameWithoutExtension,
       });
     })
@@ -59,16 +52,18 @@ async function getAllMarkdown({
   return { type, items };
 }
 
-export async function getBlogPost({
+export async function readOne({
+  type,
   filename,
 }: {
+  type: ContentType;
   filename: string;
 }) {
-  const { content, frontmatter, slug, type } = await getMarkdown({
-    type: "blog",
+  const { content, frontmatter, slug } = await getMarkdown({
+    type,
     filename,
   });
-  const typedFrontmatter = validateBlogFrontmatter(frontmatter);
+  const typedFrontmatter = validateFrontmatter({ type, frontmatter });
   return {
     content,
     frontmatter: typedFrontmatter,
@@ -77,14 +72,14 @@ export async function getBlogPost({
   };
 }
 
-export async function getAllBlogPosts() {
-  const { type, items } = await getAllMarkdown({
-    type: "blog",
+export async function readAll({ type }: { type: ContentType }) {
+  const { items } = await getAllMarkdown({
+    type,
   });
 
   const validatedItems = items.map((item) => {
-    const { content, frontmatter, slug, type } = item;
-    const typedFrontmatter = validateBlogFrontmatter(frontmatter);
+    const { content, frontmatter, slug } = item;
+    const typedFrontmatter = validateFrontmatter({ type, frontmatter });
     return {
       content,
       frontmatter: typedFrontmatter,

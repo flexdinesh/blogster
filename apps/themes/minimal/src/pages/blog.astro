@@ -1,5 +1,5 @@
 ---
-import { content } from "../util/content";
+import { content } from "../util/markdoc";
 
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
@@ -21,6 +21,12 @@ const posts = blog.sort(
     <ul>
       {
         posts.map((post) => {
+          if (post.frontmatter.type !== "blog") {
+            throw Error(
+              "This will never happen. This check is here only to narrow the frontmatter type."
+            );
+          }
+          
           const formattedDate = new Date(
             post.frontmatter.date
           ).toLocaleDateString("en-us", {

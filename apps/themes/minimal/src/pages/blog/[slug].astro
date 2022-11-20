@@ -1,9 +1,9 @@
 ---
-import { content } from "../../util/content";
+import { content } from "../../util/markdoc";
 import MarkdownRenderer from "../../components/MarkdownRenderer.astro";
 
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
-import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
   const { blog } = await content.glob();
@@ -18,17 +18,18 @@ if (typeof slug !== "string") {
   throw Error(`slug should be string. Received: ${slug}`);
 }
 
-const post = await content.globPostBySlug({ slug });
+const post = await content.globBySlug({ type: "blog", slug });
 
 if (!post) {
   throw Error("Post not found");
 }
+
+if (post.frontmatter.type !== "blog") {
+  throw Error("Type narrowing check for frontmatter. This won't happen.");
+}
 ---
 
-<BlogPostLayout
-  title={post.frontmatter.title}
-  publishDate={post.frontmatter.date}
->
+<ContentLayout title={post.frontmatter.title} date={post.frontmatter.date}>
   <BlogPostMeta
     title={post.frontmatter.title}
     description={post.frontmatter.isExternal
@@ -38,4 +39,4 @@ if (!post) {
     slot="head"
   />
   <MarkdownRenderer content={post.content} />
-</BlogPostLayout>
+</ContentLayout>

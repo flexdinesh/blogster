@@ -1,44 +1,16 @@
 import jsyaml from "js-yaml";
 import datefns from "date-fns";
-import type { ContentType } from "./types";
+import type {
+  MarkdownPostFrontmatter,
+  ExternalPostFrontmatter,
+  ProjectFrontmatter,
+  FrontmatterType,
+  ContentType,
+} from "./types";
 
 const { load } = jsyaml;
 const { isMatch, format, parse } = datefns;
 const dateFormat = "yyyy-MM-dd";
-
-type Frontmatter<T extends ContentType> = {
-  type: T;
-  title: string;
-  date: Date;
-};
-
-export type MarkdownPostFrontmatter = Frontmatter<"blog"> & {
-  isExternal: false;
-  description?: string;
-  ogImagePath?: string;
-  canonicalUrl?: string;
-};
-
-export type ExternalPostFrontmatter = Frontmatter<"blog"> & {
-  isExternal: true;
-  url: string;
-};
-
-export type ProjectFrontmatter = Frontmatter<"project"> & {
-  url: string;
-};
-
-export type MarkdownNotesFrontmatter = Frontmatter<"notes"> & {
-  isExternal: false;
-  description?: string;
-  ogImagePath?: string;
-  canonicalUrl?: string;
-};
-
-export type ExternalNotesFrontmatter = Frontmatter<"notes"> & {
-  isExternal: true;
-  url: string;
-};
 
 function validateDefaultFrontmatter(frontmatter: Record<string, unknown>) {
   if (Object.keys(frontmatter).length < 1) {
@@ -78,7 +50,7 @@ function validateDefaultFrontmatter(frontmatter: Record<string, unknown>) {
   return frontmatter;
 }
 
-export function validateBlogFrontmatter(frontmatter: Record<string, unknown>) {
+function validateBlogFrontmatter(frontmatter: Record<string, unknown>) {
   frontmatter = validateDefaultFrontmatter(frontmatter);
 
   if (
@@ -111,9 +83,7 @@ export function validateBlogFrontmatter(frontmatter: Record<string, unknown>) {
   } as MarkdownPostFrontmatter;
 }
 
-export function validateProjectFrontmatter(
-  frontmatter: Record<string, unknown>
-) {
+function validateProjectFrontmatter(frontmatter: Record<string, unknown>) {
   frontmatter = validateDefaultFrontmatter(frontmatter);
 
   if (typeof frontmatter.url !== "string") {
@@ -126,38 +96,21 @@ export function validateProjectFrontmatter(
   } as ProjectFrontmatter;
 }
 
-export function validateNotesFrontmatter(frontmatter: Record<string, unknown>) {
-  frontmatter = validateDefaultFrontmatter(frontmatter);
-
-  if (
-    frontmatter.isExternal === "true" ||
-    frontmatter.isExternal === true ||
-    frontmatter.url
-  ) {
-    if (typeof frontmatter.url !== "string") {
-      throw new Error(
-        "Frontmatter.url is missing. Notes marked (isExternal: true) should have a url."
-      );
-    }
-
-    return {
-      ...frontmatter,
-      type: "notes",
-      isExternal: true,
-    } as ExternalNotesFrontmatter;
+export const validateFrontmatter = ({
+  type,
+  frontmatter,
+}: {
+  type: ContentType;
+  frontmatter: Record<string, unknown>;
+}): FrontmatterType => {
+  if (type === "blog") {
+    return validateBlogFrontmatter(frontmatter);
+  } else if (type === "project") {
+    return validateProjectFrontmatter(frontmatter);
+  } else {
+    throw new Error("Frontmatter validator not defined for type: ", type);
   }
-
-  // description is important for og:description
-  // if (typeof frontmatter.description !== "string") {
-  //   throw new Error("Frontmatter.description is missing. String expected.");
-  // }
-
-  return {
-    ...frontmatter,
-    type: "notes",
-    isExternal: false,
-  } as MarkdownNotesFrontmatter;
-}
+};
 
 export function extractFrontmatter(content: string) {
   const frontMatterPattern = /^---[\s]+([\s\S]*?)[\s]+---/;
