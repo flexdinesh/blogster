@@ -1,11 +1,10 @@
-import fs from "fs/promises";
 import Markdoc from "@markdoc/markdoc";
 import type { Config } from "@markdoc/markdoc";
-import { extractFrontmatter } from "./frontmatter";
 
 const { nodes, Tag } = Markdoc;
 
-const config: Config = {
+/* Markdoc config goes here. https://markdoc.dev/docs/config */
+export const config: Config = {
   tags: {
     details: {
       render: "details",
@@ -75,25 +74,3 @@ const config: Config = {
     },
   },
 };
-
-export async function parseAndTransform({
-  markdownFileAbsolutePath,
-}: {
-  markdownFileAbsolutePath: string;
-}) {
-  const rawMd = await fs.readFile(markdownFileAbsolutePath, "utf8");
-  const ast = Markdoc.parse(rawMd);
-
-  const errors = Markdoc.validate(ast, config);
-  if (errors.length) {
-    console.error(errors);
-    throw new Error("Markdoc validation error");
-  }
-  const transformedContent = Markdoc.transform(ast, config);
-  const frontmatter = extractFrontmatter(rawMd);
-
-  return {
-    frontmatter: frontmatter,
-    content: transformedContent,
-  };
-}

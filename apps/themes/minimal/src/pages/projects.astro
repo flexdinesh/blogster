@@ -1,12 +1,16 @@
 ---
-import { content } from "../util/markdoc";
+import { readAll } from "../lib/markdoc/read";
+import { validateProjectFrontmatter } from "../lib/markdoc/project/frontmatter";
 
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
-const { projects } = await content.glob();
+const projects = await readAll({
+  pathToDir: "content/projects",
+  frontmatterValidator: validateProjectFrontmatter,
+});
 
 const sortedProjects = projects.sort(
   (a, b) =>
@@ -21,12 +25,6 @@ const sortedProjects = projects.sort(
     <ul>
       {
         sortedProjects.map((project) => {
-          if (project.frontmatter.type !== "project") {
-            throw Error(
-              "This will never happen. This check is here only to narrow the frontmatter type."
-            );
-          }
-
           const formattedDate = new Date(
             project.frontmatter.date
           ).toLocaleDateString("en-us", {
@@ -68,8 +66,15 @@ const sortedProjects = projects.sort(
 
   .project {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .project {
+      grid-template-columns: 1fr auto;
+      /* gap: 2rem; */
+    }
   }
 
   .project + .project {

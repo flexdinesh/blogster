@@ -1,16 +1,26 @@
 import rss from "@astrojs/rss";
-import { content } from "../util/markdoc";
+import { readAll } from "../lib/markdoc/read";
+import { validateBlogFrontmatter } from "../lib/markdoc/blog/frontmatter";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
 
 export const get = async () => {
-  const { blog } = await content.glob();
+  const posts = await readAll({
+    pathToDir: "content/blog",
+    frontmatterValidator: validateBlogFrontmatter,
+  });
+
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
 
   let baseUrl = SITE_URL;
   // removing trailing slash if found
   // https://example.com/ => https://example.com
   baseUrl = baseUrl.replace(/\/+$/g, "");
 
-  const rssItems = blog.map(({ frontmatter, slug }) => {
+  const rssItems = sortedPosts.map(({ frontmatter, slug }) => {
     if (frontmatter.isExternal) {
       const title = frontmatter.title;
       const pubDate = frontmatter.date;

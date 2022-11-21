@@ -1,14 +1,18 @@
 ---
-import { content } from "../util/markdoc";
+import { readAll } from "../lib/markdoc/read";
+import { validateBlogFrontmatter } from "../lib/markdoc/blog/frontmatter";
 
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
-const { blog } = await content.glob();
+const posts = await readAll({
+  pathToDir: "content/blog",
+  frontmatterValidator: validateBlogFrontmatter,
+});
 
-const posts = blog.sort(
+const sortedPosts = posts.sort(
   (a, b) =>
     new Date(b.frontmatter.date).valueOf() -
     new Date(a.frontmatter.date).valueOf()
@@ -20,13 +24,7 @@ const posts = blog.sort(
   <section slot="main">
     <ul>
       {
-        posts.map((post) => {
-          if (post.frontmatter.type !== "blog") {
-            throw Error(
-              "This will never happen. This check is here only to narrow the frontmatter type."
-            );
-          }
-          
+        sortedPosts.map((post) => {
           const formattedDate = new Date(
             post.frontmatter.date
           ).toLocaleDateString("en-us", {
@@ -72,8 +70,15 @@ const posts = blog.sort(
 
   .post {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .post {
+      grid-template-columns: 1fr auto;
+      /* gap: 2rem; */
+    }
   }
 
   .post + .post {
