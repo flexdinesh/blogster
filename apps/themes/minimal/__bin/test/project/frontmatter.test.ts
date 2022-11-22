@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { validateProjectFrontmatter } from "../../../../src/lib/markdoc/project/frontmatter";
+import { validateProjectFrontmatter } from "../../markdoc/project/frontmatter";
 
 describe("validateProjectFrontmatter", () => {
   test("Does not throw for expected frontmatter", () => {

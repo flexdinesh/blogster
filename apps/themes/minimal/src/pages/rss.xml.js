@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
-import { readAll } from "../lib/markdoc/read";
-import { validateBlogFrontmatter } from "../lib/markdoc/blog/frontmatter";
+import { readAll } from "@bin/markdoc/read";
+import { validateBlogFrontmatter } from "@bin/markdoc/blog/frontmatter";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
 
 export const get = async () => {
