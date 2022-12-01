@@ -22,8 +22,8 @@
     /* orange-500 */
     --color-primary-main: 249 115 22;
 
-    /* slate-800 */
-    --color-text-heading: 30 41 59;
+    /* #374151 */
+    --color-text-heading: 55 65 81;
     --color-text-base: 15 23 42;
     --color-text-muted: 100 116 139;
     --color-text-inverted: 229 229 229;
@@ -31,7 +31,7 @@
     --color-text-code: 0 0 0;
 
     /* white */
-    --color-bg: 249 250 251;
+    --color-bg: 255 255 255;
     --color-bg-inverted: 23 23 23;
     /* orange-50 */
     --color-bg-code: 255 247 237;
@@ -64,8 +64,8 @@
     /* white */
     --color-text-code: 255 255 255;
 
-    --color-bg: 14 20 27;
     /* #0e141b */
+    --color-bg: 14 20 27;
     --color-bg-inverted: 255 255 255;
     /* yellow-900 */
     --color-bg-code: 113 63 18;

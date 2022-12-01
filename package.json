@@ -5,8 +5,7 @@
   "workspaces": [
     "packages/@repoconfig/*",
     "packages/*",
-    "apps/*",
-    "apps/themes/*"
+    "themes/*"
   ],
   "scripts": {
     "build": "turbo run build",
