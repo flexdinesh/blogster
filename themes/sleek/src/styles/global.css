@@ -4,6 +4,7 @@
 
 :root {
     /* base font-size 1px larger for better visibility */
+    font-family: 'Open Sans', sans-serif;
     font-size: 17px;
 }
 

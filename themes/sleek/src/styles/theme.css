@@ -7,7 +7,6 @@
 
 /* light theme */
 .theme-sleek {
-    font-family: 'Open Sans', sans-serif;
     /* Tailwind orange 50-900 */
     --color-primary-50: 255 247 237;
     --color-primary-100: 255 237 213;
@@ -70,6 +69,5 @@
     /* yellow-900 */
     --color-bg-code: 113 63 18;
 
-    --color-link: 51 154 240;
     --color-link: 250 204 21;
 }
