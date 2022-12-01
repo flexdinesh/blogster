@@ -1,0 +1,77 @@
+---
+import { readAll } from "@bin/markdoc/read";
+import { validateProjectFrontmatter } from "@bin/markdoc/project/frontmatter";
+
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import { SITE_TITLE } from "../config";
+
+const projects = await readAll({
+  pathToDir: "content/projects",
+  frontmatterValidator: validateProjectFrontmatter,
+});
+
+const sortedProjects = projects.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+);
+---
+
+<PageLayout>
+  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="head" />
+  <section slot="main">
+    <ul>
+      {
+        sortedProjects.map((project) => {
+          const formattedDate = new Date(
+            project.frontmatter.date
+          ).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+          return (
+            <li class="project pb-3">
+              <div class="title">
+                <a href={project.frontmatter.url} target="_blank" class="hover:text-link">
+                  <span>{project.frontmatter.title}</span>
+                  <span>
+                    <i class="ml-1 text-[12px] fa-solid fa-up-right-from-square" />
+                  </span>
+                </a>
+              </div>
+              <div class="publish-date">
+                <time datetime={project.frontmatter.date.toISOString()}>
+                  {formattedDate}
+                </time>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+ 
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .project {
+      grid-template-columns: 1fr auto;
+      /* gap: 2rem; */
+    }
+  }
+
+  .publish-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+</style>

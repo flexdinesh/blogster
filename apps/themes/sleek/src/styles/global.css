@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* base font-size 1px larger for better visibility */
+    font-size: 17px;
+}
+
+@layer components {
+
+    /* global styles */
+    mark {
+        background-color: theme('colors.selection-bg');
+        color: theme('colors.selection-text');
+    }
+
+    /* reusable utils */
+    .animated-underline {
+        position: relative;
+        box-decoration-break: clone;
+        text-decoration: none;
+    }
+
+    .animated-underline:hover:after {
+        transform: translateZ(0) scale(1);
+    }
+
+    .animated-underline:after {
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        content: "";
+        height: 2px;
+        position: absolute;
+        transform: translateZ(0) scaleX(0);
+        transform-origin: left center;
+        transition: all .150s ease-in-out;
+    }
+
+    .animated-underline.show:after {
+        transform: translateZ(0) scale(1);
+    }
+
+    /* TODO: figure out how to add this to typography plugin */
+    .prose ul li::before {
+        position: absolute;
+        left: 0;
+        content: '»';
+        color: theme("colors.text.muted");
+    }
+}

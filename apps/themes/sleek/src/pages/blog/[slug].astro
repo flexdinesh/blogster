@@ -1,0 +1,45 @@
+---
+import { readOne, readAll } from "@bin/markdoc/read";
+import { validateBlogFrontmatter } from "@bin/markdoc/blog/frontmatter";
+
+import MarkdownRenderer from "../../components/MarkdownRenderer.astro";
+import BlogPostMeta from "../../components/BlogPostMeta.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await readAll({
+    pathToDir: "content/blog",
+    frontmatterValidator: validateBlogFrontmatter,
+  });
+
+  // we don't want to generate pages for posts that link to external websites
+  const filteredPosts = posts.filter(
+    ({ frontmatter }) => !frontmatter.isExternal
+  );
+
+  return filteredPosts.map((post) => {
+    return { params: { slug: post.slug } };
+  });
+}
+
+const { slug } = Astro.params;
+if (typeof slug !== "string") {
+  throw Error(`slug should be string. Received: ${slug}`);
+}
+
+const { content, frontmatter } = await readOne({
+  pathToDir: "content/blog",
+  filename: `${slug}.md`,
+  frontmatterValidator: validateBlogFrontmatter,
+});
+---
+
+<ContentLayout title={frontmatter.title} date={frontmatter.date}>
+  <BlogPostMeta
+    title={frontmatter.title}
+    description={frontmatter.isExternal ? undefined : frontmatter.description}
+    publishDate={frontmatter.date.toISOString()}
+    slot="head"
+  />
+  <MarkdownRenderer content={content} slot="content" />
+</ContentLayout>

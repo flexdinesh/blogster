@@ -1,0 +1,75 @@
+:root {
+    --color-selection-bg: 180 244 224;
+    /* #b4f4e0 */
+    --color-selection-text: 49 33 94;
+    /* #31215e */
+}
+
+/* light theme */
+.theme-sleek {
+    font-family: 'Open Sans', sans-serif;
+    /* Tailwind orange 50-900 */
+    --color-primary-50: 255 247 237;
+    --color-primary-100: 255 237 213;
+    --color-primary-200: 254 215 170;
+    --color-primary-300: 253 186 116;
+    --color-primary-400: 251 146 60;
+    --color-primary-500: 249 115 22;
+    --color-primary-600: 234 88 12;
+    --color-primary-700: 194 65 12;
+    --color-primary-800: 154 52 18;
+    --color-primary-900: 124 45 18;
+    /* orange-500 */
+    --color-primary-main: 249 115 22;
+
+    /* slate-800 */
+    --color-text-heading: 30 41 59;
+    --color-text-base: 15 23 42;
+    --color-text-muted: 100 116 139;
+    --color-text-inverted: 229 229 229;
+    /* black */
+    --color-text-code: 0 0 0;
+
+    /* white */
+    --color-bg: 249 250 251;
+    --color-bg-inverted: 23 23 23;
+    /* orange-50 */
+    --color-bg-code: 255 247 237;
+
+    /* orange-500 */
+    --color-link: 249 115 22;
+}
+
+/* dark theme */
+.theme-sleek.dark {
+    /* Tailwind yellow 50-900 */
+    --color-primary-50: 255 251 235;
+    --color-primary-100: 254 243 199;
+    --color-primary-200: 254 240 138;
+    --color-primary-300: 253 224 71;
+    --color-primary-400: 250 204 21;
+    --color-primary-500: 234 179 8;
+    --color-primary-600: 202 138 4;
+    --color-primary-700: 161 98 7;
+    --color-primary-800: 133 77 14;
+    --color-primary-900: 113 63 18;
+    /* yellow-400 */
+    --color-primary-main: 250 204 21;
+
+    /* yellow-400 */
+    --color-text-heading: 250 204 21;
+    --color-text-base: 229 229 229;
+    --color-text-muted: 148 163 184;
+    --color-text-inverted: 15 23 42;
+    /* white */
+    --color-text-code: 255 255 255;
+
+    --color-bg: 14 20 27;
+    /* #0e141b */
+    --color-bg-inverted: 255 255 255;
+    /* yellow-900 */
+    --color-bg-code: 113 63 18;
+
+    --color-link: 51 154 240;
+    --color-link: 250 204 21;
+}

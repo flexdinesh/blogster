@@ -1,0 +1,75 @@
+---
+// Import the global.css file here so that it is included on
+import "../styles/global.css";
+import "../styles/theme.css";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<!DOCTYPE html>
+<html class="theme-sleek" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=block"
+      rel="stylesheet"
+    />
+    <link href="/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="/fontawesome/css/solid.min.css" rel="stylesheet" />
+    <script>
+      // figure out user's preferred theme and set it as html class for tailwind before paint
+      (function () {
+        if (typeof window !== "undefined") {
+          const isSystemColorSchemeDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          const storageTheme = sessionStorage.getItem("theme");
+          if (!storageTheme && isSystemColorSchemeDark) {
+            document.documentElement.classList.add("dark");
+          } else if (storageTheme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else {
+            // we already server render light theme
+            // so we can ignore this case
+          }
+        }
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+
+  <body
+    class="text-text-base dark:text-text-base bg-bg dark:bg-bg max-w-3xl mx-auto px-4 sm:px-8"
+  >
+    <!-- <img src="https://play.tailwindcss.com/img/beams.jpg" alt="" class="-z-10 fixed top-48 left-1/2 -translate-x-2/3 -translate-y-1/2 max-w-none" width="1308"> -->
+    <!-- <div class="absolute inset-0 bg-[url(https://play.tailwindcss.com/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div> -->
+    <Header />
+    <main>
+      <slot name="main" />
+    </main>
+    <Footer />
+    <style is:global>
+      body {
+        display: grid;
+        min-height: 100vh;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+        grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+      }
+      main {
+        grid-area: main;
+      }
+    </style>
+  </body>
+</html>
