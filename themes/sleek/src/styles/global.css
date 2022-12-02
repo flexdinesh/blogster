@@ -42,12 +42,4 @@
     .animated-underline.show:after {
         transform: translateZ(0) scale(1);
     }
-
-    /* TODO: figure out how to add this to typography plugin */
-    .prose ul li::before {
-        position: absolute;
-        left: 0;
-        content: '»';
-        color: theme("colors.text.muted");
-    }
 }

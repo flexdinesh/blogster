@@ -31,17 +31,9 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
-## Images
-
-![This is a placeholder image description](/placeholder-social.jpg)
-
 ## Blockquotes
 
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
-
-#### Blockquote
-
-> This is a blockquote. And it's pretty long too. Long enough to wrap to next line.
+> This is a blockquote. And it's pretty long too. Long enough to wrap to next line. Surely it will wrap.
 
 > You can use Markdown syntax like **bold** within a blockquote.
 
@@ -50,6 +42,30 @@ The blockquote element represents content that is quoted from another source, op
 | Italics   | Bold     | Code   |
 | --------- | -------- | ------ |
 | _italics_ | **bold** | `code` |
+
+## List Types
+
+#### Ordered List
+
+1. First item
+2. Second item
+3. Third item
+
+#### Unordered List
+
+- List item
+- Another item
+- And another item
+
+#### Nested list
+
+- Fruit
+  - Apple
+  - Orange
+  - Banana
+- Dairy
+  - Milk
+  - Cheese
 
 ## Code Blocks
 
@@ -88,26 +104,6 @@ const Greet = () => {
 }
 ```
 
-## List Types
+## Images
 
-#### Ordered List
-
-1. First item
-2. Second item
-3. Third item
-
-#### Unordered List
-
-- List item
-- Another item
-- And another item
-
-#### Nested list
-
-- Fruit
-  - Apple
-  - Orange
-  - Banana
-- Dairy
-  - Milk
-  - Cheese
+![This is a placeholder image description](/placeholder-social.jpg)

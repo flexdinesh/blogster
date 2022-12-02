@@ -34,7 +34,7 @@ module.exports = {
         "selection-bg": "rgb(var(--color-selection-bg) / <alpha-value>)",
         "selection-text": "rgb(var(--color-selection-text) / <alpha-value>)",
       },
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             a: {
@@ -51,32 +51,29 @@ module.exports = {
             ul: {
               "padding-left": 0,
               "list-style": "none",
-              li: {
-                position: "relative",
-                "padding-left": "1.375rem",
-                "&::before": {
-                  position: "absolute",
-                  left: 0,
-                  content: "»",
-                  color: "rgb(var(--color-text-muted))",
-                },
-              },
             },
-            h1: {
-              color: "rgb(var(--color-text-heading))",
+            "ul > li": {
+              position: "relative",
+              "padding-left": "1.375rem",
             },
-            h2: {
-              color: "rgb(var(--color-text-heading))",
+            "ul > li::before": {
+              position: "absolute",
+              left: 0,
+              content: '"»"',
+              color: "rgb(var(--color-text-muted))",
             },
-            h3: {
-              color: "rgb(var(--color-text-heading))",
+            ol: {
+              "padding-left": "1.125rem",
             },
-            h4: {
+            "ol > li::marker": {
+              color: "rgb(var(--color-text-muted))",
+            },
+            "h1, h2, h3, h4, h5": {
               color: "rgb(var(--color-text-heading))",
             },
           },
         },
-      },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],
