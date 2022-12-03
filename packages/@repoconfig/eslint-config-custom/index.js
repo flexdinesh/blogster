@@ -1,9 +1,5 @@
 module.exports = {
   extends: ["turbo", "prettier", "plugin:astro/recommended"],
-  // parserOptions: {
-  //   ecmaVersion: "latest",
-  //   sourceType: "module",
-  // },
   overrides: [
     {
       // Define the configuration for `.astro` file.
@@ -24,8 +20,12 @@ module.exports = {
     {
       files: ["*.ts"],
       parser: "@typescript-eslint/parser",
-      rules: {
-      },
-    }    
+      rules: {},
+    },
+    {
+      files: ["*.mjs"],
+      parser: "@typescript-eslint/parser",
+      rules: {},
+    },
   ],
 };

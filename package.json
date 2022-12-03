@@ -1,6 +1,6 @@
 {
-  "name": "codename-bloggy",
-  "version": "0.0.0",
+  "name": "blogster",
+  "version": "0.0.1",
   "private": true,
   "workspaces": [
     "packages/@repoconfig/*",
