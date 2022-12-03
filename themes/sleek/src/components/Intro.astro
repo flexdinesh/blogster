@@ -1,23 +1,21 @@
 ---
-import Heading from "./ui/Heading.astro";
 ---
 
 <section class="mb-8">
   <div class="mb-4">
-    <Heading
-      as="h1"
-      class="font-extrabold dark:text-text-heading text-5xl md:text-6xl tracking-tight pt-4 pb-2 overflow-hidden"
+    <h1
+      class="font-extrabold text-5xl md:text-6xl tracking-tight pt-4 pb-2 overflow-hidden"
     >
       <span
-        class="bg-gradient-to-br from-primary-400 via-primary-500 to-primary-600 dark:from-primary-main dark:via-primary-main dark:to-primary-main  bg-clip-text text-transparent"
+        class="bg-gradient-to-br from-primary-400 via-primary-500 to-primary-600 dark:from-primary-main dark:via-primary-main dark:to-primary-main bg-clip-text text-transparent"
       >
         Captain Snoopy</span
       >
-    </Heading>
+    </h1>
     <p class="text-2xl pb-4">Web Developer. OSS Wizard. Blogger.</p>
   </div>
-  <div class="prose prose:slate dark:prose-invert">
-    <p class="hello">
+  <div>
+    <p class="mb-5">
       Hello! This is a starter template to build your own blog with <a
         href={"https://astro.build"}
       >
@@ -27,36 +25,8 @@ import Heading from "./ui/Heading.astro";
       simple command.
     </p>
     <p class="text-center">
-      <code>npx create-astro-blog@latest --theme minimal</code>
+      <code class="py-1 px-2">npx create-astro-blog@latest --theme minimal</code
+      >
     </p>
   </div>
 </section>
-
-<style>
-  .grad {
-    background: linear-gradient(
-      124deg,
-      #8b5cf6 19%,
-      #000 19%,
-      #000 20%,
-      #84cc16 20%,
-      #84cc16 39%,
-      #000 39%,
-      #000 40%,
-      #ef4444 40%,
-      #ef4444 59%,
-      #000 59%,
-      #000 60%,
-      #0ea5e9 60%,
-      #0ea5e9 79%,
-      #000 79%,
-      #000 80%,
-      #eab308 80%,
-      #eab308 100%
-    );
-    -webkit-background-clip: text;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 100% 100%;
-  }
-</style>

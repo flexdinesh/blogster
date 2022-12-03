@@ -32,16 +32,20 @@ const sortedProjects = projects.sort(
             day: "numeric",
           });
           return (
-            <li class="project pb-3">
+            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] pb-3">
               <div class="title">
-                <a href={project.frontmatter.url} target="_blank" class="hover:text-link">
+                <a
+                  href={project.frontmatter.url}
+                  target="_blank"
+                  class="unset hover:text-text-link"
+                >
                   <span>{project.frontmatter.title}</span>
                   <span>
                     <i class="ml-1 text-[12px] fa-solid fa-up-right-from-square" />
                   </span>
                 </a>
               </div>
-              <div class="publish-date">
+              <div class="text-text-muted text-sm italic">
                 <time datetime={project.frontmatter.date.toISOString()}>
                   {formattedDate}
                 </time>
@@ -53,25 +57,3 @@ const sortedProjects = projects.sort(
     </ul>
   </section>
 </PageLayout>
-
-<style>
- 
-  .project {
-    display: grid;
-    grid-template-columns: 1fr;
-    line-height: 1.5;
-  }
-
-  @media (min-width: 640px) {
-    .project {
-      grid-template-columns: 1fr auto;
-      /* gap: 2rem; */
-    }
-  }
-
-  .publish-date {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-    font-style: italic;
-  }
-</style>

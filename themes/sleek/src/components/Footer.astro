@@ -5,17 +5,17 @@
   <div>
     Built with
     <a
-      class="animated-underline tracking-wider font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#7928ca] to-[#ff0080] hover:after:bg-gradient-to-r hover:after:from-[#7928ca] hover:after:to-[#ff0080]"
+      class="unset gradient-link tracking-wider font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#c026d3] to-[#ff0080] hover:after:bg-gradient-to-r hover:after:from-[#c026d3] hover:after:to-[#ff0080]"
       href={"https://astro.build"}
     >
       Astro</a
     >
     and <a
-      class="animated-underline tracking-wider font-semibold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-600 hover:after:bg-gradient-to-r hover:after:from-amber-500 hover:after:to-orange-600"
+      class="unset gradient-link tracking-wider font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#f59e0b] to-[#f97316] hover:after:bg-gradient-to-r hover:after:from-[#f59e0b] hover:after:to-[#f97316]"
       href={"https://markdoc.dev"}>Markdoc</a
     >. Served at blazing speeds by
     <a
-      class="animated-underline tracking-wider font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#00abda] to-[#1476ff] hover:after:bg-gradient-to-r hover:after:from-[#00abda] hover:after:to-[#1476ff]"
+      class="unset gradient-link tracking-wider font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#00abda] to-[#1476ff] hover:after:bg-gradient-to-r hover:after:from-[#00abda] hover:after:to-[#1476ff]"
       href={"https://www.netlify.com"}
     >
       Netlify</a
@@ -30,5 +30,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .gradient-link {
+    position: relative;
+    box-decoration-break: clone;
+    text-decoration: none;
+  }
+
+  .gradient-link:hover:after {
+    transform: translateZ(0) scale(1);
+  }
+
+  .gradient-link:after {
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    content: "";
+    height: 2px;
+    position: absolute;
+    transform: translateZ(0) scaleX(0);
+    transform-origin: left center;
+    transition: all 0.15s ease-in-out;
   }
 </style>

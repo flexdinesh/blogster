@@ -9,9 +9,9 @@ import { SITE_TITLE } from "../config";
   <PageMeta title={`${SITE_TITLE} | Web Ninja`} slot="head" />
   <Fragment slot="main">
     <Intro />
-    <div class="prose prose:slate dark:prose-invert">
+    <div>
       <p>Here are a few things you will love about this template:</p>
-      <ul>
+      <ul class="mt-5">
         <li class="list-item">
           <strong>Minimal.</strong>
           Less is more. Looks great without all the baggage.
@@ -38,7 +38,8 @@ import { SITE_TITLE } from "../config";
         </li>
         <li>
           <span
-            ><strong>Extended markdown</strong> with <a href="https://markdoc.dev">Markdoc</a
+            ><strong>Extended markdown</strong> with <a
+              href="https://markdoc.dev">Markdoc</a
             >.
           </span>
           <span>
@@ -55,8 +56,3 @@ import { SITE_TITLE } from "../config";
     </div>
   </Fragment>
 </PageLayout>
-
-<style>
-  .list-item {
-  }
-</style>

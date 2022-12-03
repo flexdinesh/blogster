@@ -32,13 +32,13 @@ const sortedPosts = posts.sort(
             day: "numeric",
           });
           return (
-            <li class="post pb-3">
+            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] pb-3">
               <div class="title">
                 {post.frontmatter.isExternal ? (
                   <a
                     href={post.frontmatter.url}
                     target="_blank"
-                    class="hover:text-link"
+                    class="unset hover:text-text-link"
                   >
                     <span>{post.frontmatter.title}</span>
                     <span>
@@ -46,12 +46,15 @@ const sortedPosts = posts.sort(
                     </span>
                   </a>
                 ) : (
-                  <a href={`/blog/${post.slug}`} class="hover:text-link">
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="unset hover:text-text-link"
+                  >
                     {post.frontmatter.title}
                   </a>
                 )}
               </div>
-              <div class="publish-date">
+              <div class="text-text-muted text-sm italic">
                 <time datetime={post.frontmatter.date.toISOString()}>
                   {formattedDate}
                 </time>
@@ -63,22 +66,3 @@ const sortedPosts = posts.sort(
     </ul>
   </section>
 </PageLayout>
-
-<style>
-  .post {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 640px) {
-    .post {
-      grid-template-columns: 1fr auto;
-    }
-  }
-
-  .publish-date {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-    font-style: italic;
-  }
-</style>
