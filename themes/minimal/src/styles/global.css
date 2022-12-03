@@ -1,10 +1,10 @@
-/*
-  Inspired from two sources + my own customisations over it.
-  1. Bear Blog's default CSS. https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  2. https://www.swyx.io/css-100-bytes
- */
+/* 
+	THEMING
+	Mode: light/dark is automatically determined by system color scheme.
+	There is no mode toggle.
+*/
 
-/* theming for light/dark modes */
+/* ------ THEMING - Light Mode ------ */
 :root {
 	--palette-primary: #4f46e5;
 	--palette-secondary: #38bdf8;
@@ -18,13 +18,11 @@
 	--code-text: #47546b;
 	--code-border: #e2e8f0;
 
-	--selection-text: #ffffff;
-	--selection-background: #191919;
-
 	--border: #e2e8f0;
 	--background: #fff
 }
 
+/* ------ THEMING - Dark Mode ------ */
 @media (prefers-color-scheme: dark) {
 	:root {
 		--palette-primary: #20bdff;
@@ -40,9 +38,6 @@
 		--code-background: #1f2631;
 		--code-border: #2d3748;
 
-		--selection-text: #191919;
-		--selection-background: #ffffff;
-
 		--border: #2d3748;
 		--background: #18181b;
 	}
@@ -52,25 +47,23 @@
 	}
 }
 
-html {
-	font-size: 16px;
+/* ------ GLOBAL STYLES - START ------ */
+
+:root {
+	font-family: Verdana, sans-serif;
+	font-size: 1em;
+	line-height: 1.75;
 }
 
 body {
-	/* -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale; */
 	color: var(--text);
 	background: var(--background);
-	/* font-family: system-ui, sans-serif; */
-	font-family: Verdana, sans-serif;
 	padding: 0 2rem;
 	margin: auto;
 	max-width: 70ch;
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	line-height: 1.75;
-	font-size: 1rem;
 }
 
 strong,
@@ -152,7 +145,6 @@ blockquote::after {
 }
 
 ul {
-	/* all: unset; */
 	padding-left: 1.5em;
 }
 
@@ -162,8 +154,58 @@ ul li {
 	margin-bottom: 0.4em;
 }
 
+/* ------ GLOBAL STYLES - END ------ */
 
-::selection {
-	color: var(--selection-text);
-	background-color: var(--selection-background);
+/* ------ REUSABLE UTIL STYLES - START ------ */
+
+/* 
+	class: gradient-text
+	The text will be gradient.
+	To use this, just set the css vars using a custom class in your component
+*/
+.gradient-text {
+	--gradient-text-from: hotpink;
+	--gradient-text-to: hotpink;
+	--gradient-text-via: var(--gradient-text-from), var(--gradient-text-to);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+	background-image: linear-gradient(135deg, var(--gradient-text-from), var(--gradient-text-via), var(--gradient-text-to));
 }
+
+/* 
+	class: a.animated
+	Animated links. An animated underline on hover.
+*/
+a.animated {
+	--animated-underline-from: var(--text-link);
+	--animated-underline-to: var(--text-link);
+	position: relative;
+	box-decoration-break: clone;
+	text-decoration: none;
+}
+
+a.animated:after {
+	left: 0;
+	right: 0;
+	bottom: -2px;
+	content: "";
+	height: 2px;
+	position: absolute;
+	transform: translateZ(0) scaleX(0);
+	transform-origin: left center;
+	transition: all 0.15s ease-in-out;
+	background-image: linear-gradient(to right, var(--animated-underline-from), var(--animated-underline-to));
+}
+
+a.animated:hover:after {
+	transform: translateZ(0) scale(1);
+}
+
+a.animated.active:after {
+	transform: translateZ(0) scale(1);
+}
+
+/* ------ REUSABLE UTIL STYLES - START ------ */

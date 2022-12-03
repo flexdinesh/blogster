@@ -41,5 +41,5 @@ const { content, frontmatter } = await readOne({
     publishDate={frontmatter.date.toISOString()}
     slot="head"
   />
-  <MarkdownRenderer content={content} />
+  <MarkdownRenderer content={content} slot="content" />
 </ContentLayout>

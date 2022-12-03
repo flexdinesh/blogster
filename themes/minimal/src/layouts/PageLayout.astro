@@ -1,8 +1,14 @@
 ---
+/*
+  This layout is used in pages/index.astro, pages/blog.astro, pages/projects.astro
+*/
+
 import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <slot name="head" />
-  <slot name="main" />
+  <!-- head slot is drilled from pages to BaseLayout -->
+  <slot slot="head" name="head" />
+  <!-- main slot is drilled from pages to BaseLayout -->
+  <slot slot="main" name="main" />
 </BaseLayout>

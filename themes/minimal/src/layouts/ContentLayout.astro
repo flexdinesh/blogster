@@ -1,10 +1,13 @@
 ---
+/*
+  This layout is used in pages/blog/[slug].astro
+*/
+
 import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
   title: string;
   date: Date;
-  // heroImage?: string;
 }
 
 const { title, date } = Astro.props;
@@ -16,12 +19,12 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 ---
 
 <BaseLayout>
-  <slot name="head" />
-  <article class="blog-post">
+  <!-- head slot is drilled from pages to BaseLayout -->
+  <slot slot="head" name="head" />
+  <article class="blog-post" slot="main">
     <h1 class="title">{title}</h1>
     <time class="publish-date">{formattedDate}</time>
-    <!-- {heroImage && <img width={720} height={360} src={heroImage} alt="" />} -->
-    <slot />
+    <slot name="content" />
   </article>
 </BaseLayout>
 
@@ -43,6 +46,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
   }
 </style>
 
+<!-- Global styles for content rendered from markdown -->
 <style is:global>
   h1 {
     margin-top: 0;

@@ -69,9 +69,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ## Code Blocks
 
-Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism) with the default [nord theme](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-nord.css). You can customise to whichever theme you want from the [plenty available prism themes](https://github.com/PrismJS/prism-themes).
-
-### HTML
+Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism). You can customise to whichever theme you want from the [plenty available prism themes](https://github.com/PrismJS/prism-themes).
 
 ```html
 <!DOCTYPE html>
@@ -84,24 +82,6 @@ Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism) w
     <p>Test</p>
   </body>
 </html>
-```
-
-### JSX
-
-```jsx
-const Greet = () => {
-  const message = `Hello World!`;
-  return <div>{message}</div>;
-};
-```
-
-### CSS
-
-```css
-.layout {
-  display: grid;
-  grid-template-columns: 5rem minmax(0, 1fr) 4rem;
-}
 ```
 
 ## Images

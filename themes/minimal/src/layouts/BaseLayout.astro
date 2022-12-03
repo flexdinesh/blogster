@@ -1,8 +1,10 @@
 ---
+/* 
+  This layout is shared by layouts/PageLayout.astro and layouts/ContentLayout.astro. 
+*/
+
 // Import the global.css file here so that it is included on
 import "../styles/global.css";
-// custom utils to use throughout
-import "../styles/util.css";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -23,7 +25,7 @@ import Footer from "../components/Footer.astro";
   <body>
     <Header />
     <main>
-      <slot slot="main" />
+      <slot name="main" />
     </main>
     <Footer />
     <style is:global>
