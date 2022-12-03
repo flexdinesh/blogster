@@ -1,4 +1,4 @@
-# Theme: Minimal
+# Theme: Sleek
 
 ```
 npm create astro@latest -- --template blog

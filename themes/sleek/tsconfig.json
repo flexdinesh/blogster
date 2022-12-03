@@ -1,6 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "display": "theme/minimal",
+  "display": "theme/sleek",
   "compilerOptions": {
     "types": ["astro/client"],
     "baseUrl": ".",
