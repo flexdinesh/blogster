@@ -18,6 +18,7 @@ Features:
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+-
 
 ## Credit
 
