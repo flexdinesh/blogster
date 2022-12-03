@@ -1,11 +1,13 @@
 name: main branch workflow - minimal theme
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - themes/minimal/**
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - themes/minimal/**
+  workflow_dispatch
+
 
 jobs:
   build-and-deploy:

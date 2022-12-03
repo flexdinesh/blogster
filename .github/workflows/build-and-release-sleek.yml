@@ -1,11 +1,12 @@
 name: main branch workflow - sleek theme
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - themes/sleek/**
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - themes/sleek/**
+  workflow_dispatch
 
 jobs:
   build-and-deploy:
