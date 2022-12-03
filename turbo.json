@@ -14,7 +14,10 @@
     "dev": {
       "cache": false
     },
-    "@theme/minimal#dev": {
+    "@theme/minimal#build": {
+      "outputs": []
+    },
+    "@theme/sleek#build": {
       "outputs": []
     }
   }

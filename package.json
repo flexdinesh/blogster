@@ -10,7 +10,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "dev:minimal": "turbo run @theme/minimal#dev",
+    "build:minimal": "turbo run @theme/minimal#build",
+    "build:sleek": "turbo run @theme/sleek#build",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
