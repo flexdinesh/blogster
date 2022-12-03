@@ -15,9 +15,11 @@
       "cache": false
     },
     "@theme/minimal#build": {
+      "cache": false,
       "outputs": []
     },
     "@theme/sleek#build": {
+      "cache": false,
       "outputs": []
     }
   }
