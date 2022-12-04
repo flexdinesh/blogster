@@ -7,26 +7,24 @@
 /* ------ THEMING - Light Mode ------ */
 :root {
 	--palette-primary: #4f46e5;
-	--palette-secondary: #38bdf8;
 
 	--text: #1e293b;
 	--text-muted: #64748b;
 	--text-heading: #0f172a;
-	--text-link: #667eea;
+	--text-link: #2563eb;
 
 	--code-background: #f6f7f9;
 	--code-text: #47546b;
 	--code-border: #e2e8f0;
 
 	--border: #e2e8f0;
-	--background: #fff
+	--background: #ffffff;
 }
 
 /* ------ THEMING - Dark Mode ------ */
 @media (prefers-color-scheme: dark) {
 	:root {
 		--palette-primary: #20bdff;
-		--palette-secondary: #4f46e5;
 
 		--text: #d2d3d7;
 		--text: #d4d4d8;

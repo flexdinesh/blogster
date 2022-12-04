@@ -10,7 +10,7 @@ const isActive =
     ? path.substring(1).startsWith(href.substring(1))
     : false;
 ---
-
+<!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE. -->
 <a
   href={href}
   class:list={[
@@ -21,9 +21,7 @@ const isActive =
     "gradient-colors",
   ]}
   {...props}
->
-  <slot />
-</a>
+><slot /></a>
 <style>
   a.gradient-colors {
     --animated-underline-from: var(--text-heading);
