@@ -19,7 +19,7 @@ const sortedProjects = projects.sort(
 ---
 
 <PageLayout>
-  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="head" />
+  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
     <ul>
       {
@@ -32,7 +32,7 @@ const sortedProjects = projects.sort(
             day: "numeric",
           });
           return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] pb-3">
+            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3">
               <div class="title">
                 <a
                   href={project.frontmatter.url}

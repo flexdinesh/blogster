@@ -1,14 +1,62 @@
 ---
-/*
-  This layout is used in pages/index.astro, pages/blog.astro, pages/projects.astro
+/* 
+  This layout is used in 
+  - pages/index.astro
+  - pages/blog.astro
+  - pages/projects.astro
 */
 
-import BaseLayout from "./BaseLayout.astro";
+// Import the global.css file here so that it is included on
+import "../styles/theme.css";
+import "../styles/global.css";
+
+import GoogleFont from "./GoogleFont.astro";
+import FontAwesome from "./FontAwesome.astro";
+import ThemeScript from "./ThemeScript.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout>
-  <!-- head slot is drilled from pages to BaseLayout -->
-  <slot slot="head" name="head" />
-  <!-- main slot is drilled from pages to BaseLayout -->
-  <slot slot="main" name="main" />
-</BaseLayout>
+<!DOCTYPE html>
+<html class="theme-sleek" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <slot name="meta" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+    />
+    <GoogleFont />
+    <FontAwesome />
+    <ThemeScript />
+  </head>
+
+  <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
+    <!-- <img src="https://play.tailwindcss.com/img/beams.jpg" alt="" class="-z-10 fixed top-48 left-1/2 -translate-x-2/3 -translate-y-1/2 max-w-none" width="1308"> -->
+    <!-- <div class="absolute inset-0 bg-[url(https://play.tailwindcss.com/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div> -->
+    <Header />
+    <main>
+      <slot name="main" />
+    </main>
+    <Footer />
+  </body>
+
+  <style>
+    body {
+      display: grid;
+      min-height: 100vh;
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+      grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+    }
+    main {
+      grid-area: main;
+    }
+  </style>
+</html>

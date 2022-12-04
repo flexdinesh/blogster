@@ -17,17 +17,14 @@
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.2",
-    "@fortawesome/fontawesome-free": "^6.2.1",
     "@local/markdoc-renderer": "*",
     "@markdoc/markdoc": "^0.2.1",
     "@tailwindcss/typography": "^0.5.8",
-    "add": "^2.0.6",
     "astro": "^1.6.8",
     "date-fns": "^2.29.3",
     "globby": "^13.1.2",
     "js-yaml": "^4.1.0",
-    "tailwindcss": "^3.2.4",
-    "yarn": "^1.22.19"
+    "tailwindcss": "^3.2.4"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",

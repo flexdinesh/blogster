@@ -1,9 +1,18 @@
 ---
-/*
-  This layout is used in pages/blog/[slug].astro
+/* 
+  This layout is used in pages that render markdoc content
+  - pages/blog/[slug].astro
 */
 
-import BaseLayout from "./BaseLayout.astro";
+// Import the global.css file here so that it is included on
+import "../styles/theme.css";
+import "../styles/global.css";
+
+import GoogleFont from "./GoogleFont.astro";
+import FontAwesome from "./FontAwesome.astro";
+import ThemeScript from "./ThemeScript.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 export interface Props {
   title: string;
@@ -18,12 +27,47 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 });
 ---
 
-<BaseLayout>
-  <!-- head slot is drilled from pages to BaseLayout -->
-  <slot slot="head" name="head" />
-  <article class="blog-post prose prose-sleek" slot="main">
-    <h1 class="m-0 mb-[0.25em]">{title}</h1>
-    <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
-    <slot name="content" />
-  </article>
-</BaseLayout>
+<!DOCTYPE html>
+<html class="theme-sleek" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <slot name="meta" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+    />
+    <GoogleFont />
+    <FontAwesome />
+    <ThemeScript />
+  </head>
+
+  <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
+    <Header />
+    <main>
+      <article class="blog-post prose prose-sleek">
+        <h1 class="m-0 mb-[0.25em]">{title}</h1>
+        <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
+        <slot name="content" />
+      </article>
+    </main>
+    <Footer />
+  </body>
+  <style>
+    body {
+      display: grid;
+      min-height: 100vh;
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+      grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+    }
+    main {
+      grid-area: main;
+    }
+  </style>
+</html>
