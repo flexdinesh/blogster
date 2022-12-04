@@ -39,7 +39,7 @@ const { content, frontmatter } = await readOne({
     title={frontmatter.title}
     description={frontmatter.isExternal ? undefined : frontmatter.description}
     publishDate={frontmatter.date.toISOString()}
-    slot="head"
+    slot="meta"
   />
   <MarkdownRenderer content={content} slot="content" />
 </ContentLayout>
