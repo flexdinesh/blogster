@@ -156,6 +156,10 @@
   margin-left: var(--fa-pull-margin, 0.3em);
 }
 
+.fa-up-right-from-square::before {
+  content: "\f35d";
+}
+
 .sr-only,
 .fa-sr-only {
   position: absolute;
