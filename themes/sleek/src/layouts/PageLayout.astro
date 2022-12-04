@@ -35,7 +35,9 @@ import Footer from "../components/Footer.astro";
     <ThemeScript />
   </head>
 
-  <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
+  <body
+    class="min-h-screen text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8"
+  >
     <!-- <img src="https://play.tailwindcss.com/img/beams.jpg" alt="" class="-z-10 fixed top-48 left-1/2 -translate-x-2/3 -translate-y-1/2 max-w-none" width="1308"> -->
     <!-- <div class="absolute inset-0 bg-[url(https://play.tailwindcss.com/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div> -->
     <Header />
@@ -43,20 +45,19 @@ import Footer from "../components/Footer.astro";
       <slot name="main" />
     </main>
     <Footer />
+    <style>
+      body {
+        display: grid;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+        grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      main {
+        grid-area: main;
+      }
+    </style>
   </body>
-
-  <style>
-    body {
-      display: grid;
-      min-height: 100vh;
-      grid-template-areas:
-        "header"
-        "main"
-        "footer";
-      grid-template-rows: 5rem minmax(0, 1fr) 4rem;
-    }
-    main {
-      grid-area: main;
-    }
-  </style>
 </html>

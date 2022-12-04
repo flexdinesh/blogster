@@ -20,7 +20,9 @@ import Heading from "./ui/Heading.astro";
     and <a class="animated" href={"https://markdoc.dev"}>Markdoc</a>. Get
     started with one simple command.
   </p>
-  <p><code>npx create-blogster@latest --theme minimal</code></p>
+  <p class="cli-command">
+    <code>npx create-blogster@latest --theme minimal</code>
+  </p>
 </section>
 
 <style>
@@ -70,7 +72,9 @@ import Heading from "./ui/Heading.astro";
     margin-top: 0.5rem;
   }
 
-  .hello {
+  .cli-command {
+    white-space: nowrap;
+    overflow: auto;
   }
 
   @media (min-width: 640px) {

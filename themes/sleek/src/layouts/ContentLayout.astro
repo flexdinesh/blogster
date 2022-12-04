@@ -45,7 +45,9 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
     <ThemeScript />
   </head>
 
-  <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
+  <body
+    class="min-h-screen text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8"
+  >
     <Header />
     <main>
       <article class="blog-post prose prose-sleek">
@@ -55,19 +57,19 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
       </article>
     </main>
     <Footer />
+    <style>
+      body {
+        display: grid;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+        grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      main {
+        grid-area: main;
+      }
+    </style>
   </body>
-  <style>
-    body {
-      display: grid;
-      min-height: 100vh;
-      grid-template-areas:
-        "header"
-        "main"
-        "footer";
-      grid-template-rows: 5rem minmax(0, 1fr) 4rem;
-    }
-    main {
-      grid-area: main;
-    }
-  </style>
 </html>
