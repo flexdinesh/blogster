@@ -7,10 +7,9 @@ type Props = {
 const { url, label } = Astro.props;
 ---
 
-<div class="youtube-embed">
+<div>
   <iframe
-    width="560"
-    height="315"
+    class="youtube-iframe"
     src={url}
     title={label}
     frame-border="0"
@@ -21,19 +20,8 @@ const { url, label } = Astro.props;
 </div>
 
 <style>
-  .youtube-embed {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0px;
-    margin: 0 auto;
-  }
-
-  .youtube-embed iframe {
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
+  .youtube-iframe {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
   }
 </style>
