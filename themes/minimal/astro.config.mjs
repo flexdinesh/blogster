@@ -23,5 +23,5 @@ if (isBuild && !process.env.URL) {
 export default defineConfig({
   server: { port: 9000 },
   site: BASE_URL,
-  integrations: [tailwind(), sitemap()],
+  integrations: [sitemap()],
 });
