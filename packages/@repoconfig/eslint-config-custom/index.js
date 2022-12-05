@@ -23,7 +23,7 @@ module.exports = {
       rules: {},
     },
     {
-      files: ["*.mjs"],
+      files: ["*.mjs", "*.js"],
       parser: "@typescript-eslint/parser",
       rules: {},
     },
