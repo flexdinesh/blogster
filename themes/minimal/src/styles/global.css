@@ -49,7 +49,6 @@
 
 :root {
 	font-family: Verdana, sans-serif;
-	font-size: 1em;
 	line-height: 1.75;
 }
 
@@ -81,11 +80,11 @@ nav a {
 
 textarea {
 	width: 100%;
-	font-size: 16px;
+	font-size: 1rem;
 }
 
 input {
-	font-size: 16px;
+	font-size: 1rem;
 }
 
 content {
