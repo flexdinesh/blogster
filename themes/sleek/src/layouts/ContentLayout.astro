@@ -47,11 +47,11 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
   >
     <Header />
     <main>
-      <article class="blog-post prose prose-sleek">
+      <section class="blog-post prose max-w-none prose-sleek">
         <h1 class="m-0 mb-[0.25em]">{title}</h1>
         <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
         <slot name="content" />
-      </article>
+      </section>
     </main>
     <Footer />
     <style>
@@ -61,7 +61,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
           "header"
           "main"
           "footer";
-        grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+        grid-template-rows: 5rem minmax(0, 1fr) 5rem;
         grid-template-columns: minmax(0, 1fr);
       }
       main {

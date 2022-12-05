@@ -38,11 +38,11 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
   <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
     <Header />
     <main>
-      <article class="blog-post">
+      <section class="blog-post">
         <h1 class="title">{title}</h1>
         <time class="publish-date">{formattedDate}</time>
         <slot name="content" />
-      </article>
+      </section>
     </main>
     <Footer />
   </body>
@@ -55,7 +55,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
         "header"
         "main"
         "footer";
-      grid-template-rows: 5rem minmax(0, 1fr) 4rem;
+      grid-template-rows: 5rem minmax(0, 1fr) 5rem;
       grid-template-columns: minmax(0, 1fr);
     }
     main {
