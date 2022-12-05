@@ -39,4 +39,4 @@ const Greet = () => {
 }
 ```
 
-...and many more. [Explore all the Languages supported by Prism.js](https://prismjs.com/#supported-languages).
+...and many more. [Explore all the languages supported by Prism.js](https://prismjs.com/#supported-languages).
