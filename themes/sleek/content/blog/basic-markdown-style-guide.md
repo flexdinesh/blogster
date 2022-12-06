@@ -9,27 +9,33 @@ Markdown is powered by [Markdoc](https://markdoc.dev/). This post is an example 
 
 ## Inline formatting
 
-You can use all sorts of inline formatting in markdown. You can write something in **bold**. And _italics_ too. How about ~~strikethrough~~? You got it. Don't forget about inline code, you got that too. `Hello world!`.
+Bold: **This text is bold**.
+
+Italics: _This text is italics_.
+
+Strikethrough: You can ~~strikethrough~~ text.
+
+Inline code: You can add inline code like this `const hello = "world"`.
 
 ## Headings
 
-The following HTML `<h2>`—`<h6>` elements represent five levels of section headings. `<h1>` is also available but not recommended since the post title is already a `<h1>` element.
+The following HTML `<h2>`—`<h6>` elements represent five levels of section headings. `<h1>` is also available but not recommended since the post title is already a `<h1>` element it is not a good practice to have more than one `<h1>` elements in a page.
 
-## H2
+## H2: Heading Two
 
-### H3
+### H3: Heading Three
 
-#### H4
+#### H4: Heading Four
 
-##### H5
+##### H5: Heading Five
 
-###### H6
+###### H6: Heading Six
 
 ## Paragraph
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+A standalone single paragraph of text.
 
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+Paragraphs can be multiline too when they constitute words that make up more than one line, i.e they wrap to the next line. Wow! I am really smart to write two lines of text that makes zero sense.
 
 ## Blockquotes
 
