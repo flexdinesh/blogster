@@ -1,10 +1,11 @@
 {
-  "extends": "tsconfig/javascript-library.json",
   "compilerOptions": {
+    "lib": ["esnext"],
     "moduleResolution": "node",
     "module": "ESNext",
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "target": "esnext"
   },
   "include": ["index.ts", "src"],
   "exclude": ["dist", "build", "node_modules"]

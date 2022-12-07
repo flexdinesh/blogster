@@ -1,9 +1,14 @@
 {
   "name": "astro-markdoc-renderer",
-  "version": "0.0.1",
+  "version": "0.0.0-development.1",
+  "description": "Markdoc renderer for Astro",
   "main": "./index.ts",
   "types": "./index.ts",
   "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
@@ -12,9 +17,18 @@
     "markdown-it": "^13.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
     "typescript": "^4.5.2"
+  },
+  "keywords": [
+    "astro",
+    "withastro",
+    "astro-component",
+    "markdoc"
+  ],
+  "author": "Dinesh Pandiyan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flexdinesh/blogster",
+    "directory": "packages/astro-markdoc-renderer"
   }
 }
