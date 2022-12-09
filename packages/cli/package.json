@@ -1,0 +1,45 @@
+{
+  "name": "@blogster/cli",
+  "version": "0.0.0-development.1",
+  "description": "Blogster CLI to scaffold a new Astro Blog",
+  "bin": {
+    "create-blogster": "./bin.js"
+  },
+  "scripts": {
+    "dev": "npm exec create-blogster",
+    "dev-alternate": "node ./bin.js",
+    "copy": "node ./scripts/copy-templates.js",
+    "edit": "node ./scripts/edit-templates.js",
+    "clean": "rimraf templates",
+    "format": "npm run prettier -- --write",
+    "prettier": "prettier .",
+    "lint": "eslint ."
+  },
+  "author": "Dinesh Pandiyan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flexdinesh/blogster",
+    "directory": "packages/cli"
+  },
+  "dependencies": {
+    "chalk": "4",
+    "commander": "^4.1.1",
+    "enquirer": "^2.3.6",
+    "execa": "5",
+    "fs-extra": "^11.1.0",
+    "meow": "9",
+    "ora": "5",
+    "package-json": "7",
+    "rimraf": "^3.0.2",
+    "semver": "^7.3.8",
+    "terminal-link": "2"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "prettier": "^2.8.1"
+  },
+  "engines": {
+    "node": ">=14.16"
+  }
+}
