@@ -9,9 +9,6 @@
   "exports": {
     ".": "./index.ts"
   },
-  "scripts": {
-    "lint": "TIMING=1 eslint \"**/*.ts*\""
-  },
   "dependencies": {
     "@markdoc/markdoc": "^0.2.1",
     "markdown-it": "^13.0.1"
