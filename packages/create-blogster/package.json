@@ -1,10 +1,17 @@
 {
-  "name": "@blogster/cli",
+  "name": "create-blogster",
   "version": "0.0.0-development.1",
-  "description": "Blogster CLI to scaffold a new Astro Blog",
+  "description": "Blogster CLI to scaffold a new Astro blog",
+  "author": "Dinesh Pandiyan",
+  "license": "MIT",
   "bin": {
     "create-blogster": "./bin.js"
   },
+  "files": [
+    "bin.js",
+    "src",
+    "templates"
+  ],
   "scripts": {
     "dev": "node ./bin.js --no-deps --theme minimal",
     "copy": "node ./scripts/copy-templates.js",
@@ -13,8 +20,6 @@
     "sync-template-files": "yarn clean && yarn copy && yarn edit",
     "lint": "eslint --ext .js ."
   },
-  "author": "Dinesh Pandiyan",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/flexdinesh/blogster",
