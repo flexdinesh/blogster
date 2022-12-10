@@ -29,7 +29,7 @@ const components = {
     Component: YouTubeEmbed,
     props: {},
   },
-  // <h1> tag   
+  // <h1> tag
   h1: {
     Component: HeadingOne,
     props: {},

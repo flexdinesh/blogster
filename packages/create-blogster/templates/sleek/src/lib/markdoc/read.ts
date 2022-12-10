@@ -1,7 +1,7 @@
-import path from "path";
-import { globby } from "globby";
-import type { RenderableTreeNode } from "@markdoc/markdoc";
-import { parseAndTransform } from "./transform";
+import path from 'path';
+import { globby } from 'globby';
+import type { RenderableTreeNode } from '@markdoc/markdoc';
+import { parseAndTransform } from './transform';
 
 const absolutePathToFile = ({
   pathToDir,
@@ -70,11 +70,11 @@ async function readAll<Return extends Record<string, unknown>>({
     cwd,
   });
   const files = await Promise.all(
-    paths.map((path) => parseAndTransform({ path }))
+    paths.map(path => parseAndTransform({ path }))
   );
 
   if (frontmatterValidator) {
-    const filesWithStronglyTypedFrontmatter = files.map((file) => {
+    const filesWithStronglyTypedFrontmatter = files.map(file => {
       return {
         ...file,
         frontmatter: frontmatterValidator(file.frontmatter),

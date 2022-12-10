@@ -1,7 +1,7 @@
 ---
-title: "Prism.js syntax highlighting for code blocks"
-description: "Code blocks are syntax highlighted using Prism.js"
-date: "2022-10-30"
+title: 'Prism.js syntax highlighting for code blocks'
+description: 'Code blocks are syntax highlighted using Prism.js'
+date: '2022-10-30'
 ---
 
 Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism) with the default [nord theme](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-nord.css). You can customise to whichever theme you want from the [plenty available prism themes](https://github.com/PrismJS/prism-themes).
