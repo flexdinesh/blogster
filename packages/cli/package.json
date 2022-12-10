@@ -6,13 +6,11 @@
     "create-blogster": "./bin.js"
   },
   "scripts": {
-    "dev": "npm exec create-blogster",
-    "dev-alternate": "node ./bin.js",
+    "dev": "node ./bin.js --no-deps --theme minimal",
     "copy": "node ./scripts/copy-templates.js",
     "edit": "node ./scripts/edit-templates.js",
     "clean": "rimraf templates",
-    "format": "npm run prettier -- --write",
-    "prettier": "prettier .",
+    "sync-template-files": "yarn clean && yarn copy && yarn edit",
     "lint": "eslint --ext .js ."
   },
   "author": "Dinesh Pandiyan",
@@ -36,8 +34,7 @@
     "terminal-link": "2"
   },
   "devDependencies": {
-    "eslint": "^8.29.0",
-    "prettier": "^2.8.1"
+    "eslint": "^8.29.0"
   },
   "engines": {
     "node": ">=14.16"

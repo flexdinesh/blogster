@@ -9,7 +9,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const meow = require('meow');
 const enquirer = require('enquirer');
-// const { install } = require('./install');
+const { install } = require('./install');
 const { logCreateConfirmation, logSuccessInfo } = require('./console');
 
 const cli = meow(
@@ -17,28 +17,34 @@ const cli = meow(
 Usage
   $ create-blogster <directory>
 
-  Options
-	  --theme  Pick a theme
+Options
+  --theme Pick a theme (minimal/sleek)
 
-	Examples
-	  $ create-blogster my-blog --sleek
+Examples
+  $ create-blogster my-blog --theme sleek
 `,
   {
     flags: {
       theme: {
         type: 'string',
       },
+      // during development, we pass --no-deps flag
+      deps: {
+        type: 'boolean',
+        default: true,
+      },
     },
   }
 );
 
-async function normalizeArgs() {
+async function promptArgs() {
   let directory = cli.input[0];
   if (!directory) {
     ({ directory } = await enquirer.prompt({
       type: 'input',
       name: 'directory',
       message: 'What directory should your blog be generated into?',
+      initial: 'my-blogster-blog',
       validate: x => !!x,
     }));
     process.stdout.write('\n');
@@ -50,20 +56,25 @@ async function normalizeArgs() {
       type: 'select',
       name: 'theme',
       message: 'Pick a theme',
+      initial: 'sleek',
       choices: ['minimal', 'sleek'],
       validate: x => !!x,
     }));
     process.stdout.write('\n');
   }
 
+  console.log(cli.flags);
   return {
     directory: path.resolve(directory),
     theme: theme,
+    deps: cli.flags.deps,
   };
 }
 
 async function copyTemplateDirectory(theme, directory) {
-  const minimalTemplateDir = path.normalize(`${__dirname}/../templates/minimal`);
+  const minimalTemplateDir = path.normalize(
+    `${__dirname}/../templates/minimal`
+  );
   const sleekTemplateDir = path.normalize(`${__dirname}/../templates/sleek`);
   // sleek is default
   let templateDir = sleekTemplateDir;
@@ -88,11 +99,13 @@ async function copyTemplateDirectory(theme, directory) {
 
 async function createBlogster() {
   logCreateConfirmation();
-  const { directory, theme } = await normalizeArgs();
+  const { directory, theme, deps } = await promptArgs();
   await fs.mkdir(directory);
   await copyTemplateDirectory(theme, directory);
-  // const packageManager = await install(directoryName);
-  const packageManager = 'yarn';
+  let packageManager = 'yarn';
+  if (deps) {
+    packageManager = await install(directory);
+  }
   const relativeProjectDir = path.relative(process.cwd(), directory);
   logSuccessInfo(packageManager, relativeProjectDir, theme);
 }

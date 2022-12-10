@@ -2,18 +2,15 @@
 
 const path = require('path');
 
-function relativePathToTemplate(theme) {
-  return path.join(path.normalize(`${__dirname}/../../templates/${theme}`));
+function relativePathToTemplate(theme, p = '') {
+  return path.join(path.normalize(`${__dirname}/../../templates/${theme}`), p);
 }
 
-function relativePathToFile(theme, pathToFile) {
-  return path.join(
-    path.normalize(`${__dirname}/../../templates/${theme}`),
-    pathToFile
-  );
+function relativePathFromRepoRoot(p = '') {
+  return path.join(path.normalize(`${__dirname}/../../../../`), p);
 }
 
 module.exports = {
   relativePathToTemplate,
-  relativePathToFile,
+  relativePathFromRepoRoot,
 };
