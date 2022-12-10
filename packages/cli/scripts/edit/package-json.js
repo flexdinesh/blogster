@@ -33,7 +33,7 @@ async function editPackageJson(theme) {
     relativePathToTemplate(theme, 'package.json'),
     packageJson
   );
-  console.log(`Edited: package.json for template ${theme}`);
+  console.log(`Edited: package.json for template: ${theme}`);
 }
 
 module.exports = {

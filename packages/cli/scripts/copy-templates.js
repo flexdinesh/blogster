@@ -3,22 +3,6 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-async function deleteAllTemplates() {
-  process.stdout.write('\n');
-  console.log('...Deleting templates');
-  const minimalTemplateDir = path.join(
-    path.normalize(`${__dirname}/../templates/minimal`)
-  );
-  const sleekTemplateDir = path.join(
-    path.normalize(`${__dirname}/../templates/sleek`)
-  );
-
-  await fs.removeSync(minimalTemplateDir);
-  await fs.removeSync(sleekTemplateDir);
-  console.log('✅ Deleted all templates');
-  process.stdout.write('\n');
-}
-
 function fsCopyFilter(path) {
   const directoriesToExclude = ['node_modules', '.turbo', '.vscode', 'dist'];
   const shouldCopy = !directoriesToExclude.some(d => path.includes(d));
@@ -27,16 +11,15 @@ function fsCopyFilter(path) {
   return shouldCopy;
 }
 
-async function copyMinimal() {
+async function copyTheme(theme) {
   process.stdout.write('\n');
-  console.log('...Copying template: minimal');
-  process.stdout.write('\n');
+  console.log(`...Copying template: ${theme}`);
 
   const themeDir = path.join(
-    path.normalize(`${__dirname}/../../../themes/minimal`)
+    path.normalize(`${__dirname}/../../../themes/${theme}`)
   );
   const templateDir = path.join(
-    path.normalize(`${__dirname}/../templates/minimal`)
+    path.normalize(`${__dirname}/../templates/${theme}`)
   );
 
   await fs.ensureDirSync(templateDir);
@@ -45,39 +28,32 @@ async function copyMinimal() {
     filter: fsCopyFilter,
   });
 
-  process.stdout.write('\n');
-  console.log('✅ Copied template: minimal');
-  process.stdout.write('\n');
+  console.log(`✅ Copied template: ${theme}`);
 }
 
-async function copySleek() {
+async function deleteTemplate(theme) {
   process.stdout.write('\n');
-  console.log('...Copying template: sleek');
-  process.stdout.write('\n');
-
-  const themeDir = path.join(
-    path.normalize(`${__dirname}/../../../themes/sleek`)
-  );
+  console.log(`...Deleting template: ${theme}`);
   const templateDir = path.join(
-    path.normalize(`${__dirname}/../templates/sleek`)
+    path.normalize(`${__dirname}/../templates/${theme}`)
   );
 
-  await fs.ensureDirSync(templateDir);
-  await fs.copySync(themeDir, templateDir, {
-    overwrite: false,
-    filter: fsCopyFilter,
-  });
-
-  process.stdout.write('\n');
-  console.log('✅ Copied template: sleek');
-  process.stdout.write('\n');
+  await fs.removeSync(templateDir);
+  console.log(`✅ Deleted template: ${theme}`);
 }
 
 (async () => {
-  await deleteAllTemplates();
   await fs.ensureDirSync(
     path.join(path.normalize(`${__dirname}/../templates`))
   );
-  await copyMinimal();
-  await copySleek();
+
+  const themes = ['minimal', 'sleek'];
+  // delete all existing templates
+  for (const theme of themes) {
+    await deleteTemplate(theme);
+  }
+  // copy themes and create fresh templates
+  for (const theme of themes) {
+    await copyTheme(theme);
+  }
 })();

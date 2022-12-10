@@ -24,7 +24,7 @@ async function EDIT_FILE_pages_blog_astro(theme) {
     relativePathToTemplate(theme, 'src/pages/blog.astro'),
     FILE_blog
   );
-  console.log(`Edited: src/pages/blog.astro for template ${theme}`);
+  console.log(`Edited: src/pages/blog.astro for template: ${theme}`);
 }
 
 async function EDIT_FILE_pages_projects_astro(theme) {
@@ -45,7 +45,7 @@ async function EDIT_FILE_pages_projects_astro(theme) {
     relativePathToTemplate(theme, 'src/pages/projects.astro'),
     FILE_projects
   );
-  console.log(`Edited: src/pages/projects.astro for template ${theme}`);
+  console.log(`Edited: src/pages/projects.astro for template: ${theme}`);
 }
 
 async function EDIT_FILE_pages_rss_xml_js(theme) {
@@ -66,7 +66,7 @@ async function EDIT_FILE_pages_rss_xml_js(theme) {
     relativePathToTemplate(theme, 'src/pages/rss.xml.js'),
     FILE_rssXML
   );
-  console.log(`Edited: src/pages/rss.xml.js for template ${theme}`);
+  console.log(`Edited: src/pages/rss.xml.js for template: ${theme}`);
 }
 
 async function EDIT_FILE_pages_blog_slug_astro(theme) {
@@ -87,7 +87,7 @@ async function EDIT_FILE_pages_blog_slug_astro(theme) {
     relativePathToTemplate(theme, 'src/pages/blog/[slug].astro'),
     FILE_slug
   );
-  console.log(`Edited: src/pages/blog/[slug].astro for template ${theme}`);
+  console.log(`Edited: src/pages/blog/[slug].astro for template: ${theme}`);
 }
 
 async function copySharedLibMarkdoc(theme) {

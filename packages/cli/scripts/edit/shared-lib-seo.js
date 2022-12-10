@@ -21,7 +21,7 @@ async function EDIT_FILE_components_BlogPostMeta_astro(theme) {
     FILE_BlogPostMeta
   );
   console.log(
-    `Edited: src/components/BlogPostMeta.astro for template ${theme}`
+    `Edited: src/components/BlogPostMeta.astro for template: ${theme}`
   );
 }
 
@@ -36,7 +36,7 @@ async function EDIT_FILE_components_PageMeta_astro(theme) {
     relativePathToTemplate(theme, 'src/components/PageMeta.astro'),
     FILE_PageMeta
   );
-  console.log(`Edited: src/components/PageMeta.astro for template ${theme}`);
+  console.log(`Edited: src/components/PageMeta.astro for template: ${theme}`);
 }
 
 async function copySharedLibSeo(theme) {

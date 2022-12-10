@@ -31,7 +31,7 @@ async function editAstroConfig(theme) {
     relativePathToTemplate(theme, 'astro.config.mjs'),
     FILE_AstroConfig
   );
-  console.log(`Edited: astro.config.mjs for template ${theme}`);
+  console.log(`Edited: astro.config.mjs for template: ${theme}`);
 }
 
 module.exports = {
