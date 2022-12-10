@@ -1,5 +1,5 @@
 /* 
-  Approach heavily inspired by create-keystone-app
+  CLI approach heavily inspired by create-keystone-app
   https://github.com/keystonejs/create-keystone-app
 */
 

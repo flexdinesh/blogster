@@ -1,5 +1,5 @@
 /* 
-  Approach heavily inspired by create-keystone-app
+  CLI approach heavily inspired by create-keystone-app
   https://github.com/keystonejs/create-keystone-app
 */
 
@@ -63,7 +63,6 @@ async function promptArgs() {
     process.stdout.write('\n');
   }
 
-  console.log(cli.flags);
   return {
     directory: path.resolve(directory),
     theme: theme,
