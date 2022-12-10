@@ -3,9 +3,6 @@
   "display": "theme/sleek",
   "compilerOptions": {
     "types": ["astro/client"],
-    "baseUrl": ".",
-    "paths": {
-      "@bin/*": ["__bin/*"]
-    }
+    "baseUrl": "."
   }
 }

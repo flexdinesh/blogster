@@ -2,13 +2,69 @@
   "name": "@local/shared",
   "version": "0.0.0",
   "private": true,
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./seo": {
+      "import": "./src/seo.ts",
+      "require": "./src/seo.ts"
+    },
+    "./markdoc/config": {
+      "import": "./src/markdoc/config.ts",
+      "require": "./src/markdoc/config.ts"
+    },
+    "./markdoc/read": {
+      "import": "./src/markdoc/read.ts",
+      "require": "./src/markdoc/read.ts"
+    },
+    "./markdoc/transform": {
+      "import": "./src/markdoc/transform.ts",
+      "require": "./src/markdoc/transform.ts"
+    },
+    "./markdoc/blog/frontmatter": {
+      "import": "./src/markdoc/blog/frontmatter.ts",
+      "require": "./src/markdoc/blog/frontmatter.ts"
+    },
+    "./markdoc/project/frontmatter": {
+      "import": "./src/markdoc/project/frontmatter.ts",
+      "require": "./src/markdoc/project/frontmatter.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/index.ts"
+      ],
+      "seo": [
+        "src/seo.ts"
+      ],
+      "markdoc/config": [
+        "src/markdoc/config.ts"
+      ],
+      "markdoc/read": [
+        "src/markdoc/read.ts"
+      ],
+      "markdoc/transform": [
+        "src/markdoc/transform.ts"
+      ],
+      "markdoc/blog/frontmatter": [
+        "src/markdoc/blog/frontmatter.ts"
+      ],
+      "markdoc/project/frontmatter": [
+        "src/markdoc/project/frontmatter.ts"
+      ]
+    }
+  },
   "scripts": {
+    "test:watch": "vitest",
+    "test": "vitest run",
     "lint": "eslint ."
   },
   "dependencies": {
     "eslint-config-custom": "*",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vitest": "^0.25.1"
   }
 }

@@ -1,9 +1,9 @@
 import { describe, test, expect } from "vitest";
-import { validateProjectFrontmatter } from "../../markdoc/project/frontmatter";
+import { validateProjectFrontmatter } from "../../src/markdoc/project/frontmatter";
 
 describe("validateProjectFrontmatter", () => {
   test("Does not throw for expected frontmatter", () => {
-    let unknownFrontmatter: Record<string, unknown> = {
+    const unknownFrontmatter: Record<string, unknown> = {
       title: "hello",
       date: "2022-10-10",
       url: "http://linktoproject",
@@ -15,7 +15,7 @@ describe("validateProjectFrontmatter", () => {
   });
 
   test("Throws for invalid frontmatter", () => {
-    let unknownFrontmatter: Record<string, unknown> = {
+    const unknownFrontmatter: Record<string, unknown> = {
       title: "hello",
       date: "2022-10-10",
     };

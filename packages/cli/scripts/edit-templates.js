@@ -3,8 +3,9 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { editPackageJson } = require('./edit/package-json');
-const { copySharedLibSeo } = require('./edit/shared-lib-seo');
 const { editAstroConfig } = require('./edit/astro-config');
+const { copySharedLibSeo } = require('./edit/shared-lib-seo');
+const { copySharedLibMarkdoc } = require('./edit/shared-lib-markdoc');
 
 async function editMinimal() {
   const theme = 'minimal';
@@ -18,6 +19,8 @@ async function editMinimal() {
   await editAstroConfig(theme);
   // copy seo.ts and edit imports
   await copySharedLibSeo(theme);
+  // copy markdoc dir and edit imports
+  await copySharedLibMarkdoc(theme);
 
   console.log(`✅ Edited template: ${theme}`);
   process.stdout.write('\n');
@@ -35,6 +38,8 @@ async function editSleek() {
   await editAstroConfig(theme);
   // copy seo.ts and edit imports
   await copySharedLibSeo(theme);
+  // copy markdoc dir and edit imports
+  await copySharedLibMarkdoc(theme);
 
   console.log(`✅ Edited template: ${theme}`);
   process.stdout.write('\n');

@@ -25,7 +25,7 @@ export function validateProjectFrontmatter(
   // frontmatter.date
   if (
     typeof frontmatter.date !== "string" &&
-    !((frontmatter.date as any) instanceof Date)
+    !((frontmatter.date as unknown) instanceof Date)
   ) {
     throw new Error(
       "Frontmatter.date is missing. Date expected in format yyyy-MM-dd."
@@ -39,7 +39,7 @@ export function validateProjectFrontmatter(
           "Frontmatter.date is not a valid date string. Date expected in format yyyy-MM-dd."
         );
       }
-    } else if ((frontmatter.date as any) instanceof Date) {
+    } else if ((frontmatter.date as unknown) instanceof Date) {
       const formattedDate = format(frontmatter.date as Date, dateFormat);
       if (!isMatch(formattedDate, dateFormat)) {
         throw new Error(

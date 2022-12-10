@@ -8,15 +8,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "clean": "rm -rf dist",
-    "test:watch": "vitest",
-    "test": "vitest run"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@astrojs/prism": "^1.0.2",
     "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
     "@local/shared": "*",
+    "@markdoc/markdoc": "^0.2.1",
     "astro-markdoc-renderer": "0.0.0-development.1",
     "astro": "^1.6.8",
     "date-fns": "^2.29.3",
@@ -25,7 +24,6 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
-    "prettier-plugin-astro": "^0.7.0",
-    "vitest": "^0.25.1"
+    "prettier-plugin-astro": "^0.7.0"
   }
 }

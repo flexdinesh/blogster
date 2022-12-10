@@ -27,7 +27,7 @@ function extractFrontmatter(content: string) {
       )}`
     );
   }
-  let obj = parsed as Record<string, unknown>;
+  const obj = parsed as Record<string, unknown>;
   return obj;
 }
 

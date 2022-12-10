@@ -1,9 +1,9 @@
 import { describe, test, expect } from "vitest";
-import { validateBlogFrontmatter } from "../../markdoc/blog/frontmatter";
+import { validateBlogFrontmatter } from "../../src/markdoc/blog/frontmatter";
 
 describe("validateBlogFrontmatter", () => {
   test("Does not throw for expected frontmatter", () => {
-    let unknownFrontmatter: Record<string, unknown> = {
+    const unknownFrontmatter: Record<string, unknown> = {
       title: "hello",
       description: "world",
       date: "2022-10-10",
@@ -15,7 +15,7 @@ describe("validateBlogFrontmatter", () => {
   });
 
   test("Throws for invalid frontmatter", () => {
-    let unknownFrontmatter: Record<string, unknown> = {
+    const unknownFrontmatter: Record<string, unknown> = {
       title: "hello",
     };
     // we're making sure errors are thrown
