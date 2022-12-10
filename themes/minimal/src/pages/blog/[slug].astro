@@ -8,7 +8,7 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await readAll({
-    pathToDir: "content/blog",
+    pathToDir: "../../packages/shared/content/blog",
     frontmatterValidator: validateBlogFrontmatter,
   });
 
@@ -28,7 +28,7 @@ if (typeof slug !== "string") {
 }
 
 const { content, frontmatter } = await readOne({
-  pathToDir: "content/blog",
+  pathToDir: "../../packages/shared/content/blog",
   filename: `${slug}.md`,
   frontmatterValidator: validateBlogFrontmatter,
 });

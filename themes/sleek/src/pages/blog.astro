@@ -7,7 +7,7 @@ import PageMeta from "../components/PageMeta.astro";
 import { SITE_TITLE } from "../config";
 
 const posts = await readAll({
-  pathToDir: "content/blog",
+  pathToDir: "../../packages/shared/content/blog",
   frontmatterValidator: validateBlogFrontmatter,
 });
 

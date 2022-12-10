@@ -9,7 +9,7 @@
     "dev": "node ./bin.js --no-deps --theme minimal",
     "copy": "node ./scripts/copy-templates.js",
     "edit": "node ./scripts/edit-templates.js",
-    "clean": "rimraf templates",
+    "clean": "rimraf templates my-blogster-blog",
     "sync-template-files": "yarn clean && yarn copy && yarn edit",
     "lint": "eslint --ext .js ."
   },

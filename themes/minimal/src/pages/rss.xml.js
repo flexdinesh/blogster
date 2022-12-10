@@ -5,7 +5,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
 
 export const get = async () => {
   const posts = await readAll({
-    pathToDir: "content/blog",
+    pathToDir: "../../packages/shared/content/blog",
     frontmatterValidator: validateBlogFrontmatter,
   });
 

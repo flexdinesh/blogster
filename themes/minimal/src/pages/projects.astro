@@ -8,7 +8,7 @@ import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
 const projects = await readAll({
-  pathToDir: "content/projects",
+  pathToDir: "../../packages/shared/content/projects",
   frontmatterValidator: validateProjectFrontmatter,
 });
 

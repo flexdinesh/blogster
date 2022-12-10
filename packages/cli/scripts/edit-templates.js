@@ -6,6 +6,7 @@ const { editPackageJson } = require('./edit/package-json');
 const { editAstroConfig } = require('./edit/astro-config');
 const { copySharedLibSeo } = require('./edit/shared-lib-seo');
 const { copySharedLibMarkdoc } = require('./edit/shared-lib-markdoc');
+const { copySharedContent } = require('./edit/shared-content');
 
 async function editTemplate(theme) {
   process.stdout.write('\n');
@@ -19,6 +20,8 @@ async function editTemplate(theme) {
   await copySharedLibSeo(theme);
   // copy markdoc dir and edit imports
   await copySharedLibMarkdoc(theme);
+  // copy content dir and edit imports
+  await copySharedContent(theme);
 
   console.log(`✅ Edited template: ${theme}`);
   process.stdout.write('\n');

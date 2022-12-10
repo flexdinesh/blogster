@@ -77,11 +77,11 @@ async function EDIT_FILE_pages_blog_slug_astro(theme) {
   );
   FILE_slug = FILE_slug.replace(
     `@local/shared/markdoc/read`,
-    `../lib/markdoc/read`
+    `../../lib/markdoc/read`
   );
   FILE_slug = FILE_slug.replace(
     `@local/shared/markdoc/blog/frontmatter`,
-    `../lib/markdoc/blog/frontmatter`
+    `../../lib/markdoc/blog/frontmatter`
   );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/blog/[slug].astro'),
