@@ -1,0 +1,40 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import DarkModeToggle from "./DarkModeToggle.astro";
+---
+
+<header>
+  <nav class="flex gap-4 text-text-bold">
+    <span><HeaderLink href="/">Home</HeaderLink></span>
+    <span><HeaderLink href="/blog">Blog</HeaderLink></span>
+    <span><HeaderLink href="/projects">Projects</HeaderLink></span>
+  </nav>
+  <div
+    class="justify-self-end py-2 flex items-center content-center text-text-bold"
+  >
+    <a
+      class="unset text-2xl ml-4 hover:text-text-link"
+      href="https://github.com/flexdinesh/blogster"
+      aria-label="Blogster on GitHub"
+    >
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a
+      class="unset text-2xl ml-4 hover:text-text-link"
+      href="https://twitter.com/flexdinesh"
+      aria-label="Dinesh on Twitter"
+    >
+      <i class="fa-brands fa-twitter"></i>
+    </a>
+    <DarkModeToggle />
+  </div>
+</header>
+<style>
+  header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+</style>

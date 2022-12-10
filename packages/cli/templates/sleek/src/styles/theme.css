@@ -1,0 +1,90 @@
+:root {
+    --color-bg-selection: 180 244 224;
+    /* #b4f4e0 */
+    --color-text-selection: 49 33 94;
+    /* #31215e */
+}
+
+/* light theme */
+.theme-sleek {
+    /* tailwind orange 50-900 */
+    --color-primary-50: 255 247 237;
+    --color-primary-100: 255 237 213;
+    --color-primary-200: 254 215 170;
+    --color-primary-300: 253 186 116;
+    --color-primary-400: 251 146 60;
+    --color-primary-500: 249 115 22;
+    --color-primary-600: 234 88 12;
+    --color-primary-700: 194 65 12;
+    --color-primary-800: 154 52 18;
+    --color-primary-900: 124 45 18;
+    /* tailwind orange-500 */
+    --color-primary-main: 249 115 22;
+
+    /* tailwind gray-700 */
+    --color-text-body: 55 65 81;
+    /* tailwind gray-700 */
+    --color-text-heading: 55 65 81;
+    /* tailwind gray-700 */
+    --color-text-bold: 55 65 81;
+    /* tailwind gray-500 */
+    --color-text-muted: 107 114 128;
+    /* tailwind orange-500 */
+    --color-text-link: 249 115 22;
+    /* black */
+    --color-text-code: 0 0 0;
+    /* black */
+    --color-text-selection: 0 0 0;
+
+    /* white */
+    --color-bg-body: 255 255 255;
+    /* tailwind orange-50 */
+    --color-bg-code: 255 247 237;
+    /* tailwind amber-200 */
+    --color-bg-selection: 253 230 138;
+
+    /* tailwind orange-100 */
+    --color-border-code: 255 237 213;
+
+}
+
+/* dark theme */
+.theme-sleek.dark {
+    /* tailwind yellow 50-900 */
+    --color-primary-50: 255 251 235;
+    --color-primary-100: 254 243 199;
+    --color-primary-200: 254 240 138;
+    --color-primary-300: 253 224 71;
+    --color-primary-400: 250 204 21;
+    --color-primary-500: 234 179 8;
+    --color-primary-600: 202 138 4;
+    --color-primary-700: 161 98 7;
+    --color-primary-800: 133 77 14;
+    --color-primary-900: 113 63 18;
+    /* yellow-400 */
+    --color-primary-main: 250 204 21;
+
+    /* tailwind stone-300 */
+    --color-text-body: 214 211 209;
+    /* white */
+    --color-text-heading: 255 255 255;
+    /* white */
+    --color-text-bold: 255 255 255;
+    /* tailwind stone-400 */
+    --color-text-muted: 168 162 158;
+    --color-text-link: 250 204 21;
+    /* black */
+    --color-text-code: 255 255 255;
+    /* black */
+    --color-text-selection: 0 0 0;
+
+    /* #0e141b */
+    --color-bg-body: 14 20 27;
+    /* yellow-500 */
+    --color-bg-code: 234 179 8;
+    /* tailwind yellow-300 */
+    --color-bg-selection: 253 224 71;
+    
+    /* yellow-100 */
+    --color-border-code: 254 243 199;
+}

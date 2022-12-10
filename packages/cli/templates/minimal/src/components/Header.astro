@@ -1,0 +1,64 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import GitHubIcon from "../components/ui/icons/github.astro";
+import TwitterIcon from "../components/ui/icons/twitter.astro";
+---
+
+<header>
+  <nav>
+    <span><HeaderLink href="/">Home</HeaderLink></span>
+    <span><HeaderLink href="/blog">Blog</HeaderLink></span>
+    <span><HeaderLink href="/projects">Projects</HeaderLink></span>
+  </nav>
+  <div class="social-handles">
+    <a
+      class="centered"
+      href="https://github.com/flexdinesh/blogster"
+      aria-label="Blogster on GitHub"
+    >
+      <GitHubIcon title="GitHub" />
+    </a>
+    <a
+      class="centered"
+      href="https://twitter.com/flexdinesh"
+      aria-label="Dinesh on Twitter"
+    >
+      <TwitterIcon title="Twitter" />
+    </a>
+  </div>
+</header>
+<style>
+  header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .social-handles {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .social-handles a {
+    color: var(--text-heading);
+    border-bottom: none;
+  }
+  .social-handles a:hover {
+    color: var(--palette-primary);
+  }
+
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
