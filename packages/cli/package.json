@@ -13,7 +13,7 @@
     "clean": "rimraf templates",
     "format": "npm run prettier -- --write",
     "prettier": "prettier .",
-    "lint": "eslint ."
+    "lint": "eslint --ext .js ."
   },
   "author": "Dinesh Pandiyan",
   "license": "MIT",
