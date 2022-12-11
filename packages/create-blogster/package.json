@@ -20,11 +20,6 @@
     "sync-template-files": "yarn clean && yarn copy && yarn edit",
     "lint": "eslint --ext .js ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/flexdinesh/blogster",
-    "directory": "packages/create-blogster"
-  },
   "dependencies": {
     "chalk": "4",
     "commander": "^4.1.1",
@@ -40,6 +35,11 @@
   },
   "devDependencies": {
     "eslint": "^8.29.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flexdinesh/blogster",
+    "directory": "packages/create-blogster"
   },
   "engines": {
     "node": ">=14.16"

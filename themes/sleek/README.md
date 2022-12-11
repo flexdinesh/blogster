@@ -1,24 +1,48 @@
-# Theme: Sleek
+# Blogster
 
-```
-npm create astro@latest -- --template blog
-```
+Theme: **sleek**
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
+Blogster is a collection of beautiful, accessible and performant blog templates built with [Astro](https://astro.build) and [Markdoc](https://markdoc.dev).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Check out the demo here - [Blogster sleek template](https://blogster-sleek.netlify.app).
 
-![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
+## Sleek Template
 
-Features:
+A beautiful, performant and accessible theme built with [Tailwind](https://tailwindcss.com).
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- **Fast**. Fast by default. Astro websites are engineered to be fast and load before you could blink, even when not cached.
+- **Dark mode**. All themes have light/dark mode built-in.
+- **Mobile first**. Responsive and loads fast in all devices.
+- **Accessible**. A well thought out semantic and accessible content.
+- **Perfect lighthouse score.** 100 across the board.
+- **Easy content authoring**. Author content using markdown (`.md`) from your code editor or directly in GitHub.
+- **Extended markdown with [Markdoc](https://markdoc.dev).** Type-safe custom components like YouTube embed, CodePen embed (or anything you want really) in your markdown (`.md`) files.
+- **RSS feed**. Your blog has an RSS feed setup that can be accessed at `/rss.xml`.
+- **SEO**. All pages are setup with all the SEO you might need.
+
+## How do I add content?
+
+All the content is written in markdown (.md) and grouped as `blog` or `projects` in the `content` directory. All the default markdown syntax will work. You also have a few example custom markdown elements like _YouTube embed_, _CodeSandbox embed_, etc. You can create your own custom components too in two easy steps.
+
+1. Add a markdoc config. Check out the markdoc config in [src/lib/markdoc/config.ts](src/lib/markdoc/config.ts) to learn how to add custom components.
+2. Add a component to render your custom component. Check out the MarkdownRenderer in [src/components/MarkdownRenderer.astro](src/components/MarkdownRenderer.astro).
+
+## How do I make it my blog?
+
+Easy.
+
+- All content is static and everything is straight forward. Change whatever you need to change.
+- Delete or update the content in `content/dir`.
+- (Optional) If you need more content types like _Notes_, just create a new dir in `content` and add a new frontmatter validator like [src/lib/markdoc/blog/frontmatter](src/lib/markdoc/blog/frontmatter).
+
+## How do I deploy?
+
+`yarn build` will generate a static website in `dist` dir. You can host it with any static hosting. If you need a recommendation, check out [Netlify](netlify.com).
 
 ## Credit
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+This theme is based off of [the official Astro Blog template](https://github.com/withastro/astro/tree/main/examples/blog) and [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+
+## License
+
+MIT © [Dinesh Pandiyan](https://github.com/flexdinesh)
