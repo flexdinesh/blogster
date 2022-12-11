@@ -1,6 +1,6 @@
 {
   "name": "create-blogster",
-  "version": "0.0.0-development.1",
+  "version": "0.0.0-development.2",
   "description": "Blogster CLI to scaffold a new Astro blog",
   "author": "Dinesh Pandiyan",
   "license": "MIT",
