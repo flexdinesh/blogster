@@ -160,6 +160,10 @@
   content: "\f35d";
 }
 
+.fa-link::before {
+  content: "\f0c1";
+}
+
 .sr-only,
 .fa-sr-only {
   position: absolute;
