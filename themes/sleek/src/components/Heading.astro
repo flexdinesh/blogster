@@ -8,7 +8,7 @@ interface Props extends HTMLAttributes<'h1'> {
 }
 
 const { level, children } = Astro.props;
-const headingText = children.length ? children[0] : '';
+const headingText = children.length && typeof children[0] === 'string' ? children[0] : '';
 const id = slugify(headingText.toLowerCase());
 
 let Tag: HTMLTag = "h1";
@@ -25,11 +25,11 @@ if (level === 2) {
 }
 ---
 
-<Tag id={id} class="group flex -ml-[1.25rem] md:-ml-[1.5rem]">
-    <span class="w-[1.25rem] md:w-[1.5rem] not-prose -mt-[0.0625rem]">
-        <a href={`#${id}`} 
-            class="not-prose unset align-middle text-[14px] top-[50%] text-text-link opacity-0 group-hover:opacity-100">
-            <i class="fa-solid fa-link"></i>
+<Tag id={id} class="group flex -ml-[1rem]">
+    <span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby={headingText} href={`#${id}`} 
+            class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
         </a>
     </span>
     <span>{children}</span>
