@@ -1,0 +1,36 @@
+---
+import slugify from 'slugify';
+import type { HTMLAttributes, HTMLTag } from 'astro/types'
+
+interface Props extends HTMLAttributes<'h1'> {
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  children: any;
+}
+
+const { level, children } = Astro.props;
+const headingText = children.length && typeof children[0] === 'string' ? children[0] : '';
+const id = slugify(headingText.toLowerCase());
+
+let Tag: HTMLTag = "h1";
+if (level === 2) {
+  Tag = "h2";
+} else if (level === 3) {
+  Tag = "h3";
+} else if (level === 4) {
+  Tag = "h4";
+} else if (level === 5) {
+  Tag = "h5";
+} else if (level === 6) {
+  Tag = "h6";
+}
+---
+
+<Tag id={id} class="group flex -ml-[1rem]">
+    <span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby={headingText} href={`#${id}`} 
+            class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span>
+    <span>{children}</span>
+</Tag>

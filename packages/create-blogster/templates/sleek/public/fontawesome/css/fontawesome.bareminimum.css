@@ -160,6 +160,14 @@
   content: "\f35d";
 }
 
+.fa-link::before {
+  content: "\f0c1";
+}
+
+.fa-hashtag::before {
+  content: "\23";
+}
+
 .sr-only,
 .fa-sr-only {
   position: absolute;
