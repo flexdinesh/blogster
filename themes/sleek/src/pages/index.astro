@@ -2,6 +2,7 @@
 import PageMeta from "../components/PageMeta.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import Intro from "../components/Intro.astro";
+import AboutTheTheme from "../components/AboutTheTheme.astro";
 import { SITE_TITLE } from "../config";
 ---
 
@@ -9,53 +10,6 @@ import { SITE_TITLE } from "../config";
   <PageMeta title={`${SITE_TITLE} | Web Ninja`} slot="meta" />
   <Fragment slot="main">
     <Intro />
-    <div>
-      <p>Here are a few things you will love about this template:</p>
-      <ul class="mt-5">
-        <li>
-          <strong>Sleek.</strong>
-          A beautiful theme built with Tailwind.
-        </li>
-        <li>
-          <strong>Fast.</strong>
-          Fast by default. Astro websites are engineered to be fast and load before
-          you could blink, even when not cached.
-        </li>
-        <li>
-          <strong>Dark mode.</strong> Auto dark mode with a manual toggle. Hit that
-          toggle button at the of the page to see for yourself.
-        </li>
-        <li>
-          <strong>Mobile first.</strong> Responsive and loads fast in all devices.
-        </li>
-        <li>
-          <strong>Accessible.</strong> A well thought out semantic and accessible
-          content.
-        </li>
-        <li>
-          <strong>Perfect lighthouse score.</strong> 100 across the board.
-        </li>
-        <li>
-          <strong>Content authoring for everyone.</strong> Author content using markdown
-          (<code>.md</code>) from your code editor or directly in GitHub.
-        </li>
-        <li>
-          <span
-            ><strong>Extended markdown</strong> with <a
-              href="https://markdoc.dev">Markdoc</a
-            >.
-          </span>
-          <span>
-            Type-safe custom components like YouTube embed, CodePen embed (or
-            anything you want really) in your markdown (<code>.md</code>) files.</span
-          >
-        </li>
-        <li>
-          Built in <strong>RSS feed</strong> for you blog, excellent<strong>
-            SEO</strong
-          > and more.
-        </li>
-      </ul>
-    </div>
+    <AboutTheTheme />
   </Fragment>
 </PageLayout>

@@ -112,7 +112,7 @@
     .animated-link:after {
         left: 0;
         right: 0;
-        bottom: -2px;
+        bottom: -3px;
         content: "";
         height: 2px;
         position: absolute;
