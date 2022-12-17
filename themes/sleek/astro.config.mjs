@@ -30,5 +30,10 @@ if (isBuild) {
 export default defineConfig({
   server: { port: SERVER_PORT },
   site: BASE_URL,
-  integrations: [tailwind(), sitemap()],
+  integrations: [
+    sitemap(),
+    tailwind({
+      config: { applyBaseStyles: false },
+    }),
+  ],
 });
