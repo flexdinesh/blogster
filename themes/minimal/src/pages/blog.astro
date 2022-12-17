@@ -1,15 +1,12 @@
 ---
 import { readAll } from "@local/shared/markdoc/read";
-import { validateBlogFrontmatter } from "@local/shared/markdoc/blog/frontmatter";
-
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
 const posts = await readAll({
-  pathToDir: "../../packages/shared/content/blog",
-  frontmatterValidator: validateBlogFrontmatter,
+  directory: "blog",
 });
 
 const sortedPosts = posts.sort(

@@ -1,12 +1,10 @@
 import rss from "@astrojs/rss";
 import { readAll } from "@local/shared/markdoc/read";
-import { validateBlogFrontmatter } from "@local/shared/markdoc/blog/frontmatter";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
 
 export const get = async () => {
   const posts = await readAll({
-    pathToDir: "../../packages/shared/content/blog",
-    frontmatterValidator: validateBlogFrontmatter,
+    directory: "blog",
   });
 
   const sortedPosts = posts.sort(

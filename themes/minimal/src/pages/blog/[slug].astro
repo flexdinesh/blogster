@@ -1,15 +1,12 @@
 ---
 import { readOne, readAll } from "@local/shared/markdoc/read";
-import { validateBlogFrontmatter } from "@local/shared/markdoc/blog/frontmatter";
-
 import MarkdownRenderer from "../../components/MarkdownRenderer.astro";
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await readAll({
-    pathToDir: "../../packages/shared/content/blog",
-    frontmatterValidator: validateBlogFrontmatter,
+    directory: "blog",
   });
 
   // we don't want to generate pages for posts that link to external websites
@@ -28,9 +25,8 @@ if (typeof slug !== "string") {
 }
 
 const { content, frontmatter } = await readOne({
-  pathToDir: "../../packages/shared/content/blog",
+  directory: "blog",
   filename: `${slug}.md`,
-  frontmatterValidator: validateBlogFrontmatter,
 });
 ---
 

@@ -2,149 +2,130 @@ import path from "path";
 import { globby } from "globby";
 import type { RenderableTreeNode } from "@markdoc/markdoc";
 import { parseAndTransform } from "./transform";
+import { validateBlogFrontmatter } from "./blog/frontmatter";
+import { validateProjectFrontmatter } from "./project/frontmatter";
 
-const absolutePathToFile = ({
-  pathToDir,
-  filename,
-  cwd,
+// path is relative to where you run the `yarn build` command
+const pathToContentDir = path.normalize(
+  "../../packages/shared/content"
+);
+
+type Content = {
+  path: string;
+  slug: string;
+  content: RenderableTreeNode;
+  frontmatter: Record<string, unknown>;
+};
+
+type ReturnTypeForBlog = Content & {
+  frontmatter: ReturnType<typeof validateBlogFrontmatter>;
+};
+type ReturnTypeForProjects = Content & {
+  frontmatter: ReturnType<typeof validateProjectFrontmatter>;
+};
+
+/* 
+  If you are adding a new content directory like "notes" or "talk",
+  you need to add a function overload for readAll and readOne.
+*/
+/* Overloads for readAll - start */
+export async function readAll(args: {
+  directory: "blog";
+}): Promise<ReturnTypeForBlog[]>;
+export async function readAll(args: {
+  directory: "projects";
+}): Promise<ReturnTypeForProjects[]>;
+/* Overloads for readAll - end */
+
+export async function readAll({
+  directory,
 }: {
-  pathToDir: string;
-  filename: string;
-  cwd?: string;
-}) => {
-  const pathToFile = path.join(cwd ?? process.cwd(), pathToDir, filename);
-  return pathToFile;
-};
+  directory: string;
+}): Promise<Content[]> {
+  const pathToDir = path.join(pathToContentDir, directory);
+  const paths = await globby(`${pathToDir}/*.md`);
 
-const absolutePathToFiles = async ({
-  pathToDir,
-  cwd,
-}: {
-  pathToDir: string;
-  cwd?: string;
-}) => {
-  const markdownPaths = await globby(`${pathToDir}/*.md`, {
-    cwd,
-  });
-  return markdownPaths;
-};
-
-type ReadAllArgsWithoutValidator = {
-  pathToDir: string;
-  cwd?: string;
-  frontmatterValidator?: never;
-};
-
-type ReadAllArgsWithValidator<Return extends Record<string, unknown>> = {
-  pathToDir: string;
-  cwd?: string;
-  frontmatterValidator?: (args: Record<string, unknown>) => Return;
-};
-
-type ReadAllArgsReturnType<
-  Return extends Record<string, unknown> = Record<string, unknown>
-> = Promise<
-  {
-    path: string;
-    slug: string;
-    frontmatter: Return;
-    content: RenderableTreeNode;
-  }[]
->;
-
-async function readAll(
-  args: ReadAllArgsWithoutValidator
-): ReadAllArgsReturnType;
-
-async function readAll<Return extends Record<string, unknown>>(
-  args: ReadAllArgsWithValidator<Return>
-): ReadAllArgsReturnType<Return>;
-
-async function readAll<Return extends Record<string, unknown>>({
-  pathToDir,
-  cwd,
-  frontmatterValidator,
-}: ReadAllArgsWithoutValidator | ReadAllArgsWithValidator<Return>) {
-  const paths = await absolutePathToFiles({
-    pathToDir,
-    cwd,
-  });
   const files = await Promise.all(
     paths.map((path) => parseAndTransform({ path }))
   );
 
-  if (frontmatterValidator) {
-    const filesWithStronglyTypedFrontmatter = files.map((file) => {
+  if (directory === "blog") {
+    const content = files.map((file) => {
       return {
         ...file,
-        frontmatter: frontmatterValidator(file.frontmatter),
+        frontmatter: validateBlogFrontmatter(file.frontmatter),
       };
     });
-
-    return filesWithStronglyTypedFrontmatter;
+    return content;
   }
 
-  return files;
+  if (directory === "projects") {
+    const content = files.map((file) => {
+      return {
+        ...file,
+        frontmatter: validateProjectFrontmatter(file.frontmatter),
+      };
+    });
+    return content;
+  }
+
+  throw new Error(
+    "type should be one of the available types in ContentDirectory. If you are adding a new directory in Content, then please make sure you include it in ContentType for strong frontmatter type."
+  );
 }
 
-type ReadOneArgsWithoutValidator = {
-  pathToDir: string;
+/* 
+  If you are adding a new content directory like "notes" or "talk",
+  you need to add a function overload for readAll and readOne.
+*/
+/* Overloads for readOne - start */
+export async function readOne(args: {
+  directory: "blog";
   filename: string;
-  cwd?: string;
-  frontmatterValidator?: never;
-};
-
-type ReadOneArgsWithValidator<Return extends Record<string, unknown>> = {
-  pathToDir: string;
+}): Promise<ReturnTypeForBlog>;
+export async function readOne(args: {
+  directory: "projects";
   filename: string;
-  cwd?: string;
-  frontmatterValidator?: (args: Record<string, unknown>) => Return;
-};
+}): Promise<ReturnTypeForProjects>;
+/* Overloads for readOne - end */
 
-type ReadOneArgsReturnType<
-  Return extends Record<string, unknown> = Record<string, unknown>
-> = Promise<{
-  path: string;
-  slug: string;
-  frontmatter: Return;
-  content: RenderableTreeNode;
-}>;
-
-async function readOne(
-  args: ReadOneArgsWithoutValidator
-): ReadOneArgsReturnType;
-
-async function readOne<Return extends Record<string, unknown>>(
-  args: ReadOneArgsWithValidator<Return>
-): ReadOneArgsReturnType<Return>;
-
-async function readOne<Return extends Record<string, unknown>>({
-  pathToDir,
+export async function readOne({
+  directory,
   filename,
-  cwd,
-  frontmatterValidator,
-}: ReadOneArgsWithoutValidator | ReadOneArgsWithValidator<Return>) {
-  const absolutePath = absolutePathToFile({ pathToDir, filename, cwd });
+}: {
+  directory: string;
+  filename: string;
+}) {
+  const pathToDir = path.join(pathToContentDir, directory);
+  const absolutePath = path.join(pathToDir, filename);
 
-  const { content, frontmatter, path, slug } = await parseAndTransform({
+  const {
+    content,
+    frontmatter,
+    path: filepath,
+    slug,
+  } = await parseAndTransform({
     path: absolutePath,
   });
 
-  if (frontmatterValidator) {
+  if (directory === "blog") {
     return {
       content,
-      frontmatter: frontmatterValidator(frontmatter),
-      path,
+      frontmatter: validateBlogFrontmatter(frontmatter),
+      path: filepath,
+      slug,
+    };
+  }
+  if (directory === "projects") {
+    return {
+      content,
+      frontmatter: validateProjectFrontmatter(frontmatter),
+      path: filepath,
       slug,
     };
   }
 
-  return {
-    content,
-    frontmatter,
-    path,
-    slug,
-  };
+  throw new Error(
+    "type should be one of the available types in ContentType. If you are adding a new directory in Content, then please make sure you include it in ContentType for stronger frontmatter type."
+  );
 }
-
-export { readOne, readAll };
