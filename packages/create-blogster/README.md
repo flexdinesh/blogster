@@ -30,6 +30,22 @@ A beautiful Tailwind based theme. [See how it looks here](https://blogster-sleek
 npx create-blogster@latest --theme sleek
 ```
 
+#### Newspaper
+
+A crispy Tailwind based theme. [See how it looks here](https://blogster-newspaper.netlify.com).
+
+```bash
+npx create-blogster@latest --theme newspaper
+```
+
+#### Bubblegum
+
+A colorful Tailwind based theme. [See how it looks here](https://blogster-bubblegum.netlify.com).
+
+```bash
+npx create-blogster@latest --theme bubblegum
+```
+
 ## License
 
 MIT © [Dinesh Pandiyan](https://github.com/flexdinesh)

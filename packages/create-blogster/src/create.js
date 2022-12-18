@@ -57,7 +57,8 @@ async function promptArgs() {
       name: 'theme',
       message: 'Pick a theme',
       initial: 'sleek',
-      choices: ['minimal', 'sleek', 'newspaper'],
+      // NEW THEME CHANGE: here
+      choices: ['minimal', 'sleek', 'newspaper', 'bubblegum'],
       validate: x => !!x,
     }));
     process.stdout.write('\n');

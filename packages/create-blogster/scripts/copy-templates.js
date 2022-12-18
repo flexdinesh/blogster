@@ -48,7 +48,7 @@ async function deleteTemplate(theme) {
   );
 
   // NEW THEME CHANGE: here
-  const themes = ['minimal', 'sleek', 'newspaper'];
+  const themes = ['minimal', 'sleek', 'newspaper', 'bubblegum'];
   // delete all existing templates
   for (const theme of themes) {
     await deleteTemplate(theme);
