@@ -2,6 +2,7 @@
 import { MarkdocRenderer } from "astro-markdoc-renderer";
 import type { Content } from "astro-markdoc-renderer";
 import YouTubeEmbed from "./YouTubeEmbed.astro";
+import Heading from "./Heading.astro";
 
 type Props = {
   content: Content;
@@ -10,6 +11,10 @@ type Props = {
 const { content } = Astro.props;
 
 const components = {
+  Heading: {
+    Component: Heading,
+    props: {},
+  },
   YouTubeEmbed: {
     Component: YouTubeEmbed,
     props: {},

@@ -1,15 +1,12 @@
 ---
 import { readAll } from "../lib/markdoc/read";
-import { validateProjectFrontmatter } from "../lib/markdoc/project/frontmatter";
-
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
 const projects = await readAll({
-  pathToDir: "content/projects",
-  frontmatterValidator: validateProjectFrontmatter,
+  directory: "projects",
 });
 
 const sortedProjects = projects.sort(

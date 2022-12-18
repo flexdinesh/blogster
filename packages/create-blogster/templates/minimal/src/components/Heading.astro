@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes, HTMLTag } from "astro/types";
+
+interface Props extends HTMLAttributes<"h1"> {
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  children: any;
+}
+
+const { level, children } = Astro.props;
+
+let Tag: HTMLTag = "h1";
+if (level === 2) {
+  Tag = "h2";
+} else if (level === 3) {
+  Tag = "h3";
+} else if (level === 4) {
+  Tag = "h4";
+} else if (level === 5) {
+  Tag = "h5";
+} else if (level === 6) {
+  Tag = "h6";
+}
+---
+
+<Tag>{children}</Tag>

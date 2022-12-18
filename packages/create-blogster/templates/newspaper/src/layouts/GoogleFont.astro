@@ -1,0 +1,89 @@
+---
+/*
+  This is not a layout but just a component that's used in page layouts.
+  Easiet way to use a Google font is to embed it as a <link>.
+  But the fastest way to use a Google font is to self host it as woff/woff2
+  files, especially when static hosting with Netlify or any similar providers 
+  that automatically provide a CDN for your assets.
+
+  Read more here on how it works:
+  https://sia.codes/posts/making-google-fonts-faster/
+
+  Woff2 assets downloaded using google-webfonts-helper:
+  https://gwfh.mranftl.com/fonts/open-sans?subsets=latin
+*/
+---
+
+<!-- 
+    We don't want to use <link /> to load fonts from Google CDN 
+    but if you want to switch font this is the easiest way 
+    to check how your page will look with the new font
+--><!-- 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=block"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet"
+    />
+-->
+<Fragment>
+  <link
+    rel="preload"
+    href="/fonts/roboto-mono-v22-latin-regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="crossorigin"
+  />
+  <link
+    rel="preload"
+    href="/fonts/roboto-mono-v22-latin-700.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="crossorigin"
+  />
+  <link
+    rel="preload"
+    href="/fonts/roboto-mono-v22-latin-italic.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="crossorigin"
+  />
+  <style is:inline>
+    /* roboto-mono-regular - latin */
+    @font-face {
+      font-family: "Roboto Mono";
+      font-style: normal;
+      font-weight: 400;
+      src: local(""),
+        url("/fonts/roboto-mono-v22-latin-regular.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/roboto-mono-v22-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+
+    /* roboto-mono-700 - latin */
+    @font-face {
+      font-family: "Roboto Mono";
+      font-style: normal;
+      font-weight: 700;
+      src: local(""),
+        url("/fonts/roboto-mono-v22-latin-700.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/roboto-mono-v22-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+
+    /* roboto-mono-italic - latin */
+    @font-face {
+      font-family: "Roboto Mono";
+      font-style: italic;
+      font-weight: 400;
+      src: local(""),
+        url("/fonts/roboto-mono-v22-latin-italic.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/roboto-mono-v22-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
+</Fragment>
