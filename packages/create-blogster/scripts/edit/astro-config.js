@@ -16,7 +16,8 @@ async function editAstroConfig(theme) {
   FILE_AstroConfig = FILE_AstroConfig.split('\n')
     .map(line => {
       if (line.includes('const SERVER_PORT =')) {
-        return line.replace(/9000|9001/g, '3000');
+        // NEW THEME CHANGE: here
+        return line.replace(/9000|9001|9002/g, '3000');
       } else if (line.includes('LIVE_URL =')) {
         return line.replace(
           /https:\/\/((?:\w+-)+\w+)\.netlify\.app/i,

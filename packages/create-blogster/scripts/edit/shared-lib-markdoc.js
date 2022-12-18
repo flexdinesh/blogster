@@ -16,10 +16,6 @@ async function EDIT_FILE_pages_blog_astro(theme) {
     `@local/shared/markdoc/read`,
     `../lib/markdoc/read`
   );
-  FILE_blog = FILE_blog.replace(
-    `@local/shared/markdoc/blog/frontmatter`,
-    `../lib/markdoc/blog/frontmatter`
-  );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/blog.astro'),
     FILE_blog
@@ -36,10 +32,6 @@ async function EDIT_FILE_pages_projects_astro(theme) {
   FILE_projects = FILE_projects.replace(
     `@local/shared/markdoc/read`,
     `../lib/markdoc/read`
-  );
-  FILE_projects = FILE_projects.replace(
-    `@local/shared/markdoc/project/frontmatter`,
-    `../lib/markdoc/project/frontmatter`
   );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/projects.astro'),
@@ -58,10 +50,6 @@ async function EDIT_FILE_pages_rss_xml_js(theme) {
     `@local/shared/markdoc/read`,
     `../lib/markdoc/read`
   );
-  FILE_rssXML = FILE_rssXML.replace(
-    `@local/shared/markdoc/blog/frontmatter`,
-    `../lib/markdoc/blog/frontmatter`
-  );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/rss.xml.js'),
     FILE_rssXML
@@ -79,15 +67,28 @@ async function EDIT_FILE_pages_blog_slug_astro(theme) {
     `@local/shared/markdoc/read`,
     `../../lib/markdoc/read`
   );
-  FILE_slug = FILE_slug.replace(
-    `@local/shared/markdoc/blog/frontmatter`,
-    `../../lib/markdoc/blog/frontmatter`
-  );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/blog/[slug].astro'),
     FILE_slug
   );
   console.log(`Edited: src/pages/blog/[slug].astro for template: ${theme}`);
+}
+
+async function EDIT_FILE_lib_markdoc_read_ts(theme) {
+  /* Edit relative import path statements lib/markdoc/read.ts */
+  let FILE_readTs = await fs.readFileSync(
+    relativePathToTemplate(theme, 'src/lib/markdoc/read.ts'),
+    'utf8'
+  );
+  FILE_readTs = FILE_readTs.replace(
+    `../../packages/shared/content`,
+    `./content`
+  );
+  await fs.writeFileSync(
+    relativePathToTemplate(theme, 'src/lib/markdoc/read.ts'),
+    FILE_readTs
+  );
+  console.log(`Edited: src/lib/markdoc/read.ts for template: ${theme}`);
 }
 
 async function copySharedLibMarkdoc(theme) {
@@ -108,6 +109,7 @@ async function copySharedLibMarkdoc(theme) {
   await EDIT_FILE_pages_projects_astro(theme);
   await EDIT_FILE_pages_rss_xml_js(theme);
   await EDIT_FILE_pages_blog_slug_astro(theme);
+  await EDIT_FILE_lib_markdoc_read_ts(theme);
 }
 
 module.exports = {

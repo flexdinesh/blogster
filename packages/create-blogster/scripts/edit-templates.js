@@ -31,7 +31,8 @@ async function editTemplate(theme) {
   await fs.ensureDirSync(
     path.join(path.normalize(`${__dirname}/../templates`))
   );
-  const themes = ['minimal', 'sleek'];
+  // NEW THEME CHANGE: here
+  const themes = ['minimal', 'sleek', 'newspaper'];
   // edit all templates - copy from shared packages and edit file imports
   for (const theme of themes) {
     await editTemplate(theme);

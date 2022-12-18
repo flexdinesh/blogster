@@ -18,7 +18,7 @@ Usage
   $ create-blogster <directory>
 
 Options
-  --theme Pick a theme (minimal/sleek)
+  --theme Pick a theme (minimal/sleek/newspaper)
 
 Examples
   $ create-blogster my-blog --theme sleek
@@ -57,7 +57,7 @@ async function promptArgs() {
       name: 'theme',
       message: 'Pick a theme',
       initial: 'sleek',
-      choices: ['minimal', 'sleek'],
+      choices: ['minimal', 'sleek', 'newspaper'],
       validate: x => !!x,
     }));
     process.stdout.write('\n');
@@ -71,26 +71,9 @@ async function promptArgs() {
 }
 
 async function copyTemplateDirectory(theme, directory) {
-  const minimalTemplateDir = path.normalize(
-    `${__dirname}/../templates/minimal`
+  const templateDir = path.normalize(
+    `${__dirname}/../templates/${theme.toLowerCase()}`
   );
-  const sleekTemplateDir = path.normalize(`${__dirname}/../templates/sleek`);
-  // sleek is default
-  let templateDir = sleekTemplateDir;
-  switch (theme.toLowerCase()) {
-    case 'minimal': {
-      templateDir = minimalTemplateDir;
-      break;
-    }
-    case 'sleek': {
-      templateDir = sleekTemplateDir;
-      break;
-    }
-    default: {
-      templateDir = sleekTemplateDir;
-    }
-  }
-
   const srcDir = path.join(templateDir);
   const destDir = path.join(directory);
   await fs.copySync(srcDir, destDir, { overwrite: true });

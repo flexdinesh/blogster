@@ -47,7 +47,8 @@ async function deleteTemplate(theme) {
     path.join(path.normalize(`${__dirname}/../templates`))
   );
 
-  const themes = ['minimal', 'sleek'];
+  // NEW THEME CHANGE: here
+  const themes = ['minimal', 'sleek', 'newspaper'];
   // delete all existing templates
   for (const theme of themes) {
     await deleteTemplate(theme);
