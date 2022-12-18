@@ -21,6 +21,10 @@
     "@theme/sleek#build": {
       "cache": false,
       "outputs": []
+    },
+    "@theme/newspaper#build": {
+      "cache": false,
+      "outputs": []
     }
   }
 }

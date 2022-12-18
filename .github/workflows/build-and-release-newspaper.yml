@@ -1,0 +1,37 @@
+name: main branch workflow - newspaper theme
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - themes/newspaper/**
+  workflow_dispatch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Abort if env var not found
+        env:
+          NETLIFY_ID: ${{ secrets.NETLIFY_SITE_ID_BLOGSTER_NEWSPAPER }}
+        if: "${{ env.NETLIFY_ID == '' }}"
+        run: exit 1
+      - run: yarn
+      - run: yarn lint
+      - run: yarn build:newspaper
+      # Deploy to Netlify
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=themes/newspaper/dist --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_BLOGSTER_NEWSPAPER }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN_BLOGSTER }}
+
