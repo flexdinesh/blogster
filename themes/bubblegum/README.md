@@ -1,12 +1,12 @@
 # Blogster
 
-Theme: **newspaper**
+Theme: **bubblegum**
 
 Blogster is a collection of beautiful, accessible and performant blog templates built with [Astro](https://astro.build) and [Markdoc](https://markdoc.dev).
 
-Check out the demo here - [Blogster newspaper template](https://blogster-newspaper.netlify.app).
+Check out the demo here - [Blogster bubblegum template](https://blogster-bubblegum.netlify.app).
 
-## Newspaper Template
+## Bubblegum Template
 
 A beautiful, performant and accessible theme built with [Tailwind](https://tailwindcss.com).
 
