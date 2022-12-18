@@ -5,6 +5,8 @@ Blogster is a collection of beautiful, accessible and performant blog templates 
 Check out the demo templates:
 
 - [Blogster sleek template](https://blogster-sleek.netlify.app)
+- [Blogster newspaper template](https://blogster-newspaper.netlify.app)
+- [Blogster bubblegum template](https://blogster-bubblegum.netlify.app)
 - [Blogster minimal template](https://blogster-minimal.netlify.app)
 
 ## Key Features
@@ -32,6 +34,8 @@ Blogster comes in a variety of themes. You can easily find one that suits and go
 
 - [Minimal](#minimal)
 - [Sleek](#sleek)
+- [Newspaper](#newspaper)
+- [Bubblegum](#bubblegum)
 
 ### Minimal
 
@@ -51,6 +55,26 @@ Check it out here - [Blogster sleek template](https://blogster-sleek.netlify.com
 
 ```bash
 npx create-blogster@latest --theme sleek
+```
+
+### Newspaper
+
+A beautiful, performant and accessible theme built with [Tailwind](https://tailwindcss.com).
+
+Check it out here - [Blogster newspaper template](https://blogster-newspaper.netlify.com).
+
+```bash
+npx create-blogster@latest --theme newspaper
+```
+
+### Bubblegum
+
+A beautiful, performant and accessible theme built with [Tailwind](https://tailwindcss.com).
+
+Check it out here - [Blogster bubblegum template](https://blogster-bubblegum.netlify.com).
+
+```bash
+npx create-blogster@latest --theme newspaper
 ```
 
 ## FAQ
