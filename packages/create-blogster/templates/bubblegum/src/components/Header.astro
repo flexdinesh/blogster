@@ -3,8 +3,8 @@ import HeaderLink from "./HeaderLink.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
-<header>
-  <nav class="flex gap-4 text-text-bold">
+<header class="">
+  <nav class="flex gap-4 text-text-bold flex-1">
     <span><HeaderLink href="/">Home</HeaderLink></span>
     <span><HeaderLink href="/blog">Blog</HeaderLink></span>
     <span><HeaderLink href="/projects">Projects</HeaderLink></span>
@@ -13,21 +13,35 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     class="justify-self-end py-2 flex items-center content-center text-text-bold"
   >
     <a
-      class="unset text-2xl ml-4 hover:text-text-link"
+      class="unset ml-4
+      rounded-sm
+      transition-[background-size] duration-150 ease-in-out
+      bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%]
+      bg-no-repeat bg-gradient-to-r from-primary-yellow to-primary-yellow
+      dark:bg-none dark:hover:text-primary-yellow
+      "
       href="https://github.com/flexdinesh/blogster"
       aria-label="Blogster on GitHub"
     >
       <i class="fa-brands fa-github"></i>
+      <span class="hidden md:inline">GitHub</span>
     </a>
     <a
-      class="unset text-2xl ml-4 hover:text-text-link"
+      class="unset ml-4 
+        rounded-sm
+        transition-[background-size] duration-150
+        bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%]
+        bg-no-repeat bg-gradient-to-r from-primary-blue to-primary-blue
+        dark:bg-none dark:hover:text-primary-blue
+      "
       href="https://twitter.com/flexdinesh"
       aria-label="Dinesh on Twitter"
     >
       <i class="fa-brands fa-twitter"></i>
+      <span class="hidden md:inline">Twitter</span>
     </a>
-    <DarkModeToggle />
   </div>
+  <DarkModeToggle />
 </header>
 <style>
   header {
