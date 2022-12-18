@@ -25,6 +25,10 @@
     "@theme/newspaper#build": {
       "cache": false,
       "outputs": []
+    },
+    "@theme/bubblegum#build": {
+      "cache": false,
+      "outputs": []
     }
   }
 }

@@ -13,6 +13,7 @@
     "build:minimal": "turbo run @theme/minimal#build",
     "build:sleek": "turbo run @theme/sleek#build",
     "build:newspaper": "turbo run @theme/newspaper#build",
+    "build:bubblegum": "turbo run @theme/bubblegum#build",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
