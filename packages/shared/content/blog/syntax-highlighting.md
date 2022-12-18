@@ -8,6 +8,8 @@ Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism) w
 
 ## HTML Code Block
 
+An example `HTML` code block.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +25,8 @@ Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism) w
 
 ## JSX Code Block
 
+An example `jsx` code block.
+
 ```jsx
 const Greet = () => {
   const message = `Hello World!`;
@@ -31,6 +35,8 @@ const Greet = () => {
 ```
 
 ## CSS Code Block
+
+An example `css` code block.
 
 ```css
 .layout {

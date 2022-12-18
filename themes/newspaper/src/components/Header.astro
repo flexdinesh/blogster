@@ -1,0 +1,25 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import DarkModeToggle from "./DarkModeToggle.astro";
+---
+
+<header>
+  <nav class="flex gap-4 text-text-bold">
+    <span><HeaderLink href="/">Home</HeaderLink></span>
+    <span><HeaderLink href="/blog">Blog</HeaderLink></span>
+    <span><HeaderLink href="/projects">Projects</HeaderLink></span>
+  </nav>
+  <div
+    class="justify-self-end xpy-2 flex items-center content-center text-text-bold"
+  >
+    <DarkModeToggle />
+  </div>
+</header>
+<style>
+  header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>
