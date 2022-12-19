@@ -168,6 +168,14 @@
   content: "\23";
 }
 
+.fa-bars::before {
+  content: "\f0c9";
+}
+
+.fa-xmark::before {
+  content: "\f00d";
+}
+
 .sr-only,
 .fa-sr-only {
   position: absolute;
