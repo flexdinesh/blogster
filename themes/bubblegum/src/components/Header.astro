@@ -1,51 +1,34 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import Nav from "./Nav.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
 <header class="">
-  <a class="unset absolute left-[50%] translate-x-[-50%] translate-y-[-200%] bg-white text-black px-2 py-1 transition-transform focus:translate-y-[0%]" href="#main">
+  <a
+    class="unset absolute left-[50%] translate-x-[-50%] translate-y-[-200%] bg-white text-black px-2 py-1 transition-transform focus:translate-y-[0%]"
+    href="#main"
+  >
     Skip to content
   </a>
-  <nav>
-    <section class="text-text-bold">
-      <ul class="unset flex gap-4 [&>li]:p-0">
-        <li><HeaderLink href="/">Home</HeaderLink></li>
-        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
-        <li><HeaderLink href="/projects">Projects</HeaderLink></li>
-      </ul>
-    </section>
-  </nav>
+  <Nav />
   <div
     class="justify-self-end py-2 flex items-center content-center text-text-bold"
   >
     <a
-      class="unset ml-4
-          rounded-sm
-          transition-[background-size] duration-150 ease-in-out
-          bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%]
-          bg-no-repeat bg-gradient-to-r from-primary-yellow to-primary-yellow
-          dark:bg-none dark:hover:text-primary-yellow
-        "
+      class="unset ml-4 rounded-sm transition-[background-size] duration-150 ease-in-out bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] bg-no-repeat bg-gradient-to-r from-primary-yellow to-primary-yellow dark:bg-none dark:hover:text-primary-yellow"
       href="https://github.com/flexdinesh/blogster"
-      aria-label="Blogster on GitHub"
     >
-      <i class="fa-brands fa-github"></i>
-      <span class="hidden md:inline">GitHub</span>
+      <i class="fa-brands fa-github" aria-hidden="true" title="Blogster on GitHub"></i>
+      <span class="fa-sr-only">Blogster on GitHub</span>
+      <span>GitHub</span>
     </a>
     <a
-      class="unset ml-4 
-          rounded-sm
-          transition-[background-size] duration-150
-          bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%]
-          bg-no-repeat bg-gradient-to-r from-primary-blue to-primary-blue
-          dark:bg-none dark:hover:text-primary-blue
-        "
+      class="unset ml-4 rounded-sm transition-[background-size] duration-150 bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] bg-no-repeat bg-gradient-to-r from-primary-blue to-primary-blue dark:bg-none dark:hover:text-primary-blue"
       href="https://twitter.com/flexdinesh"
-      aria-label="Dinesh on Twitter"
     >
-      <i class="fa-brands fa-twitter"></i>
-      <span class="hidden md:inline">Twitter</span>
+      <i class="fa-brands fa-twitter" aria-hidden="true" title="Dinesh on Twitter"></i>
+      <span class="fa-sr-only">Dinesh on Twitter</span>
+      <span>Twitter</span>
     </a>
   </div>
   <DarkModeToggle />
@@ -55,6 +38,9 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     grid-area: header;
     display: grid;
     align-items: center;
-    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, max-content);
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
+        0,
+        max-content
+      );
   }
 </style>
