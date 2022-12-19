@@ -4,7 +4,10 @@ import DarkModeToggle from "./DarkModeToggle.astro";
 ---
 
 <header>
-  <a class="unset absolute left-[50%] translate-x-[-50%] translate-y-[-200%] bg-white text-black px-2 py-1 transition-transform focus:translate-y-[0%]" href="#main">
+  <a
+    class="unset absolute z-10 left-[50%] translate-x-[-50%] translate-y-[-200%] bg-white text-black px-2 py-1 transition-transform focus:translate-y-[0%]"
+    href="#main"
+  >
     Skip to content
   </a>
   <nav>
@@ -22,16 +25,22 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     <a
       class="unset text-2xl ml-4 hover:text-text-link"
       href="https://github.com/flexdinesh/blogster"
-      aria-label="Blogster on GitHub"
     >
-      <i class="fa-brands fa-github"></i>
+      <i
+        class="fa-brands fa-github"
+        aria-hidden="true"
+        title="Blogster on GitHub"></i>
+      <span class="fa-sr-only">Blogster on GitHub</span>
     </a>
     <a
       class="unset text-2xl ml-4 hover:text-text-link"
       href="https://twitter.com/flexdinesh"
-      aria-label="Dinesh on Twitter"
     >
-      <i class="fa-brands fa-twitter"></i>
+      <i
+        class="fa-brands fa-twitter"
+        aria-hidden="true"
+        title="Dinesh on Twitter"></i>
+      <span class="fa-sr-only">Dinesh on Twitter</span>
     </a>
     <DarkModeToggle />
   </div>
@@ -41,6 +50,9 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     grid-area: header;
     display: grid;
     align-items: center;
-    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, max-content);
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
+        0,
+        max-content
+      );
   }
 </style>
