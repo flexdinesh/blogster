@@ -5,6 +5,9 @@ import TwitterIcon from "../components/ui/icons/twitter.astro";
 ---
 
 <header>
+  <a class="skip-to-main" href="#main">
+    Skip to content
+  </a>
   <nav>
     <span><HeaderLink href="/">Home</HeaderLink></span>
     <span><HeaderLink href="/blog">Blog</HeaderLink></span>
@@ -60,5 +63,19 @@ import TwitterIcon from "../components/ui/icons/twitter.astro";
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .skip-to-main {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-200%);
+    background-color: white;
+    color: black;
+    padding: 0.25rem 0.5rem;
+    transition: transform 300ms;
+  }
+
+  .skip-to-main:focus {
+    transform: translateX(-50%) translateY(0);
   }
 </style>
