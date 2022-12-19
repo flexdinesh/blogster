@@ -7,10 +7,14 @@ import DarkModeToggle from "./DarkModeToggle.astro";
   <a class="unset absolute left-[50%] translate-x-[-50%] translate-y-[-200%] bg-white text-black px-2 py-1 transition-transform focus:translate-y-[0%]" href="#main">
     Skip to content
   </a>
-  <nav class="flex gap-4 text-text-bold">
-    <span><HeaderLink href="/">Home</HeaderLink></span>
-    <span><HeaderLink href="/blog">Blog</HeaderLink></span>
-    <span><HeaderLink href="/projects">Projects</HeaderLink></span>
+  <nav>
+    <section class="text-text-bold">
+      <ul class="unset flex gap-4 [&>li]:p-0">
+        <li><HeaderLink href="/">Home</HeaderLink></li>
+        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
+        <li><HeaderLink href="/projects">Projects</HeaderLink></li>
+      </ul>
+    </section>
   </nav>
   <div
     class="justify-self-end py-2 flex items-center content-center text-text-bold"
@@ -35,8 +39,8 @@ import DarkModeToggle from "./DarkModeToggle.astro";
 <style>
   header {
     grid-area: header;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, max-content);
   }
 </style>
