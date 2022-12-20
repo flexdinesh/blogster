@@ -77,11 +77,22 @@ Check it out here - [Blogster bubblegum template](https://blogster-bubblegum.net
 npx create-blogster@latest --theme newspaper
 ```
 
+<!-- ## Showcase
+
+Collections of blogs built with Blogster.
+
+1. [dineshpandiyan.com (sleek)](https://dineshpandiyan.com)
+
+Create a PR to add yours to the list. -->
+
 ## FAQ
 
-**1. Why Markdoc or Why not MDX?**
-
-MDX is great but when you use MDX, your MDX content is stored as code within your `.md` files. Markdoc lets you build and use your own custom components (Eg. YouTube embed, CodePen embed, Carousel, etc) within your markdown files with a special syntax. Your content is stored as content without having to leak your code into your `.md` files. You can build validations, type-safety and all sorts of customisations for your custom components with Markdoc. If you're still not convinced, hear this, you can pass Markdoc content as string (just like any other string) throughout your application, store it in local storage or send it as params over the network. IMHO, with Markdoc based content authoring gives you the full flexibility of markdown without the limits of the markdown syntax.
+<details>
+    <summary><strong>1. Why Markdoc or Why not MDX?</strong></summary>
+    <p>
+        MDX is great but when you use MDX, your MDX content is stored as code within your `.md` files. Markdoc lets you build and use your own custom components (Eg. YouTube embed, CodePen embed, Carousel, etc) within your markdown files with a special syntax. Your content is stored as text without having to leak code (imports or JSX) into your `.md` files. You can build validations, type-safety and all sorts of customisations for your custom components with Markdoc. If you're still not convinced, hear this, you can pass Markdoc content as string (just like any other string) throughout your application, store it in local storage or send it as params over the network. IMHO, Markdoc based content authoring gives you the full flexibility of markdown without the limits of the markdown syntax.
+    </p>
+</details>
 
 ## License
 
