@@ -14,11 +14,14 @@
     "build:sleek": "turbo run @theme/sleek#build",
     "build:newspaper": "turbo run @theme/newspaper#build",
     "build:bubblegum": "turbo run @theme/bubblegum#build",
+    "deps:check": "manypkg check",
+    "deps:fix": "manypkg fix",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "devDependencies": {
+  "dependencies": {
+    "@manypkg/cli": "^0.19.2",
     "eslint-config-custom": "*",
     "prettier": "latest",
     "turbo": "latest"
@@ -26,6 +29,5 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
   "packageManager": "yarn@1.22.19"
 }
