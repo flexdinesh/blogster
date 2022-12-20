@@ -60,7 +60,7 @@ export const config: Config = {
     },
     // if you want to customise default tags, this is where you'd do it
     // after adding the code here, add an Astro component for this node
-    // in MarkdownRenderer.astro component
+    // in Renderer.astro component
     // paragraph: {
     //   render: "paragraph",
     //   transform(node, config) {

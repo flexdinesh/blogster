@@ -25,7 +25,7 @@ A beautiful, performant and accessible theme built with [Tailwind](https://tailw
 All the content is written in markdown (.md) and grouped as `blog` or `projects` in the `content` directory. All the default markdown syntax will work. You also have a few example custom markdown elements like _YouTube embed_, _CodeSandbox embed_, etc. You can create your own custom components too in two easy steps.
 
 1. Add a markdoc config. Check out the markdoc config in [src/lib/markdoc/config.ts](src/lib/markdoc/config.ts) to learn how to add custom components.
-2. Add a component to render your custom component. Check out the MarkdownRenderer in [src/components/MarkdownRenderer.astro](src/components/MarkdownRenderer.astro).
+2. Add a component to render your custom component. Check out the Renderer in [src/components/Renderer.astro](src/components/Renderer.astro).
 
 ## How do I make it my blog?
 

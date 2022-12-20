@@ -1,6 +1,6 @@
 ---
 import { readOne, readAll } from "@local/shared/markdoc/read";
-import MarkdownRenderer from "../../components/MarkdownRenderer.astro";
+import Renderer from "../../components/Renderer.astro";
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 
@@ -37,5 +37,5 @@ const { content, frontmatter } = await readOne({
     publishDate={frontmatter.date.toISOString()}
     slot="meta"
   />
-  <MarkdownRenderer content={content} slot="content" />
+  <Renderer content={content} slot="content" />
 </ContentLayout>
