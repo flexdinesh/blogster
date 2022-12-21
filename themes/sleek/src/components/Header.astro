@@ -20,7 +20,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     </section>
   </nav>
   <div
-    class="justify-self-end py-2 flex items-center content-center text-text-bold"
+    class="max-[375px]:hidden justify-self-end py-2 flex items-center content-center text-text-bold"
   >
     <a
       class="unset text-2xl ml-4 hover:text-text-link"
@@ -42,8 +42,8 @@ import DarkModeToggle from "./DarkModeToggle.astro";
         title="Dinesh on Twitter"></i>
       <span class="fa-sr-only">Dinesh on Twitter</span>
     </a>
-    <DarkModeToggle />
   </div>
+  <DarkModeToggle />
 </header>
 <style>
   header {
