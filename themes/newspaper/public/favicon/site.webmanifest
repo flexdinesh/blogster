@@ -1,6 +1,7 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Blogster theme newspaper",
+    "short_name": "Blogster newspaper",
+    "start_url": "https://blogster-newspaper.netlify.app", 
     "icons": [
         {
             "src": "/favicon/android-chrome-192x192.png",

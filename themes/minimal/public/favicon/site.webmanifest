@@ -1,6 +1,7 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Blogster theme minimal",
+    "short_name": "Blogster minimal",
+    "start_url": "https://blogster-minimal.netlify.app", 
     "icons": [
         {
             "src": "/favicon/android-chrome-192x192.png",

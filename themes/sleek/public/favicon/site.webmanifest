@@ -1,6 +1,7 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Blogster theme sleek",
+    "short_name": "Blogster sleek",
+    "start_url": "https://blogster-sleek.netlify.app", 
     "icons": [
         {
             "src": "/favicon/android-chrome-192x192.png",
