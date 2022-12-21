@@ -1,13 +1,31 @@
-# Blogster
+![Blogster - Beautiful, accessible and performant Astroblog templates.](/gh-assets/gh-cover.png)
 
-Blogster is a collection of beautiful, accessible and performant blog templates built with [Astro](https://astro.build) and [Markdoc](https://markdoc.dev).
+<p align="center">
+    <table>
+        <tbody>
+            <td align="center">
+                <img width="2000" height="0" /><br>
+                <p align="center">
+                    <strong>Blogster<strong> is a collection of beautiful, accessible and performant blog templates built with <a href="https://astro.build">Astro</a> and <a href="https://markdoc.dev">Markdoc</a>.
+                </p>
+                <sub>
+                    Blogster is in <b>alpha</b> preview. If you have any feedback, please open a discussion or issue.<br>
+                    Follow me <a href="https://twitter.com/flexdinesh">@flexdinesh</a> on Twitter for updates.</sub><br>
+                <img width="2000" height="0" />
+            </td>
+        </tbody>
+    </table>
+</p>
 
-Check out the demo templates:
 
-- [Blogster sleek template](https://blogster-sleek.netlify.app)
-- [Blogster newspaper template](https://blogster-newspaper.netlify.app)
-- [Blogster bubblegum template](https://blogster-bubblegum.netlify.app)
-- [Blogster minimal template](https://blogster-minimal.netlify.app)
+## Demo
+
+Check out the demo for each theme.
+
+- [Demo: Sleek](https://blogster-sleek.netlify.app)
+- [Demo: Newspaper](https://blogster-newspaper.netlify.app)
+- [Demo: Bubblegum](https://blogster-bubblegum.netlify.app)
+- [Demo: Minimal](https://blogster-minimal.netlify.app)
 
 ## Key Features
 
