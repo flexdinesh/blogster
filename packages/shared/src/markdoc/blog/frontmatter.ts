@@ -5,6 +5,7 @@ const dateFormat = "yyyy-MM-dd";
 
 // for posts with content in *.md file
 type MarkdownPostFrontmatter = {
+  draft: boolean;
   title: string;
   description?: string;
   date: Date;
@@ -15,6 +16,7 @@ type MarkdownPostFrontmatter = {
 
 // for posts that are just links to external posts
 type ExternalPostFrontmatter = {
+  draft: boolean;
   title: string;
   date: Date;
   external: true;
@@ -28,15 +30,17 @@ export function validateBlogFrontmatter(
     throw new Error("Frontmatter should be an object with keys");
   }
 
+  // frontmatter.draft
+  if (frontmatter.draft === "true" || frontmatter.draft === true) {
+    frontmatter.draft = true;
+  } else {
+    frontmatter.draft = false;
+  }
+
   // frontmatter.title
   if (typeof frontmatter.title !== "string") {
     throw new Error("Frontmatter.title is missing. String expected.");
   }
-
-  // description is important for og:description
-  // if (typeof frontmatter.description !== "string") {
-  //   throw new Error("Frontmatter.description is missing. String expected.");
-  // }
 
   // frontmatter.date
   if (
@@ -82,6 +86,12 @@ export function validateBlogFrontmatter(
       external: true,
     } as ExternalPostFrontmatter;
   }
+
+  // description is important for og:description
+  // if you want to make it mandatory, uncomment this condition
+  // if (typeof frontmatter.description !== "string") {
+  //   throw new Error("Frontmatter.description is missing. String expected.");
+  // }
 
   return {
     ...frontmatter,
