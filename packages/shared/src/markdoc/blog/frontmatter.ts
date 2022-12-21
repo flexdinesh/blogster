@@ -8,7 +8,7 @@ type MarkdownPostFrontmatter = {
   title: string;
   description?: string;
   date: Date;
-  isExternal: false;
+  external: false;
   ogImagePath?: string;
   canonicalUrl?: string;
 };
@@ -17,7 +17,7 @@ type MarkdownPostFrontmatter = {
 type ExternalPostFrontmatter = {
   title: string;
   date: Date;
-  isExternal: true;
+  external: true;
   url: string;
 };
 
@@ -67,24 +67,24 @@ export function validateBlogFrontmatter(
 
   // frontmatter.url (external links)
   if (
-    frontmatter.isExternal === "true" ||
-    frontmatter.isExternal === true ||
+    frontmatter.external === "true" ||
+    frontmatter.external === true ||
     frontmatter.url
   ) {
     if (typeof frontmatter.url !== "string") {
       throw new Error(
-        "Frontmatter.url is missing. Posts marked (isExternal: true) should have a url."
+        "Frontmatter.url is missing. Posts marked (external: true) should have a url."
       );
     }
 
     return {
       ...frontmatter,
-      isExternal: true,
+      external: true,
     } as ExternalPostFrontmatter;
   }
 
   return {
     ...frontmatter,
-    isExternal: false,
+    external: false,
   } as MarkdownPostFrontmatter;
 }

@@ -60,7 +60,7 @@ describe("validateBlogFrontmatter", () => {
       validateBlogFrontmatter({
         title: "hello",
         date: "2022-10-10",
-        isExternal: true,
+        external: true,
       })
     ).toThrowError();
   });
