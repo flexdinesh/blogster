@@ -100,7 +100,7 @@ img {
 	height: auto;
 }
 
-code {
+code:not(.unset) {
 	padding: 2px 5px;
 	color: var(--code-text);
 	background-color: var(--code-background);

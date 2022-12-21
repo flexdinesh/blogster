@@ -1,0 +1,28 @@
+---
+type Props = {
+  url: string;
+};
+
+const { url } = Astro.props;
+---
+
+<p class="not-prose">
+  <div class="flex items-center justify-center">
+    <blockquote
+      class="twitter-tweet"
+      data-conversation="none"
+      data-theme="light"
+      data-lang="en"
+      data-dnt="true"
+    >
+      <a class="unset" href={url}>Loading tweet...</a>
+    </blockquote>
+  </div>
+
+  <script
+    async
+    defer
+    src="https://platform.twitter.com/widgets.js"
+    charset="utf-8"
+  ></script>
+</p>

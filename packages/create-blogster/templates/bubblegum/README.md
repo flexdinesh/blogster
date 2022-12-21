@@ -16,13 +16,13 @@ A beautiful, performant and accessible theme built with [Tailwind](https://tailw
 - **Accessible**. A well thought out semantic and accessible content.
 - **Perfect lighthouse score.** 100 across the board.
 - **Easy content authoring**. Author content using markdown (`.md`) from your code editor or directly in GitHub.
-- **Extended markdown with [Markdoc](https://markdoc.dev).** Type-safe custom components like YouTube embed, CodePen embed (or anything you want really) in your markdown (`.md`) files.
+- **Extended markdown with [Markdoc](https://markdoc.dev).** Type-safe custom components like YouTube embed, Twitter embed (or anything you want really) in your markdown (`.md`) files.
 - **RSS feed**. Your blog has an RSS feed setup that can be accessed at `/rss.xml`.
 - **SEO**. All pages are setup with all the SEO you might need.
 
 ## How do I add content?
 
-All the content is written in markdown (.md) and grouped as `blog` or `projects` in the `content` directory. All the default markdown syntax will work. You also have a few example custom markdown elements like _YouTube embed_, _CodeSandbox embed_, etc. You can create your own custom components too in two easy steps.
+All the content is written in markdown (.md) and grouped as `blog` or `projects` in the `content` directory. All the default markdown syntax will work. You also have a few example custom markdown elements like _YouTube embed_, _Twitter embed_, etc. You can create your own custom components too in two easy steps.
 
 1. Add a markdoc config. Check out the markdoc config in [src/lib/markdoc/config.ts](src/lib/markdoc/config.ts) to learn how to add custom components.
 2. Add a component to render your custom component. Check out the Renderer in [src/components/Renderer.astro](src/components/Renderer.astro).

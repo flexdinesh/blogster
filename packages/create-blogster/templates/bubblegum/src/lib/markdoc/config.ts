@@ -76,6 +76,28 @@ export const config: Config = {
       },
       selfClosing: true,
     },
+    tweet: {
+      render: "TweetEmbed",
+      attributes: {
+        url: { type: String, required: true },
+      },
+      selfClosing: true,
+    },
+    codepen: {
+      render: "CodePenEmbed",
+      attributes: {
+        url: { type: String, required: true },
+        title: { type: String, required: true },
+      },
+      selfClosing: true,
+    },
+    githubgist: {
+      render: "GitHubGistEmbed",
+      attributes: {
+        id: { type: String, required: true },
+      },
+      selfClosing: true,
+    },
   },
   nodes: {
     heading: {

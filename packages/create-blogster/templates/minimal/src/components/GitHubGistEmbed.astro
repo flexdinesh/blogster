@@ -1,0 +1,17 @@
+---
+type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+---
+
+<p>
+  <code class="unset" data-gist-id={id}></code>
+</p>
+<script
+  async
+  defer
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/gist-embed@1.0.4/dist/gist-embed.min.js"
+></script>

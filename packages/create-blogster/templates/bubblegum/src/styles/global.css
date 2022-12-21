@@ -39,7 +39,7 @@
         color: theme('colors.text.link');
     }
 
-    code:not(pre code) {
+    code:not(pre code):not(.unset) {
         background-color: theme('colors.bg.code');
         color: theme('colors.text.code');
         padding: 0.125rem 0.25rem;
