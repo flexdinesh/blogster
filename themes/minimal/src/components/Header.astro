@@ -5,9 +5,7 @@ import TwitterIcon from "../components/ui/icons/twitter.astro";
 ---
 
 <header>
-  <a class="skip-to-main" href="#main">
-    Skip to content
-  </a>
+  <a class="skip-to-main" href="#main"> Skip to content</a>
   <nav>
     <section>
       <ul>
@@ -39,7 +37,10 @@ import TwitterIcon from "../components/ui/icons/twitter.astro";
     grid-area: header;
     display: grid;
     align-items: center;
-    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, max-content);
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
+        0,
+        max-content
+      );
   }
 
   nav {
@@ -80,17 +81,18 @@ import TwitterIcon from "../components/ui/icons/twitter.astro";
   }
 
   .skip-to-main {
+    border: none !important;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%) translateY(-200%);
+    top: -100rem;
+    transform: translateX(-50%);
     background-color: white;
     color: black;
-    padding: 0.25rem 0.5rem;
-    transition: transform 300ms;
+    padding: 0.5rem 1rem;
     z-index: 10;
   }
 
   .skip-to-main:focus {
-    transform: translateX(-50%) translateY(0);
+    top: initial;
   }
 </style>
