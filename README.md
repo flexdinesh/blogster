@@ -35,7 +35,7 @@ Check out the demo for each theme.
 - **Accessible.** A well thought out semantic and accessible content.
 - **Perfect lighthouse score.** 100 across the board.
 - **Easy content authoring** Author content using markdown (`.md`) from your code editor or directly in GitHub.
-- **Extended markdown with [Markdoc](https://markdoc.dev).** Type-safe custom components like YouTube embed, CodePen embed (or anything you want really) in your markdown (`.md`) files.
+- **Extended markdown with [Markdoc](https://markdoc.dev).** Type-safe custom components like YouTube embed, Twitter embed (or anything you want really) in your markdown (`.md`) files.
 - Built in **RSS** feed for you blog, excellent **SEO** and more.
 
 ## Get Started
@@ -108,7 +108,7 @@ Create a PR to add yours to the list. -->
 <details>
     <summary><strong>1. Why Markdoc or Why not MDX?</strong></summary>
     <p>
-        MDX is great but when you use MDX, your MDX content is stored as code within your `.md` files. Markdoc lets you build and use your own custom components (Eg. YouTube embed, CodePen embed, Carousel, etc) within your markdown files with a special syntax. Your content is stored as text without having to leak code (imports or JSX) into your `.md` files. You can build validations, type-safety and all sorts of customisations for your custom components with Markdoc. If you're still not convinced, hear this, you can pass Markdoc content as string (just like any other string) throughout your application, store it in local storage or send it as params over the network. IMHO, Markdoc based content authoring gives you the full flexibility of markdown without the limits of the markdown syntax.
+        MDX is great but when you use MDX, your MDX content is stored as code within your `.md` files. Markdoc lets you build and use your own custom components (Eg. YouTube embed, Twitter embed, Carousel, etc) within your markdown files with a special syntax. Your content is stored as text without having to leak code (imports or JSX) into your `.md` files. You can build validations, type-safety and all sorts of customisations for your custom components with Markdoc. If you're still not convinced, hear this, you can pass Markdoc content as string (just like any other string) throughout your application, store it in local storage or send it as params over the network. IMHO, Markdoc based content authoring gives you the full flexibility of markdown without the limits of the markdown syntax.
     </p>
 </details>
 
