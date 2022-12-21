@@ -50,19 +50,19 @@ Paragraphs can be multiline too when they constitute words that make up more tha
 
 ## List Types
 
-#### Ordered List
+### Ordered List
 
 1. First item
 2. Second item
 3. Third item
 
-#### Unordered List
+### Unordered List
 
 - List item
 - Another item
 - And another item
 
-#### Nested list
+### Nested list
 
 - Fruit
   - Apple
