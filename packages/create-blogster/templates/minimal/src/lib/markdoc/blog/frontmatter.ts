@@ -5,19 +5,21 @@ const dateFormat = "yyyy-MM-dd";
 
 // for posts with content in *.md file
 type MarkdownPostFrontmatter = {
+  draft: boolean;
   title: string;
   description?: string;
   date: Date;
-  isExternal: false;
+  external: false;
   ogImagePath?: string;
   canonicalUrl?: string;
 };
 
 // for posts that are just links to external posts
 type ExternalPostFrontmatter = {
+  draft: boolean;
   title: string;
   date: Date;
-  isExternal: true;
+  external: true;
   url: string;
 };
 
@@ -28,15 +30,17 @@ export function validateBlogFrontmatter(
     throw new Error("Frontmatter should be an object with keys");
   }
 
+  // frontmatter.draft
+  if (frontmatter.draft === "true" || frontmatter.draft === true) {
+    frontmatter.draft = true;
+  } else {
+    frontmatter.draft = false;
+  }
+
   // frontmatter.title
   if (typeof frontmatter.title !== "string") {
     throw new Error("Frontmatter.title is missing. String expected.");
   }
-
-  // description is important for og:description
-  // if (typeof frontmatter.description !== "string") {
-  //   throw new Error("Frontmatter.description is missing. String expected.");
-  // }
 
   // frontmatter.date
   if (
@@ -67,24 +71,30 @@ export function validateBlogFrontmatter(
 
   // frontmatter.url (external links)
   if (
-    frontmatter.isExternal === "true" ||
-    frontmatter.isExternal === true ||
+    frontmatter.external === "true" ||
+    frontmatter.external === true ||
     frontmatter.url
   ) {
     if (typeof frontmatter.url !== "string") {
       throw new Error(
-        "Frontmatter.url is missing. Posts marked (isExternal: true) should have a url."
+        "Frontmatter.url is missing. Posts marked (external: true) should have a url."
       );
     }
 
     return {
       ...frontmatter,
-      isExternal: true,
+      external: true,
     } as ExternalPostFrontmatter;
   }
 
+  // description is important for og:description
+  // if you want to make it mandatory, uncomment this condition
+  // if (typeof frontmatter.description !== "string") {
+  //   throw new Error("Frontmatter.description is missing. String expected.");
+  // }
+
   return {
     ...frontmatter,
-    isExternal: false,
+    external: false,
   } as MarkdownPostFrontmatter;
 }

@@ -56,11 +56,6 @@
         border-color: rgb(var(--color-border-code) / 0.25);
     }
 
-    code::before,
-    code::after {
-        content: "`";
-    }
-
     ul:not(.unset) {
         padding-left: 0;
         list-style: none;

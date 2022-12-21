@@ -6,9 +6,7 @@ import { validateBlogFrontmatter } from "./blog/frontmatter";
 import { validateProjectFrontmatter } from "./project/frontmatter";
 
 // path is relative to where you run the `yarn build` command
-const pathToContentDir = path.normalize(
-  "./content"
-);
+const pathToContentDir = path.normalize("./content");
 
 type Content = {
   path: string;
@@ -31,16 +29,20 @@ type ReturnTypeForProjects = Content & {
 /* Overloads for readAll - start */
 export async function readAll(args: {
   directory: "blog";
+  excludeDrafts?: boolean;
 }): Promise<ReturnTypeForBlog[]>;
 export async function readAll(args: {
   directory: "projects";
+  excludeDrafts?: boolean;
 }): Promise<ReturnTypeForProjects[]>;
 /* Overloads for readAll - end */
 
 export async function readAll({
   directory,
+  excludeDrafts = true,
 }: {
   directory: string;
+  excludeDrafts?: boolean;
 }): Promise<Content[]> {
   const pathToDir = path.join(pathToContentDir, directory);
   const paths = await globby(`${pathToDir}/*.md`);
@@ -50,22 +52,27 @@ export async function readAll({
   );
 
   if (directory === "blog") {
-    const content = files.map((file) => {
-      return {
-        ...file,
-        frontmatter: validateBlogFrontmatter(file.frontmatter),
-      };
-    });
+    const content = files
+      .map((file) => {
+        return {
+          ...file,
+          frontmatter: validateBlogFrontmatter(file.frontmatter),
+        };
+      })
+      .filter((c) => (excludeDrafts ? c.frontmatter.draft !== true : true));
     return content;
   }
 
   if (directory === "projects") {
-    const content = files.map((file) => {
-      return {
-        ...file,
-        frontmatter: validateProjectFrontmatter(file.frontmatter),
-      };
-    });
+    const content = files
+      .map((file) => {
+        return {
+          ...file,
+          frontmatter: validateProjectFrontmatter(file.frontmatter),
+        };
+      })
+      .filter((c) => (excludeDrafts ? c.frontmatter.draft !== true : true));
+
     return content;
   }
 

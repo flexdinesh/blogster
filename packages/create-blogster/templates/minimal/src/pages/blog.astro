@@ -32,7 +32,7 @@ const sortedPosts = posts.sort(
           return (
             <li class="post">
               <div class="title">
-                {post.frontmatter.isExternal ? (
+                {post.frontmatter.external ? (
                   <a href={post.frontmatter.url} target="_blank">
                     <span>{post.frontmatter.title}</span>
                     <ExternalLinkIcon

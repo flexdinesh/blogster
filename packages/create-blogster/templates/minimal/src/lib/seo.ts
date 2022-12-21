@@ -18,7 +18,7 @@ type PageOgMeta = {
 type PageTwitterMeta = {
   title: string; // same as og:title
   description?: string; // same as og:description
-  card: "summary_large_image"; // TODO: or?
+  card: "summary_large_image";
   site?: string; // twitter handle (@username) of blog owner
   creator?: string; // twitter handle (@username) of content owner (usually same as blog owner)
   image?: string; // same as og:image
@@ -42,7 +42,7 @@ type BlogPostOgMeta = {
 type BlogPostTwitterMeta = {
   title: string; // same as blog post og:title
   description?: string; // same as blog post og:description
-  card: "summary_large_image"; // TODO: or?
+  card: "summary_large_image";
   site?: string; // twitter handle (@username) of blog owner
   creator?: string; // twitter handle (@username) of content owner (usually same as blog owner)
   image?: string; // same as blog post  og:image

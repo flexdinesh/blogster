@@ -5,6 +5,7 @@ const dateFormat = "yyyy-MM-dd";
 
 // projects are just links to external websites (GitHub, etc)
 type ProjectFrontmatter = {
+  draft: boolean;
   title: string;
   date: Date;
   url: string;
@@ -15,6 +16,13 @@ export function validateProjectFrontmatter(
 ): ProjectFrontmatter {
   if (Object.keys(frontmatter).length < 1) {
     throw new Error("Frontmatter should be an object with keys");
+  }
+  
+  // frontmatter.draft
+  if (frontmatter.draft === "true" || frontmatter.draft === true) {
+    frontmatter.draft = true;
+  } else {
+    frontmatter.draft = false;
   }
 
   // frontmatter.title
