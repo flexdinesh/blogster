@@ -100,12 +100,17 @@ img {
 	height: auto;
 }
 
-code:not(.unset) {
+code {
 	padding: 2px 5px;
 	color: var(--code-text);
 	background-color: var(--code-background);
 	border: 1px solid var(--code-border);
 	border-radius: 4px;
+}
+
+code.unset {
+	background-color: transparent;
+	border: none;
 }
 
 pre {
