@@ -5,7 +5,11 @@ type Props = {
 
 const { url } = Astro.props;
 ---
-
+<!-- 
+    Even though minimal theme is built with zero javascript,
+    if your blog post uses embed elements, the iframe will need to 
+    be setup with javascript. It can't be done without javascript.
+-->
 <div
   class="twitter-embed-wrapper"
 >

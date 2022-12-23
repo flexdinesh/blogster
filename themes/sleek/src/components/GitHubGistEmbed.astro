@@ -6,12 +6,34 @@ type Props = {
 const { id } = Astro.props;
 ---
 
-<p class="not-prose">
-  <code class="unset" data-gist-id={id}></code>
-</p>
-<script
-  async
-  defer
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/gist-embed@1.0.4/dist/gist-embed.min.js"
-></script>
+<iframe
+  class="gist-iframe"
+  width="100%"
+  style="border:0;"
+  id={`gist-${id}`}
+  data-id={id}></iframe>
+<script>
+  // @ts-nocheck
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(`.gist-iframe`).forEach((iframe) => {
+      const id = iframe.dataset.id;
+      let doc = iframe.document;
+      if (iframe.contentDocument) {
+        doc = iframe.contentDocument;
+      } else if (iframe.contentWindow) {
+        doc = iframe.contentWindow.document;
+      }
+
+      const gistLink = `https://gist.github.com/${id}.js`;
+      const gistScript = `<script type="text/javascript" src="${gistLink}"><\/script>`;
+      const styles = "<style>*{font-size:12px;}</style>";
+      const elementId = `gist-${id}`;
+      const resizeScript = `onload="parent.document.getElementById('${elementId}').style.height=document.body.scrollHeight + 'px'"`;
+      const iframeHtml = `<html><head><base target="_parent">${styles}</head><body ${resizeScript}>${gistScript}</body></html>`;
+
+      doc.open();
+      doc.writeln(iframeHtml);
+      doc.close();
+    });
+  });
+</script>
