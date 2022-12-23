@@ -33,7 +33,7 @@ All the content is written in markdown (.md) and grouped as `blog` or `projects`
 Easy.
 
 - All content is static and everything is straight forward. Change whatever you need to change.
-- Delete or update the content in `content/dir`.
+- Delete or update the content in `content/{content-group}`. `content-group` could be `blog`, `projects` or `anything`.
 - (Optional) If you need more content types like _Notes_, just create a new dir in `content` and add a new frontmatter validator like [src/lib/markdoc/blog/frontmatter](src/lib/markdoc/blog/frontmatter).
 
 ## How do I deploy?
@@ -42,7 +42,10 @@ Easy.
 
 ## Credit
 
-This theme is based off of [the official Astro Blog template](https://github.com/withastro/astro/tree/main/examples/blog) and [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Thanks to other templates that inspired this theme.
+
+- [Official Astro Blog template](https://github.com/withastro/astro/tree/main/examples/blog)
+- [Bear Blog](https://github.com/HermanMartinus/bearblog/).
 
 ## License
 
