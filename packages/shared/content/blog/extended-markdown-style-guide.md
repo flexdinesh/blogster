@@ -16,7 +16,7 @@ You can embed YouTube videos in your blog posts.
 
 You can embed tweets in your blog posts.
 
-{% tweet url="https://twitter.com/flexdinesh/status/1604965151144546304" /%}
+{% tweet url="https://twitter.com/flexdinesh/status/1605685194312122370" /%}
 
 ## CodePen
 
