@@ -92,7 +92,7 @@ A beautiful, performant and accessible theme built with [Tailwind](https://tailw
 Check it out here - [Blogster bubblegum template](https://blogster-bubblegum.netlify.com).
 
 ```bash
-npx create-blogster@latest --theme newspaper
+npx create-blogster@latest --theme bubblegum
 ```
 
 <!-- ## Showcase
