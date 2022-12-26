@@ -1,138 +1,102 @@
+import type { z } from "zod";
 import path from "path";
+import matter from "gray-matter";
+import fs from "fs/promises";
 import { globby } from "globby";
-import type { RenderableTreeNode } from "@markdoc/markdoc";
-import { parseAndTransform } from "./transform";
-import { validateBlogFrontmatter } from "./blog/frontmatter";
-import { validateProjectFrontmatter } from "./project/frontmatter";
+import Markdoc from "@markdoc/markdoc";
+import { config } from "./markdoc.config";
 
 // path is relative to where you run the `yarn build` command
-const pathToContentDir = path.normalize("./content");
+const contentDirectory = path.normalize("./content");
 
-type Content = {
-  path: string;
-  slug: string;
-  content: RenderableTreeNode;
-  frontmatter: Record<string, unknown>;
-};
+async function parseAndTransform({ content }: { content: string }) {
+  const ast = Markdoc.parse(content);
 
-type ReturnTypeForBlog = Content & {
-  frontmatter: ReturnType<typeof validateBlogFrontmatter>;
-};
-type ReturnTypeForProjects = Content & {
-  frontmatter: ReturnType<typeof validateProjectFrontmatter>;
-};
-
-/* 
-  If you are adding a new content directory like "notes" or "talk",
-  you need to add a function overload for readAll and readOne.
-*/
-/* Overloads for readAll - start */
-export async function readAll(args: {
-  directory: "blog";
-  excludeDrafts?: boolean;
-}): Promise<ReturnTypeForBlog[]>;
-export async function readAll(args: {
-  directory: "projects";
-  excludeDrafts?: boolean;
-}): Promise<ReturnTypeForProjects[]>;
-/* Overloads for readAll - end */
-
-export async function readAll({
-  directory,
-  excludeDrafts = true,
-}: {
-  directory: string;
-  excludeDrafts?: boolean;
-}): Promise<Content[]> {
-  const pathToDir = path.join(pathToContentDir, directory);
-  const paths = await globby(`${pathToDir}/*.md`);
-
-  const files = await Promise.all(
-    paths.map((path) => parseAndTransform({ path }))
-  );
-
-  if (directory === "blog") {
-    const content = files
-      .map((file) => {
-        return {
-          ...file,
-          frontmatter: validateBlogFrontmatter(file.frontmatter),
-        };
-      })
-      .filter((c) => (excludeDrafts ? c.frontmatter.draft !== true : true));
-    return content;
+  const errors = Markdoc.validate(ast, config);
+  if (errors.length) {
+    console.error(errors);
+    throw new Error("Markdoc validation error");
   }
+  const transformedContent = Markdoc.transform(ast, config);
 
-  if (directory === "projects") {
-    const content = files
-      .map((file) => {
-        return {
-          ...file,
-          frontmatter: validateProjectFrontmatter(file.frontmatter),
-        };
-      })
-      .filter((c) => (excludeDrafts ? c.frontmatter.draft !== true : true));
-
-    return content;
-  }
-
-  throw new Error(
-    "type should be one of the available types in ContentDirectory. If you are adding a new directory in Content, then please make sure you include it in ContentType for strong frontmatter type."
-  );
+  return transformedContent;
 }
 
-/* 
-  If you are adding a new content directory like "notes" or "talk",
-  you need to add a function overload for readAll and readOne.
-*/
-/* Overloads for readOne - start */
-export async function readOne(args: {
-  directory: "blog";
-  filename: string;
-}): Promise<ReturnTypeForBlog>;
-export async function readOne(args: {
-  directory: "projects";
-  filename: string;
-}): Promise<ReturnTypeForProjects>;
-/* Overloads for readOne - end */
-
-export async function readOne({
-  directory,
-  filename,
+function validateFrontmatter<T extends z.ZodTypeAny>({
+  frontmatter,
+  schema,
+  filepath,
 }: {
-  directory: string;
-  filename: string;
+  frontmatter: { [key: string]: unknown };
+  schema: T;
+  filepath: string;
 }) {
-  const pathToDir = path.join(pathToContentDir, directory);
-  const absolutePath = path.join(pathToDir, filename);
+  try {
+    const validatedFrontmatter = schema.parse(frontmatter);
+    return validatedFrontmatter as z.infer<T>;
+  } catch (e) {
+    const errMessage = `
+      There was an error validating your frontmatter. 
+      Please make sure your frontmatter for file: ${filepath} matches its schema.
+    `;
+    throw Error(errMessage + (e as Error).message);
+  }
+}
 
-  const {
-    content,
+export async function read<T extends z.ZodTypeAny>({
+  filepath,
+  schema,
+}: {
+  filepath: string;
+  schema: T;
+}) {
+  const rawString = await fs.readFile(filepath, "utf8");
+  const { content, data: frontmatter } = matter(rawString);
+  const transformedContent = await parseAndTransform({ content });
+  const validatedFrontmatter = validateFrontmatter({
     frontmatter,
-    path: filepath,
-    slug,
-  } = await parseAndTransform({
-    path: absolutePath,
+    schema,
+    filepath,
   });
 
-  if (directory === "blog") {
-    return {
-      content,
-      frontmatter: validateBlogFrontmatter(frontmatter),
-      path: filepath,
-      slug,
-    };
+  const filename = filepath.split("/").pop();
+  if (typeof filename !== "string") {
+    throw new Error("Check what went wrong");
   }
-  if (directory === "projects") {
-    return {
-      content,
-      frontmatter: validateProjectFrontmatter(frontmatter),
-      path: filepath,
-      slug,
-    };
-  }
+  const fileNameWithoutExtension = filename.replace(/\.[^.]*$/, "");
 
-  throw new Error(
-    "type should be one of the available types in ContentType. If you are adding a new directory in Content, then please make sure you include it in ContentType for stronger frontmatter type."
-  );
+  return {
+    slug: fileNameWithoutExtension,
+    content: transformedContent,
+    frontmatter: validatedFrontmatter,
+  };
+}
+
+export async function readOne<T extends z.ZodTypeAny>({
+  directory,
+  slug,
+  frontmatterSchema: schema,
+}: {
+  directory: string;
+  slug: string;
+  frontmatterSchema: T;
+}) {
+  const filepath = path.join(contentDirectory, directory, `${slug}.md`);
+  return read({
+    filepath,
+    schema,
+  });
+}
+
+export async function readAll<T extends z.ZodTypeAny>({
+  directory,
+  frontmatterSchema: schema,
+}: {
+  directory: string;
+  frontmatterSchema: T;
+}) {
+  const pathToDir = path.join(contentDirectory, directory);
+  const paths = await globby(`${pathToDir}/*.md`);
+
+  return Promise.all(paths.map((path) => read({ filepath: path, schema })));
 }
