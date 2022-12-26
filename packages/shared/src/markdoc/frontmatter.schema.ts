@@ -30,10 +30,12 @@ const blogExternal = blogBase.extend({
 });
 
 /*
-  blog posts could be the posts written in markdown files or you could also 
-  link to the posts you have already written in another blogging website.
-  That's why we the frontmatter schema for blog posts is one of the two.
-  If you don't want to link posts written in another website, you could
+  Blog posts could be of two types —
+  1. The posts you write in markdown files in content/blog/*.md
+  2. External posts in other websites
+
+  That's why we the frontmatter schema for blog posts is one of the two possible types.
+  If you don't want to link posts written in external websites, you could
   just export blogMarkdown as your blog schema.
 */
 export const blog = z.discriminatedUnion("external", [
