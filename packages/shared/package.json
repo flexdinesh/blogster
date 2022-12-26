@@ -11,25 +11,13 @@
       "import": "./src/seo.ts",
       "require": "./src/seo.ts"
     },
-    "./markdoc/config": {
-      "import": "./src/markdoc/config.ts",
-      "require": "./src/markdoc/config.ts"
-    },
     "./markdoc/read": {
       "import": "./src/markdoc/read.ts",
       "require": "./src/markdoc/read.ts"
     },
-    "./markdoc/transform": {
-      "import": "./src/markdoc/transform.ts",
-      "require": "./src/markdoc/transform.ts"
-    },
-    "./markdoc/blog/frontmatter": {
-      "import": "./src/markdoc/blog/frontmatter.ts",
-      "require": "./src/markdoc/blog/frontmatter.ts"
-    },
-    "./markdoc/project/frontmatter": {
-      "import": "./src/markdoc/project/frontmatter.ts",
-      "require": "./src/markdoc/project/frontmatter.ts"
+    "./markdoc/frontmatter.schema": {
+      "import": "./src/markdoc/frontmatter.schema.ts",
+      "require": "./src/markdoc/frontmatter.schema.ts"
     }
   },
   "typesVersions": {
@@ -40,20 +28,11 @@
       "seo": [
         "src/seo.ts"
       ],
-      "markdoc/config": [
-        "src/markdoc/config.ts"
-      ],
       "markdoc/read": [
         "src/markdoc/read.ts"
       ],
-      "markdoc/transform": [
-        "src/markdoc/transform.ts"
-      ],
-      "markdoc/blog/frontmatter": [
-        "src/markdoc/blog/frontmatter.ts"
-      ],
-      "markdoc/project/frontmatter": [
-        "src/markdoc/project/frontmatter.ts"
+      "markdoc/frontmatter.schema": [
+        "src/markdoc/frontmatter.schema.ts"
       ]
     }
   },

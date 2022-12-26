@@ -1,19 +1,22 @@
 ---
 import { readAll } from "@local/shared/markdoc/read";
-
+import { project } from "@local/shared/markdoc/frontmatter.schema";
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import { SITE_TITLE } from "../config";
 
 const projects = await readAll({
   directory: "projects",
+  frontmatterSchema: project,
 });
 
-const sortedProjects = projects.sort(
-  (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
-);
+const sortedProjects = projects
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
 ---
 
 <PageLayout>

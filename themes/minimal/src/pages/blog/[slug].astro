@@ -1,5 +1,6 @@
 ---
 import { readOne, readAll } from "@local/shared/markdoc/read";
+import { blog } from "@local/shared/markdoc/frontmatter.schema";
 import Renderer from "../../components/Renderer.astro";
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
@@ -7,12 +8,13 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 export async function getStaticPaths() {
   const posts = await readAll({
     directory: "blog",
+    frontmatterSchema: blog,
   });
 
   // we don't want to generate pages for posts that link to external websites
-  const filteredPosts = posts.filter(
-    ({ frontmatter }) => !frontmatter.external
-  );
+  const filteredPosts = posts
+    .filter((p) => p.frontmatter.draft !== true)
+    .filter(({ frontmatter }) => !frontmatter.external);
 
   return filteredPosts.map((post) => {
     return { params: { slug: post.slug } };
@@ -26,7 +28,8 @@ if (typeof slug !== "string") {
 
 const { content, frontmatter } = await readOne({
   directory: "blog",
-  filename: `${slug}.md`,
+  slug,
+  frontmatterSchema: blog,
 });
 ---
 
