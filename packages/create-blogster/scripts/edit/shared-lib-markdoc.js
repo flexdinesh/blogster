@@ -12,9 +12,9 @@ async function EDIT_FILE_pages_blog_astro(theme) {
     relativePathToTemplate(theme, 'src/pages/blog.astro'),
     'utf8'
   );
-  FILE_blog = FILE_blog.replace(
-    `@local/shared/markdoc/read`,
-    `../lib/markdoc/read`
+  FILE_blog = FILE_blog.replaceAll(
+    `@local/shared/markdoc/`,
+    `../lib/markdoc/`
   );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/blog.astro'),
@@ -29,9 +29,9 @@ async function EDIT_FILE_pages_projects_astro(theme) {
     relativePathToTemplate(theme, 'src/pages/projects.astro'),
     'utf8'
   );
-  FILE_projects = FILE_projects.replace(
-    `@local/shared/markdoc/read`,
-    `../lib/markdoc/read`
+  FILE_projects = FILE_projects.replaceAll(
+    `@local/shared/markdoc/`,
+    `../lib/markdoc/`
   );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/projects.astro'),
@@ -40,21 +40,21 @@ async function EDIT_FILE_pages_projects_astro(theme) {
   console.log(`Edited: src/pages/projects.astro for template: ${theme}`);
 }
 
-async function EDIT_FILE_pages_rss_xml_js(theme) {
-  /* Edit import statements pages/rss.xml.js */
+async function EDIT_FILE_pages_rss_xml_ts(theme) {
+  /* Edit import statements pages/rss.xml.ts */
   let FILE_rssXML = await fs.readFileSync(
-    relativePathToTemplate(theme, 'src/pages/rss.xml.js'),
+    relativePathToTemplate(theme, 'src/pages/rss.xml.ts'),
     'utf8'
   );
-  FILE_rssXML = FILE_rssXML.replace(
-    `@local/shared/markdoc/read`,
-    `../lib/markdoc/read`
+  FILE_rssXML = FILE_rssXML.replaceAll(
+    `@local/shared/markdoc/`,
+    `../lib/markdoc/`
   );
   await fs.writeFileSync(
-    relativePathToTemplate(theme, 'src/pages/rss.xml.js'),
+    relativePathToTemplate(theme, 'src/pages/rss.xml.ts'),
     FILE_rssXML
   );
-  console.log(`Edited: src/pages/rss.xml.js for template: ${theme}`);
+  console.log(`Edited: src/pages/rss.xml.ts for template: ${theme}`);
 }
 
 async function EDIT_FILE_pages_blog_slug_astro(theme) {
@@ -63,9 +63,9 @@ async function EDIT_FILE_pages_blog_slug_astro(theme) {
     relativePathToTemplate(theme, 'src/pages/blog/[slug].astro'),
     'utf8'
   );
-  FILE_slug = FILE_slug.replace(
-    `@local/shared/markdoc/read`,
-    `../../lib/markdoc/read`
+  FILE_slug = FILE_slug.replaceAll(
+    `@local/shared/markdoc/`,
+    `../../lib/markdoc/`
   );
   await fs.writeFileSync(
     relativePathToTemplate(theme, 'src/pages/blog/[slug].astro'),
@@ -107,7 +107,7 @@ async function copySharedLibMarkdoc(theme) {
 
   await EDIT_FILE_pages_blog_astro(theme);
   await EDIT_FILE_pages_projects_astro(theme);
-  await EDIT_FILE_pages_rss_xml_js(theme);
+  await EDIT_FILE_pages_rss_xml_ts(theme);
   await EDIT_FILE_pages_blog_slug_astro(theme);
   await EDIT_FILE_lib_markdoc_read_ts(theme);
 }
