@@ -1,6 +1,6 @@
 {
   "name": "astro-markdoc-renderer",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "Markdoc renderer for Astro",
   "main": "./index.ts",
   "types": "./index.ts",
