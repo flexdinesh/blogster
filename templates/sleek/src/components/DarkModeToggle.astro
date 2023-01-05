@@ -1,0 +1,73 @@
+---
+---
+
+<button
+  class="justify-self-end bg-neutral-200 dark:bg-neutral-700 ml-4 inline-flex h-6 w-11 items-center rounded-full"
+  id="mode-toggle"
+  role="switch"
+  type="button"
+  tabindex="0"
+  aria-checked="false"
+  data-headlessui-state=""
+  ><span class="sr-only">Toggle dark mode</span><span
+    id="mode-circle"
+    class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible"
+    ><span
+      class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0]"
+    ></span>
+  </span>
+</button>
+
+<script>
+  // @ts-nocheck
+  document.querySelector("#mode-toggle").addEventListener("click", () => {
+    const iconElem = document.querySelector("#mode-circle");
+    const isDark = document.documentElement.classList.contains("dark");
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      iconElem.classList.remove("dark");
+      iconElem.classList.add("light");
+      sessionStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+      iconElem.classList.remove("light");
+      iconElem.classList.add("dark");
+      sessionStorage.setItem("theme", "dark");
+    }
+
+    // prevent slide animation on page load for dark mode
+    if (!iconElem.classList.contains("duration-300")) {
+      iconElem.classList.add("duration-300");
+    }
+  });
+
+  window.addEventListener("DOMContentLoaded", (event) => {
+    if (document.documentElement.classList.contains("dark")) {
+      const iconElem = document.querySelector("#mode-circle");
+      iconElem.classList.remove("light");
+      iconElem.classList.add("dark");
+    }
+    document.querySelector("#mode-circle").classList.remove("invisible");
+  });
+</script>
+
+<style>
+  .light {
+    transform: translateX(0.25rem);
+    background-image: linear-gradient(
+      to top right,
+      rgb(var(--color-primary-500)),
+      rgb(var(--color-primary-500))
+    );
+  }
+  .dark {
+    transform: translateX(1.5rem);
+    background-image: linear-gradient(
+      to top right,
+      rgb(var(--color-primary-400)),
+      rgb(var(--color-primary-400))
+    );
+  }
+</style>

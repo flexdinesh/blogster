@@ -11,8 +11,8 @@ module.exports = {
   // don't lint cli package (it has its own lint config)
   ignorePatterns: [
     "themes/**/*",
+    "templates/**/*",
     ".eslintrc.js",
-    "packages/cli",
     "packages/@repoconfig",
   ],
 };

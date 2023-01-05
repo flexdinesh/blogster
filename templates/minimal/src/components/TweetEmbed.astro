@@ -1,0 +1,49 @@
+---
+type Props = {
+  url: string;
+};
+
+const { url } = Astro.props;
+---
+<!-- 
+    Even though minimal theme is built with zero javascript,
+    if your blog post uses embed elements, the iframe will need to 
+    be setup with javascript. It can't be done without javascript.
+-->
+<div
+  class="twitter-embed-wrapper"
+>
+  <blockquote
+    class="unset twitter-tweet"
+    data-conversation="none"
+    data-theme="light"
+    data-lang="en"
+    data-dnt="true"
+  >
+    <a class="unset embed-replacable-link" href={url}>Loading embedded tweet...</a>
+  </blockquote>
+</div>
+
+<script
+  async
+  defer
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
+<style>
+  .twitter-embed-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .embed-replacable-link {
+    text-decoration: none;
+    color: currentColor;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+</style>

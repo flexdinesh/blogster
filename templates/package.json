@@ -1,0 +1,25 @@
+{
+  "name": "templates",
+  "version": "0.0.0",
+  "description": "Templates for create-blogster CLI",
+  "author": "Dinesh Pandiyan",
+  "license": "MIT",
+  "scripts": {
+    "copy": "node ./scripts/copy-templates.js",
+    "edit": "node ./scripts/edit-templates.js",
+    "clean": "rimraf templates my-blogster-blog",
+    "sync-template-files": "yarn clean && yarn copy && yarn edit"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.0",
+    "rimraf": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flexdinesh/blogster",
+    "directory": "templates"
+  },
+  "engines": {
+    "node": ">=14.16"
+  }
+}

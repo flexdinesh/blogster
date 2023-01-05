@@ -1,0 +1,104 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { project } from "../lib/markdoc/frontmatter.schema";
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
+import { SITE_TITLE } from "../config";
+
+const projects = await readAll({
+  directory: "projects",
+  frontmatterSchema: project,
+});
+
+const sortedProjects = projects
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+---
+
+<PageLayout>
+  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <ul>
+      {
+        sortedProjects.map((project) => {
+          const formattedDate = new Date(
+            project.frontmatter.date
+          ).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+          return (
+            <li class="project">
+              <div class="title">
+                <a href={project.frontmatter.url} target="_blank">
+                  <span>{project.frontmatter.title}</span>
+                  <ExternalLinkIcon
+                    class="icon-realign"
+                    title="Link to project"
+                    height={16}
+                    width={16}
+                  />
+                </a>
+              </div>
+              <div class="publish-date">
+                <time datetime={project.frontmatter.date.toISOString()}>
+                  {formattedDate}
+                </time>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .project {
+      grid-template-columns: 1fr auto;
+      /* gap: 2rem; */
+    }
+  }
+
+  .project + .project {
+    padding-top: 0.5rem;
+  }
+
+  .title a {
+    color: var(--text);
+    border-bottom: none;
+  }
+
+  .title a:hover {
+    color: var(--text-link);
+  }
+
+  .icon-realign {
+    margin-bottom: -1.5px;
+    margin-left: 2px;
+  }
+
+  .publish-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+</style>

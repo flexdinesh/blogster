@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: 'Open Sans', sans-serif;
+    /* base font-size 1px larger for better visibility */
+    font-size: 1.0625em;
+    line-height: 1.75;
+}
+
+@layer components {
+
+    /* ------ GLOBAL STYLES - START ------ */
+    strong {
+        font-weight: 600;
+        color: theme('colors.text.bold');
+    }
+
+    mark {
+        background-color: theme('colors.bg.selection');
+        color: theme('colors.text.selection');
+    }
+
+    /* 
+        if you want an anchor tag to not have this style, 
+        just add a class `unset` to it. 
+    */
+    a:not(.unset) {
+        text-decoration: none;
+        background-repeat: no-repeat;
+        background-size: 100% 1.5px;
+        background-position: 0 100%;
+        background-image:
+            linear-gradient(to right, theme('colors.text.link'), theme('colors.text.link'));
+    }
+
+    a:not(.unset):hover {
+        color: theme('colors.text.link');
+    }
+
+    code:not(pre code):not(.unset) {
+        background-color: theme('colors.bg.code');
+        color: theme('colors.text.code');
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+        font-weight: 600;
+        border: 1px solid theme('colors.border.code');
+        margin-bottom: 1.25em;
+    }
+
+    html.dark code:not(pre code) {
+        background-color: rgb(var(--color-bg-code) / 0.15);
+        border-color: rgb(var(--color-border-code) / 0.15);
+    }
+
+    ul:not(.unset) {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    ul>li {
+        position: relative;
+        padding-left: 1.375rem;
+    }
+
+    ul:not(.unset)>li::before {
+        position: absolute;
+        left: 0;
+        content: "»";
+        color: rgb(var(--color-text-muted));
+    }
+
+    ol:not(.unset) {
+        padding-left: 1.125rem;
+    }
+
+    ol:not(.unset)>li::marker {
+        color: rgb(var(--color-text-muted))
+    }
+
+    ul:not(.unset)>li,
+    ol:not(.unset)>li {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    ::selection {
+        background: theme('colors.bg.selection');
+        color: theme('colors.text.selection');
+    }
+
+    /* ------ GLOBAL STYLES - END ------ */
+
+    /* ------ REUSABLE UTILS - START ------ */
+    .animated-link {
+        position: relative;
+        box-decoration-break: clone;
+        text-decoration: none;
+    }
+
+    .animated-link:hover:after {
+        transform: translateZ(0) scale(1);
+    }
+
+    .animated-link:after {
+        left: 0;
+        right: 0;
+        bottom: -3px;
+        content: "";
+        height: 2px;
+        position: absolute;
+        transform: translateZ(0) scaleX(0);
+        transform-origin: left center;
+        transition: all .150s ease-in-out;
+        background-image: linear-gradient(to right, theme('colors.text.link'), theme('colors.text.link'));
+    }
+
+    .animated-link.show:after {
+        transform: translateZ(0) scale(1);
+    }
+
+    /* ------ REUSABLE UTILS - END ------ */
+}

@@ -1,0 +1,83 @@
+---
+/* 
+  This layout is used in pages that render markdoc content
+  - pages/blog/[slug].astro
+*/
+// Import the global.css file here so that it is included on
+import "../styles/global.css";
+import "../styles/markdown.css";
+
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Favicon from "./Favicon.astro";
+
+export interface Props {
+  title: string;
+  date: Date;
+}
+
+const { title, date } = Astro.props;
+const formattedDate = new Date(date).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<!DOCTYPE html>
+<html class="theme-sleek" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="Blogster" />
+    <Favicon />
+    <slot name="meta" />
+  </head>
+
+  <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
+    <Header />
+    <main id="main">
+      <section class="blog-post">
+        <h1 class="title">{title}</h1>
+        <time class="publish-date">{formattedDate}</time>
+        <slot name="content" />
+      </section>
+    </main>
+    <Footer />
+  </body>
+
+  <style>
+    body {
+      display: grid;
+      min-height: 100vh;
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+      grid-template-rows: 5rem minmax(0, 1fr) 5rem;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    main {
+      grid-area: main;
+    }
+  </style>
+</html>
+
+<style>
+  .title {
+    font-size: 2.5em;
+    line-height: 1.2 !important;
+    margin: 0.25em 0 0;
+  }
+  .publish-date {
+    font-size: 0.875em;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: block;
+  }
+  hr {
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
+  }
+</style>

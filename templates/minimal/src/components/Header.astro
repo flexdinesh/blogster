@@ -1,0 +1,98 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import GitHubIcon from "../components/ui/icons/github.astro";
+import TwitterIcon from "../components/ui/icons/twitter.astro";
+---
+
+<header>
+  <a class="skip-to-main" href="#main"> Skip to content</a>
+  <nav>
+    <section>
+      <ul>
+        <li><HeaderLink href="/">Home</HeaderLink></li>
+        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
+        <li><HeaderLink href="/projects">Projects</HeaderLink></li>
+      </ul>
+    </section>
+  </nav>
+  <div class="social-handles">
+    <a
+      class="centered"
+      href="https://github.com/flexdinesh/blogster"
+      aria-label="Blogster on GitHub"
+    >
+      <GitHubIcon title="GitHub" />
+    </a>
+    <a
+      class="centered"
+      href="https://twitter.com/flexdinesh"
+      aria-label="Dinesh on Twitter"
+    >
+      <TwitterIcon title="Twitter" />
+    </a>
+  </div>
+</header>
+<style>
+  header {
+    grid-area: header;
+    display: grid;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
+        0,
+        max-content
+      );
+  }
+
+  nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  nav ul > li {
+    padding: 0;
+  }
+
+  .social-handles {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .social-handles a {
+    color: var(--text-heading);
+    border-bottom: none;
+  }
+  .social-handles a:hover {
+    color: var(--palette-primary);
+  }
+
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skip-to-main {
+    border: none !important;
+    position: absolute;
+    left: 50%;
+    top: -100rem;
+    transform: translateX(-50%);
+    background-color: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+  }
+
+  .skip-to-main:focus {
+    top: initial;
+  }
+</style>

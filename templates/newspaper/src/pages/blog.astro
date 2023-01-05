@@ -1,0 +1,69 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { blog } from "../lib/markdoc/frontmatter.schema";
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import { SITE_TITLE } from "../config";
+
+const posts = await readAll({
+  directory: "blog",
+  frontmatterSchema: blog,
+});
+
+const sortedPosts = posts
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+---
+
+<PageLayout>
+  <PageMeta title={`Blog | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <ul>
+      {
+        sortedPosts.map((post) => {
+          const formattedDate = new Date(
+            post.frontmatter.date
+          ).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+          return (
+            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3">
+              <div class="title">
+                {post.frontmatter.external ? (
+                  <a
+                    href={post.frontmatter.url}
+                    target="_blank"
+                    class="unset hover:text-text-link"
+                  >
+                    <span>{post.frontmatter.title}</span>
+                    <span>
+                      <i class="ml-1 text-[12px] fa-solid fa-up-right-from-square" />
+                    </span>
+                  </a>
+                ) : (
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="unset hover:text-text-link"
+                  >
+                    {post.frontmatter.title}
+                  </a>
+                )}
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime={post.frontmatter.date.toISOString()}>
+                  {formattedDate}
+                </time>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</PageLayout>

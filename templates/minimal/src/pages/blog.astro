@@ -1,0 +1,108 @@
+---
+import { readAll } from "../lib/markdoc/read";
+import { blog } from "../lib/markdoc/frontmatter.schema";
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
+import { SITE_TITLE } from "../config";
+
+const posts = await readAll({
+  directory: "blog",
+  frontmatterSchema: blog,
+});
+
+const sortedPosts = posts
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+---
+
+<PageLayout>
+  <PageMeta title={`Blog | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <ul>
+      {
+        sortedPosts.map((post) => {
+          const formattedDate = new Date(
+            post.frontmatter.date
+          ).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+          return (
+            <li class="post">
+              <div class="title">
+                {post.frontmatter.external ? (
+                  <a href={post.frontmatter.url} target="_blank">
+                    <span>{post.frontmatter.title}</span>
+                    <ExternalLinkIcon
+                      class="icon-realign"
+                      title="Link to external post"
+                      height={16}
+                      width={16}
+                    />
+                  </a>
+                ) : (
+                  <a href={`/blog/${post.slug}`}>{post.frontmatter.title}</a>
+                )}
+              </div>
+              <div class="publish-date">
+                <time datetime={post.frontmatter.date.toISOString()}>
+                  {formattedDate}
+                </time>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 1fr;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .post {
+      grid-template-columns: 1fr auto;
+      /* gap: 2rem; */
+    }
+  }
+
+  .post + .post {
+    padding-top: 0.5rem;
+  }
+
+  .title a {
+    color: var(--text);
+    border-bottom: none;
+  }
+
+  .title a:hover {
+    color: var(--text-link);
+  }
+
+  .icon-realign {
+    margin-bottom: -1.5px;
+    margin-left: 2px;
+  }
+
+  .publish-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+</style>
