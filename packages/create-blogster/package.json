@@ -13,11 +13,8 @@
     "templates"
   ],
   "scripts": {
-    "dev": "node ./bin.js --no-deps --theme minimal",
-    "copy": "node ./scripts/copy-templates.js",
-    "edit": "node ./scripts/edit-templates.js",
-    "clean": "rimraf templates my-blogster-blog",
-    "sync-template-files": "yarn clean && yarn copy && yarn edit",
+    "dev": "node ./bin.js --no-deps --theme sleek",
+    "clean": "rimraf my-blogster-blog",
     "lint": "eslint --ext .js ."
   },
   "dependencies": {
@@ -26,6 +23,7 @@
     "enquirer": "^2.3.6",
     "execa": "5",
     "fs-extra": "^11.1.0",
+    "giget": "^1.0.0",
     "meow": "9",
     "ora": "5",
     "package-json": "7",

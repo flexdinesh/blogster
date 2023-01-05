@@ -5,10 +5,12 @@
 
 'use strict';
 
+const { downloadTemplate } = require('giget');
 const path = require('path');
 const fs = require('fs-extra');
 const meow = require('meow');
 const enquirer = require('enquirer');
+const chalk = require('chalk');
 const { install } = require('./install');
 const { logCreateConfirmation, logSuccessInfo } = require('./console');
 
@@ -71,20 +73,30 @@ async function promptArgs() {
   };
 }
 
-async function copyTemplateDirectory(theme, directory) {
-  const templateDir = path.normalize(
-    `${__dirname}/../templates/${theme.toLowerCase()}`
-  );
-  const srcDir = path.join(templateDir);
-  const destDir = path.join(directory);
-  await fs.copySync(srcDir, destDir, { overwrite: true });
+async function downloadTemplateDirectory(theme, directory) {
+  try {
+    await downloadTemplate(`flexdinesh/blogster/templates/${theme}`, {
+      force: true,
+      forceClean: true,
+      provider: 'github',
+      dir: directory,
+    });
+  } catch (err) {
+    fs.rmdirSync(directory);
+    if (err.message.includes('404')) {
+      console.error(`Theme ${chalk.underline(theme)} does not exist!`);
+    } else {
+      console.error(err.message);
+    }
+    process.exit(1);
+  }
 }
 
 async function createBlogster() {
   logCreateConfirmation();
   const { directory, theme, deps } = await promptArgs();
   await fs.mkdir(directory);
-  await copyTemplateDirectory(theme, directory);
+  await downloadTemplateDirectory(theme, directory);
   let packageManager = 'yarn';
   if (deps) {
     packageManager = await install(directory);
