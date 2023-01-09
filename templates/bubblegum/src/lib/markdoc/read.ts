@@ -95,7 +95,7 @@ export async function readAll<T extends z.ZodTypeAny>({
   directory: string;
   frontmatterSchema: T;
 }) {
-  const pathToDir = path.join(contentDirectory, directory);
+  const pathToDir = path.posix.join(contentDirectory, directory);
   const paths = await globby(`${pathToDir}/*.md`);
 
   return Promise.all(paths.map((path) => read({ filepath: path, schema })));
