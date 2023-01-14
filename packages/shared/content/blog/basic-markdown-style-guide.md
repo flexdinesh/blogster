@@ -5,7 +5,7 @@ description: "You can author content using the familiar markdown syntax you alre
 date: 2022-11-02
 ---
 
-Markdown is powered by [Markdoc](https://markdoc.dev/). This post is an example to showcase the support of all basic markdown syntax. You can author content using the familiar markdown syntax you already know.
+Markdown is powered by [Markdoc](https://markdoc.dev/). This is an example post to demonstrate all the basic markdown syntax. You can author content using the familiar markdown syntax you already know.
 
 ## Inline formatting
 
