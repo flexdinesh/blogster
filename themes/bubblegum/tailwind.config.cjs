@@ -74,6 +74,35 @@ module.exports = {
             "code::after": {
               content: "none",
             },
+            blockquote: {
+              border: "none",
+              position: "relative",
+              width: "96%",
+              margin: "0 auto",
+              "font-size": "1.0625em",
+              "padding-top": "1.5rem",
+              "padding-bottom": "0.5rem",
+              "padding-left": "1.5rem",
+              "padding-right": "1.5rem",
+            },
+            "blockquote::before": {
+              "font-family": "Arial",
+              content: "'“'",
+              "font-size": "4em",
+              color: "rgb(var(--color-text-bold))",
+              position: "absolute",
+              left: "-10px",
+              top: "-10px",
+            },
+            "blockquote::after": {
+              content: "",
+            },
+            "blockquote p:first-of-type::before": {
+              content: "",
+            },
+            "blockquote p:last-of-type::after": {
+              content: "",
+            },
           },
         },
         bubblegum: {
