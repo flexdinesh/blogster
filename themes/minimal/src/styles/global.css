@@ -50,6 +50,7 @@
 :root {
 	font-family: Verdana, sans-serif;
 	line-height: 1.75;
+	scroll-behavior: smooth;
 }
 
 body {

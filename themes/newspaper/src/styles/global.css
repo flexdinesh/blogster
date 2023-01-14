@@ -8,6 +8,7 @@
     font-size: 1.0625em;
     line-height: 1.9;
     line-height: 2.0;
+    scroll-behavior: smooth;
 }
 
 @layer components {
