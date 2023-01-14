@@ -176,6 +176,10 @@
   content: "\f00d";
 }
 
+.fa-rss::before {
+  content: "\f09e";
+}
+
 .sr-only,
 .fa-sr-only {
   position: absolute;
