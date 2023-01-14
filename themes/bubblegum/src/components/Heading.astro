@@ -23,13 +23,22 @@ if (level === 2) {
 } else if (level === 6) {
   Tag = "h6";
 }
+const shouldAddBeforePseudoStyle = ["h1", "h2"].includes(Tag)
 ---
 
 <Tag id={id} class="group flex">
-  <span class="
-    pl-6 relative block leading-[150%]
-    after:absolute after:content-[''] after:w-2 after:h-full after:top-0 after:left-0 after:bg-primary-green
-  ">
-    {children}
-  </span>
+  {
+    shouldAddBeforePseudoStyle?
+    <span class="
+      pl-6 relative block leading-[150%]
+      before:absolute before:content-[''] before:w-2 before:h-full before:top-0 before:left-0 before:bg-primary-green
+    ">
+      {children}
+    </span>
+    :
+    <span class="relative block leading-[150%]">
+      {children}
+    </span>
+  }
+  
 </Tag>
