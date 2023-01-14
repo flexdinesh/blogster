@@ -112,6 +112,11 @@ Create a PR to add yours to the list. -->
     </p>
 </details>
 
+## Contributing
+
+- When you are using `cmd+shift+F` to search for references across the repo, remember to exclude `templates/` dir because templates are auto-generated using a script and only add noise in search results.
+- Whatever you're changing, you will mostly only need to change in `themes/` or `packages/shared`. The themes in `templates/` dir is auto-synced using a script so you don't have to make any change in the `templates/` dir.
+
 ## License
 
 MIT © [Dinesh Pandiyan](https://github.com/flexdinesh)
