@@ -45,26 +45,6 @@ module.exports = {
                 color: "rgb(var(--color-text-link))",
               },
             },
-            ul: {
-              "padding-left": 0,
-              "list-style": "none",
-            },
-            "ul > li": {
-              position: "relative",
-              "padding-left": "1.375rem",
-            },
-            "ul > li::before": {
-              position: "absolute",
-              left: 0,
-              content: '"»"',
-              color: "rgb(var(--color-text-muted))",
-            },
-            ol: {
-              "padding-left": "1.125rem",
-            },
-            "ol > li::marker": {
-              color: "rgb(var(--color-text-muted))",
-            },
             "h1, h2, h3, h4, h5": {
               color: "rgb(var(--color-text-heading))",
             },
@@ -112,8 +92,8 @@ module.exports = {
             "--tw-prose-lead": "rgb(var(--color-text-body))",
             "--tw-prose-links": "rgb(var(--color-text-body))",
             "--tw-prose-bold": "rgb(var(--color-text-bold))",
-            "--tw-prose-counters": "rgb(var(--color-text-muted))",
-            "--tw-prose-bullets": "rgb(var(--color-text-muted))",
+            "--tw-prose-counters": "rgb(var(--color-text-body))",
+            "--tw-prose-bullets": "rgb(var(--color-text-body))",
             "--tw-prose-hr": "rgb(var(--color-text-muted))",
             "--tw-prose-quotes": "rgb(var(--color-text-body))",
             "--tw-prose-quote-borders": "rgb(var(--color-text-muted))",

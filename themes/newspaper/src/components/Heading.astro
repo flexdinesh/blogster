@@ -30,6 +30,8 @@ if (level === 2) {
 {
   withBorder ? 
   <div class="after:mt-6 after:content-[''] after:block after:h-[1px] after:w-[100%] after:border-b-[1px] after:border-current">
+  <!-- TODO: Rethink how to add the bottom border. Shouldn't wrap hx in div.
+  should wrap div in hx. -->
     <Tag id={id} class="group flex -ml-[1rem]">
         <span class="not-prose w-[1rem] -mt-[0.125rem]">
             <a aria-label="link to this heading" aria-describedby={headingText} href={`#${id}`} 
