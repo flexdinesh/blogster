@@ -38,6 +38,7 @@ const { content, frontmatter } = await readOne({
     title={frontmatter.title}
     description={frontmatter.external ? undefined : frontmatter.description}
     publishDate={frontmatter.date.toISOString()}
+    pagePath={`/blog/${slug}`}
     slot="meta"
   />
   <Renderer content={content} slot="content" />

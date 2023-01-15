@@ -12,6 +12,7 @@ export interface Props {
   title?: string;
   description?: string;
   publishDate: string;
+  pagePath?: string;
   ogImageAbsoluteUrl?: string;
   ogImageAltText?: string;
   ogImageWidth?: number;
@@ -22,6 +23,7 @@ const {
   title,
   description,
   publishDate,
+  pagePath,
   ogImageAbsoluteUrl,
   ogImageAltText,
   ogImageWidth,
@@ -31,7 +33,7 @@ const {
 const { meta, og, twitter } = getBlogPostMeta({
   title: title || SITE_TITLE,
   description: description || SITE_DESCRIPTION,
-  baseUrl: SITE_URL,
+  pageUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : undefined,
   authorName: MY_NAME,
   publishDate,
   ogImageAbsoluteUrl,
