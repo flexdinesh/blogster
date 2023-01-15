@@ -13,6 +13,7 @@
     "templates"
   ],
   "scripts": {
+    "dev:dev": "node ./bin.js --no-deps --theme sleek --templatebranch dev",
     "dev": "node ./bin.js --no-deps --theme sleek",
     "clean": "rimraf my-blogster-blog",
     "lint": "eslint --ext .js ."

@@ -35,6 +35,12 @@ Examples
         type: 'boolean',
         default: true,
       },
+      // during development, we pass --templatebranch dev 
+      // to test the templates in dev branch before merging to main
+      templatebranch: {
+        type: 'string',
+        default: 'main',
+      },
     },
   }
 );
@@ -70,12 +76,13 @@ async function promptArgs() {
     directory: path.resolve(directory),
     theme: theme,
     deps: cli.flags.deps,
+    templatebranch: cli.flags.templatebranch,
   };
 }
 
-async function downloadTemplateDirectory(theme, directory) {
+async function downloadTemplateDirectory(theme, directory, templatebranch) {
   try {
-    await downloadTemplate(`flexdinesh/blogster/templates/${theme}`, {
+    await downloadTemplate(`flexdinesh/blogster/templates/${theme}#${templatebranch}`, {
       force: true,
       forceClean: true,
       provider: 'github',
@@ -94,9 +101,9 @@ async function downloadTemplateDirectory(theme, directory) {
 
 async function createBlogster() {
   logCreateConfirmation();
-  const { directory, theme, deps } = await promptArgs();
+  const { directory, theme, deps, templatebranch } = await promptArgs();
   await fs.mkdir(directory);
-  await downloadTemplateDirectory(theme, directory);
+  await downloadTemplateDirectory(theme, directory, templatebranch);
   let packageManager = 'yarn';
   if (deps) {
     packageManager = await install(directory);
