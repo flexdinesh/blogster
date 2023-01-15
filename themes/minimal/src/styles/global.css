@@ -62,6 +62,7 @@ body {
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	transition: background-color 0.3s ease;
 }
 
 strong,

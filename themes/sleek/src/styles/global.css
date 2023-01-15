@@ -2,12 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    font-family: 'Open Sans', sans-serif;
-    /* base font-size 1px larger for better visibility */
-    font-size: 1.0625em;
-    line-height: 1.75;
-    scroll-behavior: smooth;
+@layer base {
+    :root {
+        font-family: theme('fontFamily.body');
+        background-color: theme('colors.bg.body');
+        color: theme('colors.text.body');
+        /* base font-size 1px larger for better visibility */
+        font-size: 1.0625em;
+        line-height: 1.75;
+        scroll-behavior: smooth;
+        /* smoother color transition on theme toggle */
+        transition: background-color 0.3s ease;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: theme('fontFamily.heading');
+    }
 }
 
 @layer components {

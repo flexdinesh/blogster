@@ -4,6 +4,10 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        body: ["Roboto Mono", "sans-serif"],
+        heading: ["Roboto Mono", "sans-serif"],
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",
