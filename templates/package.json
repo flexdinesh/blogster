@@ -7,7 +7,7 @@
   "scripts": {
     "copy": "node ./scripts/copy-templates.js",
     "edit": "node ./scripts/edit-templates.js",
-    "clean": "rimraf templates my-blogster-blog",
+    "clean": "rimraf minimal sleek newspaper bubblegum",
     "sync-template-files": "yarn clean && yarn copy && yarn edit"
   },
   "dependencies": {
