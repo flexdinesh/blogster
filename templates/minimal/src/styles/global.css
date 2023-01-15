@@ -50,6 +50,7 @@
 :root {
 	font-family: Verdana, sans-serif;
 	line-height: 1.75;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -61,6 +62,7 @@ body {
 	text-align: left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	transition: background-color 0.3s ease;
 }
 
 strong,

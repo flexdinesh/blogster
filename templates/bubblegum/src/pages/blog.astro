@@ -33,7 +33,7 @@ const sortedPosts = posts
             day: "numeric",
           });
           return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3">
+            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
               <div class="title">
                 {post.frontmatter.external ? (
                   <a
@@ -48,7 +48,7 @@ const sortedPosts = posts
                   >
                     <span>{post.frontmatter.title}</span>
                     <span>
-                      <i class="ml-1 text-[12px] fa-solid fa-up-right-from-square" />
+                      <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
                     </span>
                   </a>
                 ) : (
@@ -65,7 +65,7 @@ const sortedPosts = posts
                   </a>
                 )}
               </div>
-              <div class="text-text-muted text-sm italic">
+              <div class="text-text-muted text-sm italic pt-1">
                 <time datetime={post.frontmatter.date.toISOString()}>
                   {formattedDate}
                 </time>

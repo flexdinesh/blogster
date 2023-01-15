@@ -4,20 +4,14 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        body: ["Roboto Mono", "sans-serif"],
+        heading: ["Roboto Mono", "sans-serif"],
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",
         primary: {
-          50: "rgb(var(--color-primary-50) / <alpha-value>)",
-          100: "rgb(var(--color-primary-100) / <alpha-value>)",
-          200: "rgb(var(--color-primary-200) / <alpha-value>)",
-          300: "rgb(var(--color-primary-300) / <alpha-value>)",
-          400: "rgb(var(--color-primary-400) / <alpha-value>)",
-          500: "rgb(var(--color-primary-500) / <alpha-value>)",
-          600: "rgb(var(--color-primary-600) / <alpha-value>)",
-          700: "rgb(var(--color-primary-700) / <alpha-value>)",
-          800: "rgb(var(--color-primary-800) / <alpha-value>)",
-          900: "rgb(var(--color-primary-900) / <alpha-value>)",
           main: "rgb(var(--color-primary-main) / <alpha-value>)",
         },
         text: {
@@ -52,26 +46,6 @@ module.exports = {
                 color: "rgb(var(--color-text-link))",
               },
             },
-            ul: {
-              "padding-left": 0,
-              "list-style": "none",
-            },
-            "ul > li": {
-              position: "relative",
-              "padding-left": "1.375rem",
-            },
-            "ul > li::before": {
-              position: "absolute",
-              left: 0,
-              content: '"»"',
-              color: "rgb(var(--color-primary-main))",
-            },
-            ol: {
-              "padding-left": "1.125rem",
-            },
-            "ol > li::marker": {
-              color: "rgb(var(--color-primary-main))",
-            },
             "h1, h2, h3, h4, h5": {
               color: "rgb(var(--color-text-heading))",
             },
@@ -80,6 +54,35 @@ module.exports = {
             },
             "code::after": {
               content: "none",
+            },
+            blockquote: {
+              border: "none",
+              position: "relative",
+              width: "96%",
+              margin: "0 auto",
+              "font-size": "1.0625em",
+              "padding-top": "1.5rem",
+              "padding-bottom": "0.5rem",
+              "padding-left": "1.5rem",
+              "padding-right": "1.5rem",
+            },
+            "blockquote::before": {
+              "font-family": "Arial",
+              content: "'“'",
+              "font-size": "4em",
+              color: "rgb(var(--color-text-link))",
+              position: "absolute",
+              left: "-10px",
+              top: "-10px",
+            },
+            "blockquote::after": {
+              content: "",
+            },
+            "blockquote p:first-of-type::before": {
+              content: "",
+            },
+            "blockquote p:last-of-type::after": {
+              content: "",
             },
           },
         },
@@ -90,9 +93,9 @@ module.exports = {
             "--tw-prose-lead": "rgb(var(--color-text-body))",
             "--tw-prose-links": "rgb(var(--color-text-body))",
             "--tw-prose-bold": "rgb(var(--color-text-bold))",
-            "--tw-prose-counters": "rgb(var(--color-primary-main))",
-            "--tw-prose-bullets": "rgb(var(--color-primary-main))",
-            "--tw-prose-hr": "rgb(var(--color-primary-main))",
+            "--tw-prose-counters": "rgb(var(--color-text-body))",
+            "--tw-prose-bullets": "rgb(var(--color-text-body))",
+            "--tw-prose-hr": "rgb(var(--color-text-muted))",
             "--tw-prose-quotes": "rgb(var(--color-text-body))",
             "--tw-prose-quote-borders": "rgb(var(--color-primary-main))",
             "--tw-prose-captions": "rgb(var(--color-primary-heading))",

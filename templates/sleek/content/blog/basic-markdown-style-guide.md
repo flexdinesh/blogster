@@ -5,7 +5,7 @@ description: "You can author content using the familiar markdown syntax you alre
 date: 2022-11-02
 ---
 
-Markdown is powered by [Markdoc](https://markdoc.dev/). This post is an example to showcase the support of all basic markdown syntax. You can author content using the familiar markdown syntax you already know.
+Markdown is powered by [Markdoc](https://markdoc.dev/). This is an example post to demonstrate all the basic markdown syntax. You can author content using the familiar markdown syntax you already know.
 
 ## Inline formatting
 
@@ -41,7 +41,7 @@ Paragraphs can be multiline too when they constitute words that make up more tha
 
 > This is a blockquote. And it's pretty long too. Long enough to wrap to next line. Surely it will wrap.
 
-> You can use Markdown syntax like **bold** within a blockquote.
+> You can use other Markdown syntax like `inline code` within a blockquote.
 
 ## Tables
 

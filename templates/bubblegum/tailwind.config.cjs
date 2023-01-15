@@ -4,6 +4,10 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        body: ["Space Grotesk", "sans-serif"],
+        heading: ["Space Grotesk", "sans-serif"],
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",
@@ -11,7 +15,6 @@ module.exports = {
           blue: "rgb(var(--color-primary-blue) / <alpha-value>)",
           green: "rgb(var(--color-primary-green) / <alpha-value>)",
           yellow: "rgb(var(--color-primary-yellow) / <alpha-value>)",
-          main: "rgb(var(--color-primary-main) / <alpha-value>)",
         },
         text: {
           body: "rgb(var(--color-text-body) / <alpha-value>)",
@@ -45,26 +48,6 @@ module.exports = {
                 color: "rgb(var(--color-text-link))",
               },
             },
-            ul: {
-              "padding-left": 0,
-              "list-style": "none",
-            },
-            "ul > li": {
-              position: "relative",
-              "padding-left": "1.375rem",
-            },
-            "ul > li::before": {
-              position: "absolute",
-              left: 0,
-              content: '"»"',
-              color: "rgb(var(--color-text-muted))",
-            },
-            ol: {
-              "padding-left": "1.125rem",
-            },
-            "ol > li::marker": {
-              color: "rgb(var(--color-text-muted))",
-            },
             "h1, h2, h3, h4, h5": {
               color: "rgb(var(--color-text-heading))",
             },
@@ -73,6 +56,35 @@ module.exports = {
             },
             "code::after": {
               content: "none",
+            },
+            blockquote: {
+              border: "none",
+              position: "relative",
+              width: "96%",
+              margin: "0 auto",
+              "font-size": "1.0625em",
+              "padding-top": "1.5rem",
+              "padding-bottom": "0.5rem",
+              "padding-left": "1.5rem",
+              "padding-right": "1.5rem",
+            },
+            "blockquote::before": {
+              "font-family": "Arial",
+              content: "'“'",
+              "font-size": "4em",
+              color: "rgb(var(--color-text-bold))",
+              position: "absolute",
+              left: "-10px",
+              top: "-10px",
+            },
+            "blockquote::after": {
+              content: "",
+            },
+            "blockquote p:first-of-type::before": {
+              content: "",
+            },
+            "blockquote p:last-of-type::after": {
+              content: "",
             },
           },
         },
@@ -83,8 +95,8 @@ module.exports = {
             "--tw-prose-lead": "rgb(var(--color-text-body))",
             "--tw-prose-links": "rgb(var(--color-text-body))",
             "--tw-prose-bold": "rgb(var(--color-text-bold))",
-            "--tw-prose-counters": "rgb(var(--color-text-muted))",
-            "--tw-prose-bullets": "rgb(var(--color-text-muted))",
+            "--tw-prose-counters": "rgb(var(--color-text-body))",
+            "--tw-prose-bullets": "rgb(var(--color-text-body))",
             "--tw-prose-hr": "rgb(var(--color-text-muted))",
             "--tw-prose-quotes": "rgb(var(--color-text-body))",
             "--tw-prose-quote-borders": "rgb(var(--color-text-muted))",

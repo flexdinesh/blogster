@@ -115,7 +115,7 @@ export function getBlogPostMeta({
   title: pageTitle,
   description,
   canonicalUrl,
-  baseUrl,
+  pageUrl,
   authorName,
   publishDate,
   ogImageAbsoluteUrl,
@@ -128,7 +128,7 @@ export function getBlogPostMeta({
   title: string;
   description: string;
   canonicalUrl?: string;
-  baseUrl?: string;
+  pageUrl?: string;
   authorName?: string;
   publishDate: string;
   ogImageAbsoluteUrl?: string; // should always be absolute
@@ -155,7 +155,7 @@ export function getBlogPostMeta({
     title: pageTitle,
     description: description,
     type: "article",
-    url: baseUrl,
+    url: pageUrl,
     author: authorName,
     publishDate: publishDate,
     image: ogImageAbsoluteUrl,

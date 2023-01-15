@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@astrojs/prism": "^1.0.2",
-    "@astrojs/rss": "^1.2.1",
+    "@astrojs/rss": "^2.0.0",
     "@astrojs/sitemap": "^1.0.0",
     "@markdoc/markdoc": "^0.2.1",
-    "astro": "^1.7.1",
+    "astro": "^1.9.2",
     "astro-markdoc-renderer": "0.0.1-alpha.1",
     "globby": "^13.1.3",
     "gray-matter": "^4.0.3",
@@ -23,7 +23,7 @@
     "zod": "^3.20.2"
   },
   "devDependencies": {
-    "prettier-plugin-astro": "^0.7.0",
+    "prettier-plugin-astro": "^0.7.2",
     "typescript": "^4.9.4"
   }
 }
