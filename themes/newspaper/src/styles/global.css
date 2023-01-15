@@ -2,7 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+    Tailwind colors listed here: https://tailwindcss.com/docs/customizing-colors
+    
+    Why colors are written in rgb format (255 255 255) instead of hex (#ffffff)
+    https://tailwindcss.com/docs/customizing-colors#using-css-variables 
+*/
 @layer base {
+
+    /* light theme */
+    .theme-newspaper {
+        /* Tailwind slate-900 #0f172a */
+        --color-primary-main: 15 23 42;
+
+        /* Tailwind slate-900 #0f172a */
+        --color-text-body: 15 23 42;
+        /* Tailwind slate-900 #0f172a */
+        --color-text-heading: 15 23 42;
+        /* Tailwind slate-900 #0f172a */
+        --color-text-bold: 15 23 42;
+        /* Tailwind slate-900 #0f172a */
+        --color-text-muted: 100 116 139;
+        /* #339af0 */
+        --color-text-link: 51 154 240;
+        /* black */
+        --color-text-code: 0 0 0;
+        /* black */
+        --color-text-selection: 0 0 0;
+
+        /* white */
+        --color-bg-body: 255 255 255;
+        /* Tailwind amber-100 #fef3c7 */
+        --color-bg-code: 254 243 199;
+        /* Tailwind primary-200 #e2e8f0 */
+        --color-bg-selection: 226 232 240;
+
+        /* primary-100 */
+        --color-border-code: 244 244 245;
+
+    }
+
+    /* dark theme */
+    .theme-newspaper.dark {
+        /* white */
+        --color-primary-main: 255 255 255;
+
+        /* Tailwind neutral-200 #e5e5e5 */
+        --color-text-body: 229 229 229;
+        /* white */
+        --color-text-heading: 255 255 255;
+        /* white */
+        --color-text-bold: 255 255 255;
+        /* Tailwind neutral-300 #d4d4d4 */
+        --color-text-muted: 212 212 212;
+        /* #339af0 */
+        --color-text-link: 51 154 240;
+        /* black */
+        --color-text-code: 255 255 255;
+        /* black */
+        --color-text-selection: 0 0 0;
+
+        /* Tailwind neutral-900 #171717 */
+        --color-bg-body: 38 38 38;
+        /* Tailwind yellow-500 #eab308 */
+        --color-bg-code: 234 179 8;
+        /* white */
+        --color-bg-selection: 255 255 255;
+
+        /* Tailwind primary-700 #404040 */
+        --color-border-code: 64 64 64;
+    }
+
     :root {
         font-family: theme('fontFamily.body');
         background-color: theme('colors.bg.body');
