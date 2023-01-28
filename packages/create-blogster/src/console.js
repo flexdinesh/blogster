@@ -23,11 +23,11 @@ function logSuccessInfo(packageManager, relativeProjectDir, theme) {
     - ${packageManager === 'yarn' ? 'yarn' : `${packageManager} run`} dev
   
 ${chalk.yellow(
-      terminalLink(
-        '🤩 Star Blogster on GitHub',
-        'https://github.com/flexdinesh/blogster'
-      )
-    )}
+  terminalLink(
+    '🤩 Star Blogster on GitHub',
+    'https://github.com/flexdinesh/blogster'
+  )
+)}
 
 `
   );

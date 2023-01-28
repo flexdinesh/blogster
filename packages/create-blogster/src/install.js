@@ -9,7 +9,7 @@ const detectUserAgent = () => {
     return undefined;
   }
 
-  return userAgent.split(' ')[0].split('/');
+  return userAgent.split(' ')[0].split('/')[0];
 }
 
 const install = async cwd => {
@@ -27,6 +27,9 @@ const install = async cwd => {
     if (err.failed) {
       process.stdout.write('\n');
       spinner.warn(`Failed to install with ${pkgManager}.`);
+      if (pkgManager === 'npm') {
+        throw err;
+      }
       spinner.start(
         'Installing dependencies with npm. This may take a few minutes.'
       );
