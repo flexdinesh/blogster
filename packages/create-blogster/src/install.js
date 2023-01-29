@@ -4,7 +4,7 @@ const execa = require('execa');
 const ora = require('ora');
 
 const detectUserAgent = () => {
-  let userAgent = process.env.npm_config_user_agent;
+  const userAgent = process.env.npm_config_user_agent;
   if (!userAgent) {
     return undefined;
   }
