@@ -81,8 +81,6 @@
         font-size: 1.0625em;
         line-height: 1.75;
         scroll-behavior: smooth;
-        /* smoother color transition on theme toggle */
-        transition: background-color 0.3s ease;
     }
 
     h1,
