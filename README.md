@@ -17,6 +17,9 @@
     </table>
 </p>
 
+## Maintenance Status
+
+Blogster was built before Astro released [content collections](https://docs.astro.build/en/guides/content-collections/). With content collections, Astro now has first party built in support for strongly typed content schema and Markdoc rendered content which is what Blogster was built for. So Blogster won't receive any updates in the future. I'm going to leave this as a reference for font load strategy, meta tags and a few other best practices for setting up a website.
 
 ## Demo
 
