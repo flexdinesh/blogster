@@ -49,6 +49,18 @@ Get started with one simple command.
 npx create-blogster@latest --theme sleek
 ```
 
+Or with pnpm:
+
+```bash
+pnpm create blogster --theme sleek
+```
+
+Or with yarn:
+
+```bash
+yarn create blogster --theme sleek
+```
+
 ## Themes
 
 Blogster comes in a variety of themes. You can easily find one that suits and goes well with your personality. All themes are performant, accessible, SEO friendly, built with the best practices out there and have a lighthouse score of 100 across the board.

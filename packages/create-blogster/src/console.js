@@ -20,7 +20,7 @@ function logSuccessInfo(packageManager, relativeProjectDir, theme) {
   ${chalk.bold('Start your development with:')}
   
     - cd ${relativeProjectDir}
-    - ${packageManager === 'yarn' ? 'yarn' : 'npm run'} dev
+    - ${packageManager === 'yarn' ? 'yarn' : `${packageManager} run`} dev
   
 ${chalk.yellow(
   terminalLink(
